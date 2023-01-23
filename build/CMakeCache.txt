@@ -168,7 +168,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=blink
+CMAKE_PROJECT_NAME:STATIC=IoT_Sensor_Node
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=/usr/bin/arm-none-eabi-ranlib
@@ -241,6 +241,12 @@ DOXYGEN_DOT_EXECUTABLE:FILEPATH=DOXYGEN_DOT_EXECUTABLE-NOTFOUND
 //Doxygen documentation generation tool (http://www.doxygen.org)
 DOXYGEN_EXECUTABLE:FILEPATH=/usr/bin/doxygen
 
+//Value Computed by CMake
+IoT_Sensor_Node_BINARY_DIR:STATIC=/home/luis/Projects/pico/IoT-sensor-nodes-senior23/build
+
+//Value Computed by CMake
+IoT_Sensor_Node_SOURCE_DIR:STATIC=/home/luis/Projects/pico/IoT-sensor-nodes-senior23
+
 //PICO target board (e.g. pico)
 PICO_BOARD:STRING=pico
 
@@ -294,12 +300,6 @@ PICO_STDIO_USB:BOOL=OFF
 
 //Path to a program.
 _Python3_EXECUTABLE:FILEPATH=/home/luis/anaconda3/bin/python3.9
-
-//Value Computed by CMake
-blink_BINARY_DIR:STATIC=/home/luis/Projects/pico/IoT-sensor-nodes-senior23/build
-
-//Value Computed by CMake
-blink_SOURCE_DIR:STATIC=/home/luis/Projects/pico/IoT-sensor-nodes-senior23
 
 //Value Computed by CMake
 pico_sdk_BINARY_DIR:STATIC=/home/luis/Projects/pico/IoT-sensor-nodes-senior23/build/pico-sdk
@@ -427,7 +427,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=74
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=76
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP

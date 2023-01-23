@@ -1,7 +1,7 @@
-/home/luis/Projects/pico/IoT-sensor-nodes-senior23/build/CMakeFiles/rebuild_cache.dir
 /home/luis/Projects/pico/IoT-sensor-nodes-senior23/build/CMakeFiles/edit_cache.dir
 /home/luis/Projects/pico/IoT-sensor-nodes-senior23/build/CMakeFiles/ELF2UF2Build.dir
-/home/luis/Projects/pico/IoT-sensor-nodes-senior23/build/CMakeFiles/blink.dir
+/home/luis/Projects/pico/IoT-sensor-nodes-senior23/build/CMakeFiles/rebuild_cache.dir
+/home/luis/Projects/pico/IoT-sensor-nodes-senior23/build/CMakeFiles/IoT_Sensor_Node.dir
 /home/luis/Projects/pico/IoT-sensor-nodes-senior23/build/pico-sdk/CMakeFiles/rebuild_cache.dir
 /home/luis/Projects/pico/IoT-sensor-nodes-senior23/build/pico-sdk/CMakeFiles/edit_cache.dir
 /home/luis/Projects/pico/IoT-sensor-nodes-senior23/build/pico-sdk/tools/CMakeFiles/rebuild_cache.dir
@@ -154,3 +154,12 @@
 /home/luis/Projects/pico/IoT-sensor-nodes-senior23/build/pico-sdk/src/rp2040/hardware_structs/CMakeFiles/edit_cache.dir
 /home/luis/Projects/pico/IoT-sensor-nodes-senior23/build/pico-sdk/docs/CMakeFiles/rebuild_cache.dir
 /home/luis/Projects/pico/IoT-sensor-nodes-senior23/build/pico-sdk/docs/CMakeFiles/edit_cache.dir
+/home/luis/Projects/pico/IoT-sensor-nodes-senior23/build/nec_transmit_library/CMakeFiles/nec_transmit_library_nec_carrier_control_pio_h.dir
+/home/luis/Projects/pico/IoT-sensor-nodes-senior23/build/nec_transmit_library/CMakeFiles/rebuild_cache.dir
+/home/luis/Projects/pico/IoT-sensor-nodes-senior23/build/nec_transmit_library/CMakeFiles/nec_transmit_library_nec_carrier_burst_pio_h.dir
+/home/luis/Projects/pico/IoT-sensor-nodes-senior23/build/nec_transmit_library/CMakeFiles/edit_cache.dir
+/home/luis/Projects/pico/IoT-sensor-nodes-senior23/build/nec_transmit_library/CMakeFiles/nec_transmit_library.dir
+/home/luis/Projects/pico/IoT-sensor-nodes-senior23/build/nec_receive_library/CMakeFiles/rebuild_cache.dir
+/home/luis/Projects/pico/IoT-sensor-nodes-senior23/build/nec_receive_library/CMakeFiles/edit_cache.dir
+/home/luis/Projects/pico/IoT-sensor-nodes-senior23/build/nec_receive_library/CMakeFiles/nec_receive_library_nec_receive_pio_h.dir
+/home/luis/Projects/pico/IoT-sensor-nodes-senior23/build/nec_receive_library/CMakeFiles/nec_receive_library.dir

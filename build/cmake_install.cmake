@@ -35,6 +35,8 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/luis/Projects/pico/IoT-sensor-nodes-senior23/build/pico-sdk/cmake_install.cmake")
+  include("/home/luis/Projects/pico/IoT-sensor-nodes-senior23/build/nec_transmit_library/cmake_install.cmake")
+  include("/home/luis/Projects/pico/IoT-sensor-nodes-senior23/build/nec_receive_library/cmake_install.cmake")
 
 endif()
 

@@ -14,6 +14,8 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/3.16.3/CMakeSystem.cmake"
   "elf2uf2/tmp/ELF2UF2Build-cfgcmd.txt.in"
   "pico-sdk/src/rp2_common/cyw43_driver/pioasm/tmp/PioasmBuild-cfgcmd.txt.in"
+  "../nec_receive_library/CMakeLists.txt"
+  "../nec_transmit_library/CMakeLists.txt"
   "/opt/pico-sdk/CMakeLists.txt"
   "/opt/pico-sdk/cmake/Platform/PICO.cmake"
   "/opt/pico-sdk/cmake/pico_pre_load_platform.cmake"
@@ -217,16 +219,23 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "pico-sdk/src/rp2040/hardware_regs/CMakeFiles/CMakeDirectoryInformation.cmake"
   "pico-sdk/src/rp2040/hardware_structs/CMakeFiles/CMakeDirectoryInformation.cmake"
   "pico-sdk/docs/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "nec_transmit_library/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "nec_receive_library/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/ELF2UF2Build.dir/DependInfo.cmake"
-  "CMakeFiles/blink.dir/DependInfo.cmake"
+  "CMakeFiles/IoT_Sensor_Node.dir/DependInfo.cmake"
   "pico-sdk/src/rp2_common/boot_stage2/CMakeFiles/bs2_default_padded_checksummed_asm.dir/DependInfo.cmake"
   "pico-sdk/src/rp2_common/boot_stage2/CMakeFiles/bs2_default_bin.dir/DependInfo.cmake"
   "pico-sdk/src/rp2_common/boot_stage2/CMakeFiles/bs2_default.dir/DependInfo.cmake"
   "pico-sdk/src/rp2_common/cyw43_driver/CMakeFiles/PioasmBuild.dir/DependInfo.cmake"
   "pico-sdk/src/rp2_common/cyw43_driver/CMakeFiles/cyw43_firmware_package.dir/DependInfo.cmake"
   "pico-sdk/src/rp2_common/cyw43_driver/CMakeFiles/cyw43_driver_picow_cyw43_bus_pio_spi_pio_h.dir/DependInfo.cmake"
+  "nec_transmit_library/CMakeFiles/nec_transmit_library_nec_carrier_control_pio_h.dir/DependInfo.cmake"
+  "nec_transmit_library/CMakeFiles/nec_transmit_library_nec_carrier_burst_pio_h.dir/DependInfo.cmake"
+  "nec_transmit_library/CMakeFiles/nec_transmit_library.dir/DependInfo.cmake"
+  "nec_receive_library/CMakeFiles/nec_receive_library_nec_receive_pio_h.dir/DependInfo.cmake"
+  "nec_receive_library/CMakeFiles/nec_receive_library.dir/DependInfo.cmake"
   )

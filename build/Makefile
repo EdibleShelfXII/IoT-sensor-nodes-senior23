@@ -56,17 +56,6 @@ CMAKE_BINARY_DIR = /home/luis/Projects/pico/IoT-sensor-nodes-senior23/build
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
-
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
@@ -77,6 +66,17 @@ edit_cache:
 edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
+
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -124,17 +124,17 @@ ELF2UF2Build/fast:
 .PHONY : ELF2UF2Build/fast
 
 #=============================================================================
-# Target rules for targets named blink
+# Target rules for targets named IoT_Sensor_Node
 
 # Build rule for target.
-blink: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 blink
-.PHONY : blink
+IoT_Sensor_Node: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 IoT_Sensor_Node
+.PHONY : IoT_Sensor_Node
 
 # fast build rule for target.
-blink/fast:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/build
-.PHONY : blink/fast
+IoT_Sensor_Node/fast:
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/build
+.PHONY : IoT_Sensor_Node/fast
 
 #=============================================================================
 # Target rules for targets named bs2_default_padded_checksummed_asm
@@ -214,13 +214,78 @@ cyw43_driver_picow_cyw43_bus_pio_spi_pio_h/fast:
 	$(MAKE) -f pico-sdk/src/rp2_common/cyw43_driver/CMakeFiles/cyw43_driver_picow_cyw43_bus_pio_spi_pio_h.dir/build.make pico-sdk/src/rp2_common/cyw43_driver/CMakeFiles/cyw43_driver_picow_cyw43_bus_pio_spi_pio_h.dir/build
 .PHONY : cyw43_driver_picow_cyw43_bus_pio_spi_pio_h/fast
 
+#=============================================================================
+# Target rules for targets named nec_transmit_library_nec_carrier_control_pio_h
+
+# Build rule for target.
+nec_transmit_library_nec_carrier_control_pio_h: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 nec_transmit_library_nec_carrier_control_pio_h
+.PHONY : nec_transmit_library_nec_carrier_control_pio_h
+
+# fast build rule for target.
+nec_transmit_library_nec_carrier_control_pio_h/fast:
+	$(MAKE) -f nec_transmit_library/CMakeFiles/nec_transmit_library_nec_carrier_control_pio_h.dir/build.make nec_transmit_library/CMakeFiles/nec_transmit_library_nec_carrier_control_pio_h.dir/build
+.PHONY : nec_transmit_library_nec_carrier_control_pio_h/fast
+
+#=============================================================================
+# Target rules for targets named nec_transmit_library_nec_carrier_burst_pio_h
+
+# Build rule for target.
+nec_transmit_library_nec_carrier_burst_pio_h: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 nec_transmit_library_nec_carrier_burst_pio_h
+.PHONY : nec_transmit_library_nec_carrier_burst_pio_h
+
+# fast build rule for target.
+nec_transmit_library_nec_carrier_burst_pio_h/fast:
+	$(MAKE) -f nec_transmit_library/CMakeFiles/nec_transmit_library_nec_carrier_burst_pio_h.dir/build.make nec_transmit_library/CMakeFiles/nec_transmit_library_nec_carrier_burst_pio_h.dir/build
+.PHONY : nec_transmit_library_nec_carrier_burst_pio_h/fast
+
+#=============================================================================
+# Target rules for targets named nec_transmit_library
+
+# Build rule for target.
+nec_transmit_library: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 nec_transmit_library
+.PHONY : nec_transmit_library
+
+# fast build rule for target.
+nec_transmit_library/fast:
+	$(MAKE) -f nec_transmit_library/CMakeFiles/nec_transmit_library.dir/build.make nec_transmit_library/CMakeFiles/nec_transmit_library.dir/build
+.PHONY : nec_transmit_library/fast
+
+#=============================================================================
+# Target rules for targets named nec_receive_library_nec_receive_pio_h
+
+# Build rule for target.
+nec_receive_library_nec_receive_pio_h: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 nec_receive_library_nec_receive_pio_h
+.PHONY : nec_receive_library_nec_receive_pio_h
+
+# fast build rule for target.
+nec_receive_library_nec_receive_pio_h/fast:
+	$(MAKE) -f nec_receive_library/CMakeFiles/nec_receive_library_nec_receive_pio_h.dir/build.make nec_receive_library/CMakeFiles/nec_receive_library_nec_receive_pio_h.dir/build
+.PHONY : nec_receive_library_nec_receive_pio_h/fast
+
+#=============================================================================
+# Target rules for targets named nec_receive_library
+
+# Build rule for target.
+nec_receive_library: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 nec_receive_library
+.PHONY : nec_receive_library
+
+# fast build rule for target.
+nec_receive_library/fast:
+	$(MAKE) -f nec_receive_library/CMakeFiles/nec_receive_library.dir/build.make nec_receive_library/CMakeFiles/nec_receive_library.dir/build
+.PHONY : nec_receive_library/fast
+
 main.obj: main.c.obj
 
 .PHONY : main.obj
 
 # target to build an object file
 main.c.obj:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/main.c.obj
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/main.c.obj
 .PHONY : main.c.obj
 
 main.i: main.c.i
@@ -229,7 +294,7 @@ main.i: main.c.i
 
 # target to preprocess a source file
 main.c.i:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/main.c.i
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/main.c.i
 .PHONY : main.c.i
 
 main.s: main.c.s
@@ -238,7 +303,7 @@ main.s: main.c.s
 
 # target to generate assembly for a file
 main.c.s:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/main.c.s
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/main.c.s
 .PHONY : main.c.s
 
 opt/pico-sdk/lib/tinyusb/src/class/audio/audio_device.obj: opt/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c.obj
@@ -247,7 +312,7 @@ opt/pico-sdk/lib/tinyusb/src/class/audio/audio_device.obj: opt/pico-sdk/lib/tiny
 
 # target to build an object file
 opt/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c.obj:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c.obj
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c.obj
 .PHONY : opt/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c.obj
 
 opt/pico-sdk/lib/tinyusb/src/class/audio/audio_device.i: opt/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c.i
@@ -256,7 +321,7 @@ opt/pico-sdk/lib/tinyusb/src/class/audio/audio_device.i: opt/pico-sdk/lib/tinyus
 
 # target to preprocess a source file
 opt/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c.i:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c.i
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c.i
 .PHONY : opt/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c.i
 
 opt/pico-sdk/lib/tinyusb/src/class/audio/audio_device.s: opt/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c.s
@@ -265,7 +330,7 @@ opt/pico-sdk/lib/tinyusb/src/class/audio/audio_device.s: opt/pico-sdk/lib/tinyus
 
 # target to generate assembly for a file
 opt/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c.s:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c.s
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c.s
 .PHONY : opt/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c.s
 
 opt/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.obj: opt/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.obj
@@ -274,7 +339,7 @@ opt/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.obj: opt/pico-sdk/lib/tinyusb/
 
 # target to build an object file
 opt/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.obj:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.obj
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.obj
 .PHONY : opt/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.obj
 
 opt/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.i: opt/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.i
@@ -283,7 +348,7 @@ opt/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.i: opt/pico-sdk/lib/tinyusb/sr
 
 # target to preprocess a source file
 opt/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.i:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.i
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.i
 .PHONY : opt/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.i
 
 opt/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.s: opt/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.s
@@ -292,7 +357,7 @@ opt/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.s: opt/pico-sdk/lib/tinyusb/sr
 
 # target to generate assembly for a file
 opt/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.s:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.s
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.s
 .PHONY : opt/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.s
 
 opt/pico-sdk/lib/tinyusb/src/class/dfu/dfu_device.obj: opt/pico-sdk/lib/tinyusb/src/class/dfu/dfu_device.c.obj
@@ -301,7 +366,7 @@ opt/pico-sdk/lib/tinyusb/src/class/dfu/dfu_device.obj: opt/pico-sdk/lib/tinyusb/
 
 # target to build an object file
 opt/pico-sdk/lib/tinyusb/src/class/dfu/dfu_device.c.obj:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/lib/tinyusb/src/class/dfu/dfu_device.c.obj
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/lib/tinyusb/src/class/dfu/dfu_device.c.obj
 .PHONY : opt/pico-sdk/lib/tinyusb/src/class/dfu/dfu_device.c.obj
 
 opt/pico-sdk/lib/tinyusb/src/class/dfu/dfu_device.i: opt/pico-sdk/lib/tinyusb/src/class/dfu/dfu_device.c.i
@@ -310,7 +375,7 @@ opt/pico-sdk/lib/tinyusb/src/class/dfu/dfu_device.i: opt/pico-sdk/lib/tinyusb/sr
 
 # target to preprocess a source file
 opt/pico-sdk/lib/tinyusb/src/class/dfu/dfu_device.c.i:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/lib/tinyusb/src/class/dfu/dfu_device.c.i
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/lib/tinyusb/src/class/dfu/dfu_device.c.i
 .PHONY : opt/pico-sdk/lib/tinyusb/src/class/dfu/dfu_device.c.i
 
 opt/pico-sdk/lib/tinyusb/src/class/dfu/dfu_device.s: opt/pico-sdk/lib/tinyusb/src/class/dfu/dfu_device.c.s
@@ -319,7 +384,7 @@ opt/pico-sdk/lib/tinyusb/src/class/dfu/dfu_device.s: opt/pico-sdk/lib/tinyusb/sr
 
 # target to generate assembly for a file
 opt/pico-sdk/lib/tinyusb/src/class/dfu/dfu_device.c.s:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/lib/tinyusb/src/class/dfu/dfu_device.c.s
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/lib/tinyusb/src/class/dfu/dfu_device.c.s
 .PHONY : opt/pico-sdk/lib/tinyusb/src/class/dfu/dfu_device.c.s
 
 opt/pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_device.obj: opt/pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_device.c.obj
@@ -328,7 +393,7 @@ opt/pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_device.obj: opt/pico-sdk/lib/tinyu
 
 # target to build an object file
 opt/pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_device.c.obj:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_device.c.obj
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_device.c.obj
 .PHONY : opt/pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_device.c.obj
 
 opt/pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_device.i: opt/pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_device.c.i
@@ -337,7 +402,7 @@ opt/pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_device.i: opt/pico-sdk/lib/tinyusb
 
 # target to preprocess a source file
 opt/pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_device.c.i:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_device.c.i
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_device.c.i
 .PHONY : opt/pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_device.c.i
 
 opt/pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_device.s: opt/pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_device.c.s
@@ -346,7 +411,7 @@ opt/pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_device.s: opt/pico-sdk/lib/tinyusb
 
 # target to generate assembly for a file
 opt/pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_device.c.s:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_device.c.s
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_device.c.s
 .PHONY : opt/pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_device.c.s
 
 opt/pico-sdk/lib/tinyusb/src/class/hid/hid_device.obj: opt/pico-sdk/lib/tinyusb/src/class/hid/hid_device.c.obj
@@ -355,7 +420,7 @@ opt/pico-sdk/lib/tinyusb/src/class/hid/hid_device.obj: opt/pico-sdk/lib/tinyusb/
 
 # target to build an object file
 opt/pico-sdk/lib/tinyusb/src/class/hid/hid_device.c.obj:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/lib/tinyusb/src/class/hid/hid_device.c.obj
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/lib/tinyusb/src/class/hid/hid_device.c.obj
 .PHONY : opt/pico-sdk/lib/tinyusb/src/class/hid/hid_device.c.obj
 
 opt/pico-sdk/lib/tinyusb/src/class/hid/hid_device.i: opt/pico-sdk/lib/tinyusb/src/class/hid/hid_device.c.i
@@ -364,7 +429,7 @@ opt/pico-sdk/lib/tinyusb/src/class/hid/hid_device.i: opt/pico-sdk/lib/tinyusb/sr
 
 # target to preprocess a source file
 opt/pico-sdk/lib/tinyusb/src/class/hid/hid_device.c.i:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/lib/tinyusb/src/class/hid/hid_device.c.i
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/lib/tinyusb/src/class/hid/hid_device.c.i
 .PHONY : opt/pico-sdk/lib/tinyusb/src/class/hid/hid_device.c.i
 
 opt/pico-sdk/lib/tinyusb/src/class/hid/hid_device.s: opt/pico-sdk/lib/tinyusb/src/class/hid/hid_device.c.s
@@ -373,7 +438,7 @@ opt/pico-sdk/lib/tinyusb/src/class/hid/hid_device.s: opt/pico-sdk/lib/tinyusb/sr
 
 # target to generate assembly for a file
 opt/pico-sdk/lib/tinyusb/src/class/hid/hid_device.c.s:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/lib/tinyusb/src/class/hid/hid_device.c.s
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/lib/tinyusb/src/class/hid/hid_device.c.s
 .PHONY : opt/pico-sdk/lib/tinyusb/src/class/hid/hid_device.c.s
 
 opt/pico-sdk/lib/tinyusb/src/class/midi/midi_device.obj: opt/pico-sdk/lib/tinyusb/src/class/midi/midi_device.c.obj
@@ -382,7 +447,7 @@ opt/pico-sdk/lib/tinyusb/src/class/midi/midi_device.obj: opt/pico-sdk/lib/tinyus
 
 # target to build an object file
 opt/pico-sdk/lib/tinyusb/src/class/midi/midi_device.c.obj:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/lib/tinyusb/src/class/midi/midi_device.c.obj
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/lib/tinyusb/src/class/midi/midi_device.c.obj
 .PHONY : opt/pico-sdk/lib/tinyusb/src/class/midi/midi_device.c.obj
 
 opt/pico-sdk/lib/tinyusb/src/class/midi/midi_device.i: opt/pico-sdk/lib/tinyusb/src/class/midi/midi_device.c.i
@@ -391,7 +456,7 @@ opt/pico-sdk/lib/tinyusb/src/class/midi/midi_device.i: opt/pico-sdk/lib/tinyusb/
 
 # target to preprocess a source file
 opt/pico-sdk/lib/tinyusb/src/class/midi/midi_device.c.i:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/lib/tinyusb/src/class/midi/midi_device.c.i
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/lib/tinyusb/src/class/midi/midi_device.c.i
 .PHONY : opt/pico-sdk/lib/tinyusb/src/class/midi/midi_device.c.i
 
 opt/pico-sdk/lib/tinyusb/src/class/midi/midi_device.s: opt/pico-sdk/lib/tinyusb/src/class/midi/midi_device.c.s
@@ -400,7 +465,7 @@ opt/pico-sdk/lib/tinyusb/src/class/midi/midi_device.s: opt/pico-sdk/lib/tinyusb/
 
 # target to generate assembly for a file
 opt/pico-sdk/lib/tinyusb/src/class/midi/midi_device.c.s:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/lib/tinyusb/src/class/midi/midi_device.c.s
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/lib/tinyusb/src/class/midi/midi_device.c.s
 .PHONY : opt/pico-sdk/lib/tinyusb/src/class/midi/midi_device.c.s
 
 opt/pico-sdk/lib/tinyusb/src/class/msc/msc_device.obj: opt/pico-sdk/lib/tinyusb/src/class/msc/msc_device.c.obj
@@ -409,7 +474,7 @@ opt/pico-sdk/lib/tinyusb/src/class/msc/msc_device.obj: opt/pico-sdk/lib/tinyusb/
 
 # target to build an object file
 opt/pico-sdk/lib/tinyusb/src/class/msc/msc_device.c.obj:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/lib/tinyusb/src/class/msc/msc_device.c.obj
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/lib/tinyusb/src/class/msc/msc_device.c.obj
 .PHONY : opt/pico-sdk/lib/tinyusb/src/class/msc/msc_device.c.obj
 
 opt/pico-sdk/lib/tinyusb/src/class/msc/msc_device.i: opt/pico-sdk/lib/tinyusb/src/class/msc/msc_device.c.i
@@ -418,7 +483,7 @@ opt/pico-sdk/lib/tinyusb/src/class/msc/msc_device.i: opt/pico-sdk/lib/tinyusb/sr
 
 # target to preprocess a source file
 opt/pico-sdk/lib/tinyusb/src/class/msc/msc_device.c.i:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/lib/tinyusb/src/class/msc/msc_device.c.i
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/lib/tinyusb/src/class/msc/msc_device.c.i
 .PHONY : opt/pico-sdk/lib/tinyusb/src/class/msc/msc_device.c.i
 
 opt/pico-sdk/lib/tinyusb/src/class/msc/msc_device.s: opt/pico-sdk/lib/tinyusb/src/class/msc/msc_device.c.s
@@ -427,7 +492,7 @@ opt/pico-sdk/lib/tinyusb/src/class/msc/msc_device.s: opt/pico-sdk/lib/tinyusb/sr
 
 # target to generate assembly for a file
 opt/pico-sdk/lib/tinyusb/src/class/msc/msc_device.c.s:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/lib/tinyusb/src/class/msc/msc_device.c.s
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/lib/tinyusb/src/class/msc/msc_device.c.s
 .PHONY : opt/pico-sdk/lib/tinyusb/src/class/msc/msc_device.c.s
 
 opt/pico-sdk/lib/tinyusb/src/class/net/ecm_rndis_device.obj: opt/pico-sdk/lib/tinyusb/src/class/net/ecm_rndis_device.c.obj
@@ -436,7 +501,7 @@ opt/pico-sdk/lib/tinyusb/src/class/net/ecm_rndis_device.obj: opt/pico-sdk/lib/ti
 
 # target to build an object file
 opt/pico-sdk/lib/tinyusb/src/class/net/ecm_rndis_device.c.obj:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/lib/tinyusb/src/class/net/ecm_rndis_device.c.obj
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/lib/tinyusb/src/class/net/ecm_rndis_device.c.obj
 .PHONY : opt/pico-sdk/lib/tinyusb/src/class/net/ecm_rndis_device.c.obj
 
 opt/pico-sdk/lib/tinyusb/src/class/net/ecm_rndis_device.i: opt/pico-sdk/lib/tinyusb/src/class/net/ecm_rndis_device.c.i
@@ -445,7 +510,7 @@ opt/pico-sdk/lib/tinyusb/src/class/net/ecm_rndis_device.i: opt/pico-sdk/lib/tiny
 
 # target to preprocess a source file
 opt/pico-sdk/lib/tinyusb/src/class/net/ecm_rndis_device.c.i:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/lib/tinyusb/src/class/net/ecm_rndis_device.c.i
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/lib/tinyusb/src/class/net/ecm_rndis_device.c.i
 .PHONY : opt/pico-sdk/lib/tinyusb/src/class/net/ecm_rndis_device.c.i
 
 opt/pico-sdk/lib/tinyusb/src/class/net/ecm_rndis_device.s: opt/pico-sdk/lib/tinyusb/src/class/net/ecm_rndis_device.c.s
@@ -454,7 +519,7 @@ opt/pico-sdk/lib/tinyusb/src/class/net/ecm_rndis_device.s: opt/pico-sdk/lib/tiny
 
 # target to generate assembly for a file
 opt/pico-sdk/lib/tinyusb/src/class/net/ecm_rndis_device.c.s:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/lib/tinyusb/src/class/net/ecm_rndis_device.c.s
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/lib/tinyusb/src/class/net/ecm_rndis_device.c.s
 .PHONY : opt/pico-sdk/lib/tinyusb/src/class/net/ecm_rndis_device.c.s
 
 opt/pico-sdk/lib/tinyusb/src/class/net/ncm_device.obj: opt/pico-sdk/lib/tinyusb/src/class/net/ncm_device.c.obj
@@ -463,7 +528,7 @@ opt/pico-sdk/lib/tinyusb/src/class/net/ncm_device.obj: opt/pico-sdk/lib/tinyusb/
 
 # target to build an object file
 opt/pico-sdk/lib/tinyusb/src/class/net/ncm_device.c.obj:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/lib/tinyusb/src/class/net/ncm_device.c.obj
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/lib/tinyusb/src/class/net/ncm_device.c.obj
 .PHONY : opt/pico-sdk/lib/tinyusb/src/class/net/ncm_device.c.obj
 
 opt/pico-sdk/lib/tinyusb/src/class/net/ncm_device.i: opt/pico-sdk/lib/tinyusb/src/class/net/ncm_device.c.i
@@ -472,7 +537,7 @@ opt/pico-sdk/lib/tinyusb/src/class/net/ncm_device.i: opt/pico-sdk/lib/tinyusb/sr
 
 # target to preprocess a source file
 opt/pico-sdk/lib/tinyusb/src/class/net/ncm_device.c.i:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/lib/tinyusb/src/class/net/ncm_device.c.i
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/lib/tinyusb/src/class/net/ncm_device.c.i
 .PHONY : opt/pico-sdk/lib/tinyusb/src/class/net/ncm_device.c.i
 
 opt/pico-sdk/lib/tinyusb/src/class/net/ncm_device.s: opt/pico-sdk/lib/tinyusb/src/class/net/ncm_device.c.s
@@ -481,7 +546,7 @@ opt/pico-sdk/lib/tinyusb/src/class/net/ncm_device.s: opt/pico-sdk/lib/tinyusb/sr
 
 # target to generate assembly for a file
 opt/pico-sdk/lib/tinyusb/src/class/net/ncm_device.c.s:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/lib/tinyusb/src/class/net/ncm_device.c.s
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/lib/tinyusb/src/class/net/ncm_device.c.s
 .PHONY : opt/pico-sdk/lib/tinyusb/src/class/net/ncm_device.c.s
 
 opt/pico-sdk/lib/tinyusb/src/class/usbtmc/usbtmc_device.obj: opt/pico-sdk/lib/tinyusb/src/class/usbtmc/usbtmc_device.c.obj
@@ -490,7 +555,7 @@ opt/pico-sdk/lib/tinyusb/src/class/usbtmc/usbtmc_device.obj: opt/pico-sdk/lib/ti
 
 # target to build an object file
 opt/pico-sdk/lib/tinyusb/src/class/usbtmc/usbtmc_device.c.obj:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/lib/tinyusb/src/class/usbtmc/usbtmc_device.c.obj
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/lib/tinyusb/src/class/usbtmc/usbtmc_device.c.obj
 .PHONY : opt/pico-sdk/lib/tinyusb/src/class/usbtmc/usbtmc_device.c.obj
 
 opt/pico-sdk/lib/tinyusb/src/class/usbtmc/usbtmc_device.i: opt/pico-sdk/lib/tinyusb/src/class/usbtmc/usbtmc_device.c.i
@@ -499,7 +564,7 @@ opt/pico-sdk/lib/tinyusb/src/class/usbtmc/usbtmc_device.i: opt/pico-sdk/lib/tiny
 
 # target to preprocess a source file
 opt/pico-sdk/lib/tinyusb/src/class/usbtmc/usbtmc_device.c.i:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/lib/tinyusb/src/class/usbtmc/usbtmc_device.c.i
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/lib/tinyusb/src/class/usbtmc/usbtmc_device.c.i
 .PHONY : opt/pico-sdk/lib/tinyusb/src/class/usbtmc/usbtmc_device.c.i
 
 opt/pico-sdk/lib/tinyusb/src/class/usbtmc/usbtmc_device.s: opt/pico-sdk/lib/tinyusb/src/class/usbtmc/usbtmc_device.c.s
@@ -508,7 +573,7 @@ opt/pico-sdk/lib/tinyusb/src/class/usbtmc/usbtmc_device.s: opt/pico-sdk/lib/tiny
 
 # target to generate assembly for a file
 opt/pico-sdk/lib/tinyusb/src/class/usbtmc/usbtmc_device.c.s:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/lib/tinyusb/src/class/usbtmc/usbtmc_device.c.s
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/lib/tinyusb/src/class/usbtmc/usbtmc_device.c.s
 .PHONY : opt/pico-sdk/lib/tinyusb/src/class/usbtmc/usbtmc_device.c.s
 
 opt/pico-sdk/lib/tinyusb/src/class/vendor/vendor_device.obj: opt/pico-sdk/lib/tinyusb/src/class/vendor/vendor_device.c.obj
@@ -517,7 +582,7 @@ opt/pico-sdk/lib/tinyusb/src/class/vendor/vendor_device.obj: opt/pico-sdk/lib/ti
 
 # target to build an object file
 opt/pico-sdk/lib/tinyusb/src/class/vendor/vendor_device.c.obj:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/lib/tinyusb/src/class/vendor/vendor_device.c.obj
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/lib/tinyusb/src/class/vendor/vendor_device.c.obj
 .PHONY : opt/pico-sdk/lib/tinyusb/src/class/vendor/vendor_device.c.obj
 
 opt/pico-sdk/lib/tinyusb/src/class/vendor/vendor_device.i: opt/pico-sdk/lib/tinyusb/src/class/vendor/vendor_device.c.i
@@ -526,7 +591,7 @@ opt/pico-sdk/lib/tinyusb/src/class/vendor/vendor_device.i: opt/pico-sdk/lib/tiny
 
 # target to preprocess a source file
 opt/pico-sdk/lib/tinyusb/src/class/vendor/vendor_device.c.i:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/lib/tinyusb/src/class/vendor/vendor_device.c.i
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/lib/tinyusb/src/class/vendor/vendor_device.c.i
 .PHONY : opt/pico-sdk/lib/tinyusb/src/class/vendor/vendor_device.c.i
 
 opt/pico-sdk/lib/tinyusb/src/class/vendor/vendor_device.s: opt/pico-sdk/lib/tinyusb/src/class/vendor/vendor_device.c.s
@@ -535,7 +600,7 @@ opt/pico-sdk/lib/tinyusb/src/class/vendor/vendor_device.s: opt/pico-sdk/lib/tiny
 
 # target to generate assembly for a file
 opt/pico-sdk/lib/tinyusb/src/class/vendor/vendor_device.c.s:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/lib/tinyusb/src/class/vendor/vendor_device.c.s
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/lib/tinyusb/src/class/vendor/vendor_device.c.s
 .PHONY : opt/pico-sdk/lib/tinyusb/src/class/vendor/vendor_device.c.s
 
 opt/pico-sdk/lib/tinyusb/src/class/video/video_device.obj: opt/pico-sdk/lib/tinyusb/src/class/video/video_device.c.obj
@@ -544,7 +609,7 @@ opt/pico-sdk/lib/tinyusb/src/class/video/video_device.obj: opt/pico-sdk/lib/tiny
 
 # target to build an object file
 opt/pico-sdk/lib/tinyusb/src/class/video/video_device.c.obj:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/lib/tinyusb/src/class/video/video_device.c.obj
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/lib/tinyusb/src/class/video/video_device.c.obj
 .PHONY : opt/pico-sdk/lib/tinyusb/src/class/video/video_device.c.obj
 
 opt/pico-sdk/lib/tinyusb/src/class/video/video_device.i: opt/pico-sdk/lib/tinyusb/src/class/video/video_device.c.i
@@ -553,7 +618,7 @@ opt/pico-sdk/lib/tinyusb/src/class/video/video_device.i: opt/pico-sdk/lib/tinyus
 
 # target to preprocess a source file
 opt/pico-sdk/lib/tinyusb/src/class/video/video_device.c.i:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/lib/tinyusb/src/class/video/video_device.c.i
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/lib/tinyusb/src/class/video/video_device.c.i
 .PHONY : opt/pico-sdk/lib/tinyusb/src/class/video/video_device.c.i
 
 opt/pico-sdk/lib/tinyusb/src/class/video/video_device.s: opt/pico-sdk/lib/tinyusb/src/class/video/video_device.c.s
@@ -562,7 +627,7 @@ opt/pico-sdk/lib/tinyusb/src/class/video/video_device.s: opt/pico-sdk/lib/tinyus
 
 # target to generate assembly for a file
 opt/pico-sdk/lib/tinyusb/src/class/video/video_device.c.s:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/lib/tinyusb/src/class/video/video_device.c.s
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/lib/tinyusb/src/class/video/video_device.c.s
 .PHONY : opt/pico-sdk/lib/tinyusb/src/class/video/video_device.c.s
 
 opt/pico-sdk/lib/tinyusb/src/common/tusb_fifo.obj: opt/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.obj
@@ -571,7 +636,7 @@ opt/pico-sdk/lib/tinyusb/src/common/tusb_fifo.obj: opt/pico-sdk/lib/tinyusb/src/
 
 # target to build an object file
 opt/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.obj:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.obj
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.obj
 .PHONY : opt/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.obj
 
 opt/pico-sdk/lib/tinyusb/src/common/tusb_fifo.i: opt/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.i
@@ -580,7 +645,7 @@ opt/pico-sdk/lib/tinyusb/src/common/tusb_fifo.i: opt/pico-sdk/lib/tinyusb/src/co
 
 # target to preprocess a source file
 opt/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.i:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.i
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.i
 .PHONY : opt/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.i
 
 opt/pico-sdk/lib/tinyusb/src/common/tusb_fifo.s: opt/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.s
@@ -589,7 +654,7 @@ opt/pico-sdk/lib/tinyusb/src/common/tusb_fifo.s: opt/pico-sdk/lib/tinyusb/src/co
 
 # target to generate assembly for a file
 opt/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.s:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.s
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.s
 .PHONY : opt/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.s
 
 opt/pico-sdk/lib/tinyusb/src/device/usbd.obj: opt/pico-sdk/lib/tinyusb/src/device/usbd.c.obj
@@ -598,7 +663,7 @@ opt/pico-sdk/lib/tinyusb/src/device/usbd.obj: opt/pico-sdk/lib/tinyusb/src/devic
 
 # target to build an object file
 opt/pico-sdk/lib/tinyusb/src/device/usbd.c.obj:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/lib/tinyusb/src/device/usbd.c.obj
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/lib/tinyusb/src/device/usbd.c.obj
 .PHONY : opt/pico-sdk/lib/tinyusb/src/device/usbd.c.obj
 
 opt/pico-sdk/lib/tinyusb/src/device/usbd.i: opt/pico-sdk/lib/tinyusb/src/device/usbd.c.i
@@ -607,7 +672,7 @@ opt/pico-sdk/lib/tinyusb/src/device/usbd.i: opt/pico-sdk/lib/tinyusb/src/device/
 
 # target to preprocess a source file
 opt/pico-sdk/lib/tinyusb/src/device/usbd.c.i:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/lib/tinyusb/src/device/usbd.c.i
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/lib/tinyusb/src/device/usbd.c.i
 .PHONY : opt/pico-sdk/lib/tinyusb/src/device/usbd.c.i
 
 opt/pico-sdk/lib/tinyusb/src/device/usbd.s: opt/pico-sdk/lib/tinyusb/src/device/usbd.c.s
@@ -616,7 +681,7 @@ opt/pico-sdk/lib/tinyusb/src/device/usbd.s: opt/pico-sdk/lib/tinyusb/src/device/
 
 # target to generate assembly for a file
 opt/pico-sdk/lib/tinyusb/src/device/usbd.c.s:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/lib/tinyusb/src/device/usbd.c.s
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/lib/tinyusb/src/device/usbd.c.s
 .PHONY : opt/pico-sdk/lib/tinyusb/src/device/usbd.c.s
 
 opt/pico-sdk/lib/tinyusb/src/device/usbd_control.obj: opt/pico-sdk/lib/tinyusb/src/device/usbd_control.c.obj
@@ -625,7 +690,7 @@ opt/pico-sdk/lib/tinyusb/src/device/usbd_control.obj: opt/pico-sdk/lib/tinyusb/s
 
 # target to build an object file
 opt/pico-sdk/lib/tinyusb/src/device/usbd_control.c.obj:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/lib/tinyusb/src/device/usbd_control.c.obj
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/lib/tinyusb/src/device/usbd_control.c.obj
 .PHONY : opt/pico-sdk/lib/tinyusb/src/device/usbd_control.c.obj
 
 opt/pico-sdk/lib/tinyusb/src/device/usbd_control.i: opt/pico-sdk/lib/tinyusb/src/device/usbd_control.c.i
@@ -634,7 +699,7 @@ opt/pico-sdk/lib/tinyusb/src/device/usbd_control.i: opt/pico-sdk/lib/tinyusb/src
 
 # target to preprocess a source file
 opt/pico-sdk/lib/tinyusb/src/device/usbd_control.c.i:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/lib/tinyusb/src/device/usbd_control.c.i
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/lib/tinyusb/src/device/usbd_control.c.i
 .PHONY : opt/pico-sdk/lib/tinyusb/src/device/usbd_control.c.i
 
 opt/pico-sdk/lib/tinyusb/src/device/usbd_control.s: opt/pico-sdk/lib/tinyusb/src/device/usbd_control.c.s
@@ -643,7 +708,7 @@ opt/pico-sdk/lib/tinyusb/src/device/usbd_control.s: opt/pico-sdk/lib/tinyusb/src
 
 # target to generate assembly for a file
 opt/pico-sdk/lib/tinyusb/src/device/usbd_control.c.s:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/lib/tinyusb/src/device/usbd_control.c.s
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/lib/tinyusb/src/device/usbd_control.c.s
 .PHONY : opt/pico-sdk/lib/tinyusb/src/device/usbd_control.c.s
 
 opt/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.obj: opt/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.obj
@@ -652,7 +717,7 @@ opt/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.obj: opt/pic
 
 # target to build an object file
 opt/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.obj:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.obj
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.obj
 .PHONY : opt/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.obj
 
 opt/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.i: opt/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.i
@@ -661,7 +726,7 @@ opt/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.i: opt/pico-
 
 # target to preprocess a source file
 opt/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.i:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.i
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.i
 .PHONY : opt/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.i
 
 opt/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.s: opt/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.s
@@ -670,7 +735,7 @@ opt/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.s: opt/pico-
 
 # target to generate assembly for a file
 opt/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.s:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.s
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.s
 .PHONY : opt/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.s
 
 opt/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.obj: opt/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.obj
@@ -679,7 +744,7 @@ opt/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.obj: opt/pic
 
 # target to build an object file
 opt/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.obj:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.obj
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.obj
 .PHONY : opt/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.obj
 
 opt/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.i: opt/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.i
@@ -688,7 +753,7 @@ opt/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.i: opt/pico-
 
 # target to preprocess a source file
 opt/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.i:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.i
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.i
 .PHONY : opt/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.i
 
 opt/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.s: opt/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.s
@@ -697,7 +762,7 @@ opt/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.s: opt/pico-
 
 # target to generate assembly for a file
 opt/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.s:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.s
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.s
 .PHONY : opt/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.s
 
 opt/pico-sdk/lib/tinyusb/src/tusb.obj: opt/pico-sdk/lib/tinyusb/src/tusb.c.obj
@@ -706,7 +771,7 @@ opt/pico-sdk/lib/tinyusb/src/tusb.obj: opt/pico-sdk/lib/tinyusb/src/tusb.c.obj
 
 # target to build an object file
 opt/pico-sdk/lib/tinyusb/src/tusb.c.obj:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/lib/tinyusb/src/tusb.c.obj
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/lib/tinyusb/src/tusb.c.obj
 .PHONY : opt/pico-sdk/lib/tinyusb/src/tusb.c.obj
 
 opt/pico-sdk/lib/tinyusb/src/tusb.i: opt/pico-sdk/lib/tinyusb/src/tusb.c.i
@@ -715,7 +780,7 @@ opt/pico-sdk/lib/tinyusb/src/tusb.i: opt/pico-sdk/lib/tinyusb/src/tusb.c.i
 
 # target to preprocess a source file
 opt/pico-sdk/lib/tinyusb/src/tusb.c.i:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/lib/tinyusb/src/tusb.c.i
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/lib/tinyusb/src/tusb.c.i
 .PHONY : opt/pico-sdk/lib/tinyusb/src/tusb.c.i
 
 opt/pico-sdk/lib/tinyusb/src/tusb.s: opt/pico-sdk/lib/tinyusb/src/tusb.c.s
@@ -724,7 +789,7 @@ opt/pico-sdk/lib/tinyusb/src/tusb.s: opt/pico-sdk/lib/tinyusb/src/tusb.c.s
 
 # target to generate assembly for a file
 opt/pico-sdk/lib/tinyusb/src/tusb.c.s:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/lib/tinyusb/src/tusb.c.s
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/lib/tinyusb/src/tusb.c.s
 .PHONY : opt/pico-sdk/lib/tinyusb/src/tusb.c.s
 
 opt/pico-sdk/src/common/pico_sync/critical_section.obj: opt/pico-sdk/src/common/pico_sync/critical_section.c.obj
@@ -733,7 +798,7 @@ opt/pico-sdk/src/common/pico_sync/critical_section.obj: opt/pico-sdk/src/common/
 
 # target to build an object file
 opt/pico-sdk/src/common/pico_sync/critical_section.c.obj:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/common/pico_sync/critical_section.c.obj
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/common/pico_sync/critical_section.c.obj
 .PHONY : opt/pico-sdk/src/common/pico_sync/critical_section.c.obj
 
 opt/pico-sdk/src/common/pico_sync/critical_section.i: opt/pico-sdk/src/common/pico_sync/critical_section.c.i
@@ -742,7 +807,7 @@ opt/pico-sdk/src/common/pico_sync/critical_section.i: opt/pico-sdk/src/common/pi
 
 # target to preprocess a source file
 opt/pico-sdk/src/common/pico_sync/critical_section.c.i:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/common/pico_sync/critical_section.c.i
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/common/pico_sync/critical_section.c.i
 .PHONY : opt/pico-sdk/src/common/pico_sync/critical_section.c.i
 
 opt/pico-sdk/src/common/pico_sync/critical_section.s: opt/pico-sdk/src/common/pico_sync/critical_section.c.s
@@ -751,7 +816,7 @@ opt/pico-sdk/src/common/pico_sync/critical_section.s: opt/pico-sdk/src/common/pi
 
 # target to generate assembly for a file
 opt/pico-sdk/src/common/pico_sync/critical_section.c.s:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/common/pico_sync/critical_section.c.s
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/common/pico_sync/critical_section.c.s
 .PHONY : opt/pico-sdk/src/common/pico_sync/critical_section.c.s
 
 opt/pico-sdk/src/common/pico_sync/lock_core.obj: opt/pico-sdk/src/common/pico_sync/lock_core.c.obj
@@ -760,7 +825,7 @@ opt/pico-sdk/src/common/pico_sync/lock_core.obj: opt/pico-sdk/src/common/pico_sy
 
 # target to build an object file
 opt/pico-sdk/src/common/pico_sync/lock_core.c.obj:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/common/pico_sync/lock_core.c.obj
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/common/pico_sync/lock_core.c.obj
 .PHONY : opt/pico-sdk/src/common/pico_sync/lock_core.c.obj
 
 opt/pico-sdk/src/common/pico_sync/lock_core.i: opt/pico-sdk/src/common/pico_sync/lock_core.c.i
@@ -769,7 +834,7 @@ opt/pico-sdk/src/common/pico_sync/lock_core.i: opt/pico-sdk/src/common/pico_sync
 
 # target to preprocess a source file
 opt/pico-sdk/src/common/pico_sync/lock_core.c.i:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/common/pico_sync/lock_core.c.i
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/common/pico_sync/lock_core.c.i
 .PHONY : opt/pico-sdk/src/common/pico_sync/lock_core.c.i
 
 opt/pico-sdk/src/common/pico_sync/lock_core.s: opt/pico-sdk/src/common/pico_sync/lock_core.c.s
@@ -778,7 +843,7 @@ opt/pico-sdk/src/common/pico_sync/lock_core.s: opt/pico-sdk/src/common/pico_sync
 
 # target to generate assembly for a file
 opt/pico-sdk/src/common/pico_sync/lock_core.c.s:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/common/pico_sync/lock_core.c.s
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/common/pico_sync/lock_core.c.s
 .PHONY : opt/pico-sdk/src/common/pico_sync/lock_core.c.s
 
 opt/pico-sdk/src/common/pico_sync/mutex.obj: opt/pico-sdk/src/common/pico_sync/mutex.c.obj
@@ -787,7 +852,7 @@ opt/pico-sdk/src/common/pico_sync/mutex.obj: opt/pico-sdk/src/common/pico_sync/m
 
 # target to build an object file
 opt/pico-sdk/src/common/pico_sync/mutex.c.obj:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/common/pico_sync/mutex.c.obj
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/common/pico_sync/mutex.c.obj
 .PHONY : opt/pico-sdk/src/common/pico_sync/mutex.c.obj
 
 opt/pico-sdk/src/common/pico_sync/mutex.i: opt/pico-sdk/src/common/pico_sync/mutex.c.i
@@ -796,7 +861,7 @@ opt/pico-sdk/src/common/pico_sync/mutex.i: opt/pico-sdk/src/common/pico_sync/mut
 
 # target to preprocess a source file
 opt/pico-sdk/src/common/pico_sync/mutex.c.i:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/common/pico_sync/mutex.c.i
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/common/pico_sync/mutex.c.i
 .PHONY : opt/pico-sdk/src/common/pico_sync/mutex.c.i
 
 opt/pico-sdk/src/common/pico_sync/mutex.s: opt/pico-sdk/src/common/pico_sync/mutex.c.s
@@ -805,7 +870,7 @@ opt/pico-sdk/src/common/pico_sync/mutex.s: opt/pico-sdk/src/common/pico_sync/mut
 
 # target to generate assembly for a file
 opt/pico-sdk/src/common/pico_sync/mutex.c.s:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/common/pico_sync/mutex.c.s
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/common/pico_sync/mutex.c.s
 .PHONY : opt/pico-sdk/src/common/pico_sync/mutex.c.s
 
 opt/pico-sdk/src/common/pico_sync/sem.obj: opt/pico-sdk/src/common/pico_sync/sem.c.obj
@@ -814,7 +879,7 @@ opt/pico-sdk/src/common/pico_sync/sem.obj: opt/pico-sdk/src/common/pico_sync/sem
 
 # target to build an object file
 opt/pico-sdk/src/common/pico_sync/sem.c.obj:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/common/pico_sync/sem.c.obj
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/common/pico_sync/sem.c.obj
 .PHONY : opt/pico-sdk/src/common/pico_sync/sem.c.obj
 
 opt/pico-sdk/src/common/pico_sync/sem.i: opt/pico-sdk/src/common/pico_sync/sem.c.i
@@ -823,7 +888,7 @@ opt/pico-sdk/src/common/pico_sync/sem.i: opt/pico-sdk/src/common/pico_sync/sem.c
 
 # target to preprocess a source file
 opt/pico-sdk/src/common/pico_sync/sem.c.i:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/common/pico_sync/sem.c.i
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/common/pico_sync/sem.c.i
 .PHONY : opt/pico-sdk/src/common/pico_sync/sem.c.i
 
 opt/pico-sdk/src/common/pico_sync/sem.s: opt/pico-sdk/src/common/pico_sync/sem.c.s
@@ -832,7 +897,7 @@ opt/pico-sdk/src/common/pico_sync/sem.s: opt/pico-sdk/src/common/pico_sync/sem.c
 
 # target to generate assembly for a file
 opt/pico-sdk/src/common/pico_sync/sem.c.s:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/common/pico_sync/sem.c.s
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/common/pico_sync/sem.c.s
 .PHONY : opt/pico-sdk/src/common/pico_sync/sem.c.s
 
 opt/pico-sdk/src/common/pico_time/time.obj: opt/pico-sdk/src/common/pico_time/time.c.obj
@@ -841,7 +906,7 @@ opt/pico-sdk/src/common/pico_time/time.obj: opt/pico-sdk/src/common/pico_time/ti
 
 # target to build an object file
 opt/pico-sdk/src/common/pico_time/time.c.obj:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/common/pico_time/time.c.obj
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/common/pico_time/time.c.obj
 .PHONY : opt/pico-sdk/src/common/pico_time/time.c.obj
 
 opt/pico-sdk/src/common/pico_time/time.i: opt/pico-sdk/src/common/pico_time/time.c.i
@@ -850,7 +915,7 @@ opt/pico-sdk/src/common/pico_time/time.i: opt/pico-sdk/src/common/pico_time/time
 
 # target to preprocess a source file
 opt/pico-sdk/src/common/pico_time/time.c.i:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/common/pico_time/time.c.i
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/common/pico_time/time.c.i
 .PHONY : opt/pico-sdk/src/common/pico_time/time.c.i
 
 opt/pico-sdk/src/common/pico_time/time.s: opt/pico-sdk/src/common/pico_time/time.c.s
@@ -859,7 +924,7 @@ opt/pico-sdk/src/common/pico_time/time.s: opt/pico-sdk/src/common/pico_time/time
 
 # target to generate assembly for a file
 opt/pico-sdk/src/common/pico_time/time.c.s:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/common/pico_time/time.c.s
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/common/pico_time/time.c.s
 .PHONY : opt/pico-sdk/src/common/pico_time/time.c.s
 
 opt/pico-sdk/src/common/pico_time/timeout_helper.obj: opt/pico-sdk/src/common/pico_time/timeout_helper.c.obj
@@ -868,7 +933,7 @@ opt/pico-sdk/src/common/pico_time/timeout_helper.obj: opt/pico-sdk/src/common/pi
 
 # target to build an object file
 opt/pico-sdk/src/common/pico_time/timeout_helper.c.obj:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/common/pico_time/timeout_helper.c.obj
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/common/pico_time/timeout_helper.c.obj
 .PHONY : opt/pico-sdk/src/common/pico_time/timeout_helper.c.obj
 
 opt/pico-sdk/src/common/pico_time/timeout_helper.i: opt/pico-sdk/src/common/pico_time/timeout_helper.c.i
@@ -877,7 +942,7 @@ opt/pico-sdk/src/common/pico_time/timeout_helper.i: opt/pico-sdk/src/common/pico
 
 # target to preprocess a source file
 opt/pico-sdk/src/common/pico_time/timeout_helper.c.i:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/common/pico_time/timeout_helper.c.i
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/common/pico_time/timeout_helper.c.i
 .PHONY : opt/pico-sdk/src/common/pico_time/timeout_helper.c.i
 
 opt/pico-sdk/src/common/pico_time/timeout_helper.s: opt/pico-sdk/src/common/pico_time/timeout_helper.c.s
@@ -886,7 +951,7 @@ opt/pico-sdk/src/common/pico_time/timeout_helper.s: opt/pico-sdk/src/common/pico
 
 # target to generate assembly for a file
 opt/pico-sdk/src/common/pico_time/timeout_helper.c.s:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/common/pico_time/timeout_helper.c.s
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/common/pico_time/timeout_helper.c.s
 .PHONY : opt/pico-sdk/src/common/pico_time/timeout_helper.c.s
 
 opt/pico-sdk/src/common/pico_util/datetime.obj: opt/pico-sdk/src/common/pico_util/datetime.c.obj
@@ -895,7 +960,7 @@ opt/pico-sdk/src/common/pico_util/datetime.obj: opt/pico-sdk/src/common/pico_uti
 
 # target to build an object file
 opt/pico-sdk/src/common/pico_util/datetime.c.obj:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/common/pico_util/datetime.c.obj
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/common/pico_util/datetime.c.obj
 .PHONY : opt/pico-sdk/src/common/pico_util/datetime.c.obj
 
 opt/pico-sdk/src/common/pico_util/datetime.i: opt/pico-sdk/src/common/pico_util/datetime.c.i
@@ -904,7 +969,7 @@ opt/pico-sdk/src/common/pico_util/datetime.i: opt/pico-sdk/src/common/pico_util/
 
 # target to preprocess a source file
 opt/pico-sdk/src/common/pico_util/datetime.c.i:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/common/pico_util/datetime.c.i
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/common/pico_util/datetime.c.i
 .PHONY : opt/pico-sdk/src/common/pico_util/datetime.c.i
 
 opt/pico-sdk/src/common/pico_util/datetime.s: opt/pico-sdk/src/common/pico_util/datetime.c.s
@@ -913,7 +978,7 @@ opt/pico-sdk/src/common/pico_util/datetime.s: opt/pico-sdk/src/common/pico_util/
 
 # target to generate assembly for a file
 opt/pico-sdk/src/common/pico_util/datetime.c.s:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/common/pico_util/datetime.c.s
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/common/pico_util/datetime.c.s
 .PHONY : opt/pico-sdk/src/common/pico_util/datetime.c.s
 
 opt/pico-sdk/src/common/pico_util/pheap.obj: opt/pico-sdk/src/common/pico_util/pheap.c.obj
@@ -922,7 +987,7 @@ opt/pico-sdk/src/common/pico_util/pheap.obj: opt/pico-sdk/src/common/pico_util/p
 
 # target to build an object file
 opt/pico-sdk/src/common/pico_util/pheap.c.obj:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/common/pico_util/pheap.c.obj
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/common/pico_util/pheap.c.obj
 .PHONY : opt/pico-sdk/src/common/pico_util/pheap.c.obj
 
 opt/pico-sdk/src/common/pico_util/pheap.i: opt/pico-sdk/src/common/pico_util/pheap.c.i
@@ -931,7 +996,7 @@ opt/pico-sdk/src/common/pico_util/pheap.i: opt/pico-sdk/src/common/pico_util/phe
 
 # target to preprocess a source file
 opt/pico-sdk/src/common/pico_util/pheap.c.i:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/common/pico_util/pheap.c.i
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/common/pico_util/pheap.c.i
 .PHONY : opt/pico-sdk/src/common/pico_util/pheap.c.i
 
 opt/pico-sdk/src/common/pico_util/pheap.s: opt/pico-sdk/src/common/pico_util/pheap.c.s
@@ -940,7 +1005,7 @@ opt/pico-sdk/src/common/pico_util/pheap.s: opt/pico-sdk/src/common/pico_util/phe
 
 # target to generate assembly for a file
 opt/pico-sdk/src/common/pico_util/pheap.c.s:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/common/pico_util/pheap.c.s
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/common/pico_util/pheap.c.s
 .PHONY : opt/pico-sdk/src/common/pico_util/pheap.c.s
 
 opt/pico-sdk/src/common/pico_util/queue.obj: opt/pico-sdk/src/common/pico_util/queue.c.obj
@@ -949,7 +1014,7 @@ opt/pico-sdk/src/common/pico_util/queue.obj: opt/pico-sdk/src/common/pico_util/q
 
 # target to build an object file
 opt/pico-sdk/src/common/pico_util/queue.c.obj:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/common/pico_util/queue.c.obj
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/common/pico_util/queue.c.obj
 .PHONY : opt/pico-sdk/src/common/pico_util/queue.c.obj
 
 opt/pico-sdk/src/common/pico_util/queue.i: opt/pico-sdk/src/common/pico_util/queue.c.i
@@ -958,7 +1023,7 @@ opt/pico-sdk/src/common/pico_util/queue.i: opt/pico-sdk/src/common/pico_util/que
 
 # target to preprocess a source file
 opt/pico-sdk/src/common/pico_util/queue.c.i:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/common/pico_util/queue.c.i
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/common/pico_util/queue.c.i
 .PHONY : opt/pico-sdk/src/common/pico_util/queue.c.i
 
 opt/pico-sdk/src/common/pico_util/queue.s: opt/pico-sdk/src/common/pico_util/queue.c.s
@@ -967,7 +1032,7 @@ opt/pico-sdk/src/common/pico_util/queue.s: opt/pico-sdk/src/common/pico_util/que
 
 # target to generate assembly for a file
 opt/pico-sdk/src/common/pico_util/queue.c.s:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/common/pico_util/queue.c.s
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/common/pico_util/queue.c.s
 .PHONY : opt/pico-sdk/src/common/pico_util/queue.c.s
 
 opt/pico-sdk/src/rp2_common/hardware_claim/claim.obj: opt/pico-sdk/src/rp2_common/hardware_claim/claim.c.obj
@@ -976,7 +1041,7 @@ opt/pico-sdk/src/rp2_common/hardware_claim/claim.obj: opt/pico-sdk/src/rp2_commo
 
 # target to build an object file
 opt/pico-sdk/src/rp2_common/hardware_claim/claim.c.obj:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/hardware_claim/claim.c.obj
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/hardware_claim/claim.c.obj
 .PHONY : opt/pico-sdk/src/rp2_common/hardware_claim/claim.c.obj
 
 opt/pico-sdk/src/rp2_common/hardware_claim/claim.i: opt/pico-sdk/src/rp2_common/hardware_claim/claim.c.i
@@ -985,7 +1050,7 @@ opt/pico-sdk/src/rp2_common/hardware_claim/claim.i: opt/pico-sdk/src/rp2_common/
 
 # target to preprocess a source file
 opt/pico-sdk/src/rp2_common/hardware_claim/claim.c.i:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/hardware_claim/claim.c.i
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/hardware_claim/claim.c.i
 .PHONY : opt/pico-sdk/src/rp2_common/hardware_claim/claim.c.i
 
 opt/pico-sdk/src/rp2_common/hardware_claim/claim.s: opt/pico-sdk/src/rp2_common/hardware_claim/claim.c.s
@@ -994,7 +1059,7 @@ opt/pico-sdk/src/rp2_common/hardware_claim/claim.s: opt/pico-sdk/src/rp2_common/
 
 # target to generate assembly for a file
 opt/pico-sdk/src/rp2_common/hardware_claim/claim.c.s:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/hardware_claim/claim.c.s
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/hardware_claim/claim.c.s
 .PHONY : opt/pico-sdk/src/rp2_common/hardware_claim/claim.c.s
 
 opt/pico-sdk/src/rp2_common/hardware_clocks/clocks.obj: opt/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.obj
@@ -1003,7 +1068,7 @@ opt/pico-sdk/src/rp2_common/hardware_clocks/clocks.obj: opt/pico-sdk/src/rp2_com
 
 # target to build an object file
 opt/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.obj:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.obj
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.obj
 .PHONY : opt/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.obj
 
 opt/pico-sdk/src/rp2_common/hardware_clocks/clocks.i: opt/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.i
@@ -1012,7 +1077,7 @@ opt/pico-sdk/src/rp2_common/hardware_clocks/clocks.i: opt/pico-sdk/src/rp2_commo
 
 # target to preprocess a source file
 opt/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.i:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.i
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.i
 .PHONY : opt/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.i
 
 opt/pico-sdk/src/rp2_common/hardware_clocks/clocks.s: opt/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.s
@@ -1021,7 +1086,7 @@ opt/pico-sdk/src/rp2_common/hardware_clocks/clocks.s: opt/pico-sdk/src/rp2_commo
 
 # target to generate assembly for a file
 opt/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.s:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.s
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.s
 .PHONY : opt/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.s
 
 opt/pico-sdk/src/rp2_common/hardware_divider/divider.obj: opt/pico-sdk/src/rp2_common/hardware_divider/divider.S.obj
@@ -1030,7 +1095,7 @@ opt/pico-sdk/src/rp2_common/hardware_divider/divider.obj: opt/pico-sdk/src/rp2_c
 
 # target to build an object file
 opt/pico-sdk/src/rp2_common/hardware_divider/divider.S.obj:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/hardware_divider/divider.S.obj
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/hardware_divider/divider.S.obj
 .PHONY : opt/pico-sdk/src/rp2_common/hardware_divider/divider.S.obj
 
 opt/pico-sdk/src/rp2_common/hardware_flash/flash.obj: opt/pico-sdk/src/rp2_common/hardware_flash/flash.c.obj
@@ -1039,7 +1104,7 @@ opt/pico-sdk/src/rp2_common/hardware_flash/flash.obj: opt/pico-sdk/src/rp2_commo
 
 # target to build an object file
 opt/pico-sdk/src/rp2_common/hardware_flash/flash.c.obj:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/hardware_flash/flash.c.obj
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/hardware_flash/flash.c.obj
 .PHONY : opt/pico-sdk/src/rp2_common/hardware_flash/flash.c.obj
 
 opt/pico-sdk/src/rp2_common/hardware_flash/flash.i: opt/pico-sdk/src/rp2_common/hardware_flash/flash.c.i
@@ -1048,7 +1113,7 @@ opt/pico-sdk/src/rp2_common/hardware_flash/flash.i: opt/pico-sdk/src/rp2_common/
 
 # target to preprocess a source file
 opt/pico-sdk/src/rp2_common/hardware_flash/flash.c.i:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/hardware_flash/flash.c.i
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/hardware_flash/flash.c.i
 .PHONY : opt/pico-sdk/src/rp2_common/hardware_flash/flash.c.i
 
 opt/pico-sdk/src/rp2_common/hardware_flash/flash.s: opt/pico-sdk/src/rp2_common/hardware_flash/flash.c.s
@@ -1057,7 +1122,7 @@ opt/pico-sdk/src/rp2_common/hardware_flash/flash.s: opt/pico-sdk/src/rp2_common/
 
 # target to generate assembly for a file
 opt/pico-sdk/src/rp2_common/hardware_flash/flash.c.s:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/hardware_flash/flash.c.s
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/hardware_flash/flash.c.s
 .PHONY : opt/pico-sdk/src/rp2_common/hardware_flash/flash.c.s
 
 opt/pico-sdk/src/rp2_common/hardware_gpio/gpio.obj: opt/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.obj
@@ -1066,7 +1131,7 @@ opt/pico-sdk/src/rp2_common/hardware_gpio/gpio.obj: opt/pico-sdk/src/rp2_common/
 
 # target to build an object file
 opt/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.obj:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.obj
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.obj
 .PHONY : opt/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.obj
 
 opt/pico-sdk/src/rp2_common/hardware_gpio/gpio.i: opt/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.i
@@ -1075,7 +1140,7 @@ opt/pico-sdk/src/rp2_common/hardware_gpio/gpio.i: opt/pico-sdk/src/rp2_common/ha
 
 # target to preprocess a source file
 opt/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.i:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.i
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.i
 .PHONY : opt/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.i
 
 opt/pico-sdk/src/rp2_common/hardware_gpio/gpio.s: opt/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.s
@@ -1084,8 +1149,35 @@ opt/pico-sdk/src/rp2_common/hardware_gpio/gpio.s: opt/pico-sdk/src/rp2_common/ha
 
 # target to generate assembly for a file
 opt/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.s:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.s
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.s
 .PHONY : opt/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.s
+
+opt/pico-sdk/src/rp2_common/hardware_i2c/i2c.obj: opt/pico-sdk/src/rp2_common/hardware_i2c/i2c.c.obj
+
+.PHONY : opt/pico-sdk/src/rp2_common/hardware_i2c/i2c.obj
+
+# target to build an object file
+opt/pico-sdk/src/rp2_common/hardware_i2c/i2c.c.obj:
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/hardware_i2c/i2c.c.obj
+.PHONY : opt/pico-sdk/src/rp2_common/hardware_i2c/i2c.c.obj
+
+opt/pico-sdk/src/rp2_common/hardware_i2c/i2c.i: opt/pico-sdk/src/rp2_common/hardware_i2c/i2c.c.i
+
+.PHONY : opt/pico-sdk/src/rp2_common/hardware_i2c/i2c.i
+
+# target to preprocess a source file
+opt/pico-sdk/src/rp2_common/hardware_i2c/i2c.c.i:
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/hardware_i2c/i2c.c.i
+.PHONY : opt/pico-sdk/src/rp2_common/hardware_i2c/i2c.c.i
+
+opt/pico-sdk/src/rp2_common/hardware_i2c/i2c.s: opt/pico-sdk/src/rp2_common/hardware_i2c/i2c.c.s
+
+.PHONY : opt/pico-sdk/src/rp2_common/hardware_i2c/i2c.s
+
+# target to generate assembly for a file
+opt/pico-sdk/src/rp2_common/hardware_i2c/i2c.c.s:
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/hardware_i2c/i2c.c.s
+.PHONY : opt/pico-sdk/src/rp2_common/hardware_i2c/i2c.c.s
 
 opt/pico-sdk/src/rp2_common/hardware_irq/irq.obj: opt/pico-sdk/src/rp2_common/hardware_irq/irq.c.obj
 
@@ -1093,7 +1185,7 @@ opt/pico-sdk/src/rp2_common/hardware_irq/irq.obj: opt/pico-sdk/src/rp2_common/ha
 
 # target to build an object file
 opt/pico-sdk/src/rp2_common/hardware_irq/irq.c.obj:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/hardware_irq/irq.c.obj
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/hardware_irq/irq.c.obj
 .PHONY : opt/pico-sdk/src/rp2_common/hardware_irq/irq.c.obj
 
 opt/pico-sdk/src/rp2_common/hardware_irq/irq.i: opt/pico-sdk/src/rp2_common/hardware_irq/irq.c.i
@@ -1102,7 +1194,7 @@ opt/pico-sdk/src/rp2_common/hardware_irq/irq.i: opt/pico-sdk/src/rp2_common/hard
 
 # target to preprocess a source file
 opt/pico-sdk/src/rp2_common/hardware_irq/irq.c.i:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/hardware_irq/irq.c.i
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/hardware_irq/irq.c.i
 .PHONY : opt/pico-sdk/src/rp2_common/hardware_irq/irq.c.i
 
 opt/pico-sdk/src/rp2_common/hardware_irq/irq.s: opt/pico-sdk/src/rp2_common/hardware_irq/irq.c.s
@@ -1111,7 +1203,7 @@ opt/pico-sdk/src/rp2_common/hardware_irq/irq.s: opt/pico-sdk/src/rp2_common/hard
 
 # target to generate assembly for a file
 opt/pico-sdk/src/rp2_common/hardware_irq/irq.c.s:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/hardware_irq/irq.c.s
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/hardware_irq/irq.c.s
 .PHONY : opt/pico-sdk/src/rp2_common/hardware_irq/irq.c.s
 
 opt/pico-sdk/src/rp2_common/hardware_irq/irq_handler_chain.obj: opt/pico-sdk/src/rp2_common/hardware_irq/irq_handler_chain.S.obj
@@ -1120,8 +1212,35 @@ opt/pico-sdk/src/rp2_common/hardware_irq/irq_handler_chain.obj: opt/pico-sdk/src
 
 # target to build an object file
 opt/pico-sdk/src/rp2_common/hardware_irq/irq_handler_chain.S.obj:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/hardware_irq/irq_handler_chain.S.obj
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/hardware_irq/irq_handler_chain.S.obj
 .PHONY : opt/pico-sdk/src/rp2_common/hardware_irq/irq_handler_chain.S.obj
+
+opt/pico-sdk/src/rp2_common/hardware_pio/pio.obj: opt/pico-sdk/src/rp2_common/hardware_pio/pio.c.obj
+
+.PHONY : opt/pico-sdk/src/rp2_common/hardware_pio/pio.obj
+
+# target to build an object file
+opt/pico-sdk/src/rp2_common/hardware_pio/pio.c.obj:
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/hardware_pio/pio.c.obj
+.PHONY : opt/pico-sdk/src/rp2_common/hardware_pio/pio.c.obj
+
+opt/pico-sdk/src/rp2_common/hardware_pio/pio.i: opt/pico-sdk/src/rp2_common/hardware_pio/pio.c.i
+
+.PHONY : opt/pico-sdk/src/rp2_common/hardware_pio/pio.i
+
+# target to preprocess a source file
+opt/pico-sdk/src/rp2_common/hardware_pio/pio.c.i:
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/hardware_pio/pio.c.i
+.PHONY : opt/pico-sdk/src/rp2_common/hardware_pio/pio.c.i
+
+opt/pico-sdk/src/rp2_common/hardware_pio/pio.s: opt/pico-sdk/src/rp2_common/hardware_pio/pio.c.s
+
+.PHONY : opt/pico-sdk/src/rp2_common/hardware_pio/pio.s
+
+# target to generate assembly for a file
+opt/pico-sdk/src/rp2_common/hardware_pio/pio.c.s:
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/hardware_pio/pio.c.s
+.PHONY : opt/pico-sdk/src/rp2_common/hardware_pio/pio.c.s
 
 opt/pico-sdk/src/rp2_common/hardware_pll/pll.obj: opt/pico-sdk/src/rp2_common/hardware_pll/pll.c.obj
 
@@ -1129,7 +1248,7 @@ opt/pico-sdk/src/rp2_common/hardware_pll/pll.obj: opt/pico-sdk/src/rp2_common/ha
 
 # target to build an object file
 opt/pico-sdk/src/rp2_common/hardware_pll/pll.c.obj:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/hardware_pll/pll.c.obj
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/hardware_pll/pll.c.obj
 .PHONY : opt/pico-sdk/src/rp2_common/hardware_pll/pll.c.obj
 
 opt/pico-sdk/src/rp2_common/hardware_pll/pll.i: opt/pico-sdk/src/rp2_common/hardware_pll/pll.c.i
@@ -1138,7 +1257,7 @@ opt/pico-sdk/src/rp2_common/hardware_pll/pll.i: opt/pico-sdk/src/rp2_common/hard
 
 # target to preprocess a source file
 opt/pico-sdk/src/rp2_common/hardware_pll/pll.c.i:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/hardware_pll/pll.c.i
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/hardware_pll/pll.c.i
 .PHONY : opt/pico-sdk/src/rp2_common/hardware_pll/pll.c.i
 
 opt/pico-sdk/src/rp2_common/hardware_pll/pll.s: opt/pico-sdk/src/rp2_common/hardware_pll/pll.c.s
@@ -1147,7 +1266,7 @@ opt/pico-sdk/src/rp2_common/hardware_pll/pll.s: opt/pico-sdk/src/rp2_common/hard
 
 # target to generate assembly for a file
 opt/pico-sdk/src/rp2_common/hardware_pll/pll.c.s:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/hardware_pll/pll.c.s
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/hardware_pll/pll.c.s
 .PHONY : opt/pico-sdk/src/rp2_common/hardware_pll/pll.c.s
 
 opt/pico-sdk/src/rp2_common/hardware_sync/sync.obj: opt/pico-sdk/src/rp2_common/hardware_sync/sync.c.obj
@@ -1156,7 +1275,7 @@ opt/pico-sdk/src/rp2_common/hardware_sync/sync.obj: opt/pico-sdk/src/rp2_common/
 
 # target to build an object file
 opt/pico-sdk/src/rp2_common/hardware_sync/sync.c.obj:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/hardware_sync/sync.c.obj
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/hardware_sync/sync.c.obj
 .PHONY : opt/pico-sdk/src/rp2_common/hardware_sync/sync.c.obj
 
 opt/pico-sdk/src/rp2_common/hardware_sync/sync.i: opt/pico-sdk/src/rp2_common/hardware_sync/sync.c.i
@@ -1165,7 +1284,7 @@ opt/pico-sdk/src/rp2_common/hardware_sync/sync.i: opt/pico-sdk/src/rp2_common/ha
 
 # target to preprocess a source file
 opt/pico-sdk/src/rp2_common/hardware_sync/sync.c.i:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/hardware_sync/sync.c.i
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/hardware_sync/sync.c.i
 .PHONY : opt/pico-sdk/src/rp2_common/hardware_sync/sync.c.i
 
 opt/pico-sdk/src/rp2_common/hardware_sync/sync.s: opt/pico-sdk/src/rp2_common/hardware_sync/sync.c.s
@@ -1174,7 +1293,7 @@ opt/pico-sdk/src/rp2_common/hardware_sync/sync.s: opt/pico-sdk/src/rp2_common/ha
 
 # target to generate assembly for a file
 opt/pico-sdk/src/rp2_common/hardware_sync/sync.c.s:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/hardware_sync/sync.c.s
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/hardware_sync/sync.c.s
 .PHONY : opt/pico-sdk/src/rp2_common/hardware_sync/sync.c.s
 
 opt/pico-sdk/src/rp2_common/hardware_timer/timer.obj: opt/pico-sdk/src/rp2_common/hardware_timer/timer.c.obj
@@ -1183,7 +1302,7 @@ opt/pico-sdk/src/rp2_common/hardware_timer/timer.obj: opt/pico-sdk/src/rp2_commo
 
 # target to build an object file
 opt/pico-sdk/src/rp2_common/hardware_timer/timer.c.obj:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/hardware_timer/timer.c.obj
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/hardware_timer/timer.c.obj
 .PHONY : opt/pico-sdk/src/rp2_common/hardware_timer/timer.c.obj
 
 opt/pico-sdk/src/rp2_common/hardware_timer/timer.i: opt/pico-sdk/src/rp2_common/hardware_timer/timer.c.i
@@ -1192,7 +1311,7 @@ opt/pico-sdk/src/rp2_common/hardware_timer/timer.i: opt/pico-sdk/src/rp2_common/
 
 # target to preprocess a source file
 opt/pico-sdk/src/rp2_common/hardware_timer/timer.c.i:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/hardware_timer/timer.c.i
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/hardware_timer/timer.c.i
 .PHONY : opt/pico-sdk/src/rp2_common/hardware_timer/timer.c.i
 
 opt/pico-sdk/src/rp2_common/hardware_timer/timer.s: opt/pico-sdk/src/rp2_common/hardware_timer/timer.c.s
@@ -1201,7 +1320,7 @@ opt/pico-sdk/src/rp2_common/hardware_timer/timer.s: opt/pico-sdk/src/rp2_common/
 
 # target to generate assembly for a file
 opt/pico-sdk/src/rp2_common/hardware_timer/timer.c.s:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/hardware_timer/timer.c.s
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/hardware_timer/timer.c.s
 .PHONY : opt/pico-sdk/src/rp2_common/hardware_timer/timer.c.s
 
 opt/pico-sdk/src/rp2_common/hardware_uart/uart.obj: opt/pico-sdk/src/rp2_common/hardware_uart/uart.c.obj
@@ -1210,7 +1329,7 @@ opt/pico-sdk/src/rp2_common/hardware_uart/uart.obj: opt/pico-sdk/src/rp2_common/
 
 # target to build an object file
 opt/pico-sdk/src/rp2_common/hardware_uart/uart.c.obj:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/hardware_uart/uart.c.obj
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/hardware_uart/uart.c.obj
 .PHONY : opt/pico-sdk/src/rp2_common/hardware_uart/uart.c.obj
 
 opt/pico-sdk/src/rp2_common/hardware_uart/uart.i: opt/pico-sdk/src/rp2_common/hardware_uart/uart.c.i
@@ -1219,7 +1338,7 @@ opt/pico-sdk/src/rp2_common/hardware_uart/uart.i: opt/pico-sdk/src/rp2_common/ha
 
 # target to preprocess a source file
 opt/pico-sdk/src/rp2_common/hardware_uart/uart.c.i:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/hardware_uart/uart.c.i
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/hardware_uart/uart.c.i
 .PHONY : opt/pico-sdk/src/rp2_common/hardware_uart/uart.c.i
 
 opt/pico-sdk/src/rp2_common/hardware_uart/uart.s: opt/pico-sdk/src/rp2_common/hardware_uart/uart.c.s
@@ -1228,7 +1347,7 @@ opt/pico-sdk/src/rp2_common/hardware_uart/uart.s: opt/pico-sdk/src/rp2_common/ha
 
 # target to generate assembly for a file
 opt/pico-sdk/src/rp2_common/hardware_uart/uart.c.s:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/hardware_uart/uart.c.s
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/hardware_uart/uart.c.s
 .PHONY : opt/pico-sdk/src/rp2_common/hardware_uart/uart.c.s
 
 opt/pico-sdk/src/rp2_common/hardware_vreg/vreg.obj: opt/pico-sdk/src/rp2_common/hardware_vreg/vreg.c.obj
@@ -1237,7 +1356,7 @@ opt/pico-sdk/src/rp2_common/hardware_vreg/vreg.obj: opt/pico-sdk/src/rp2_common/
 
 # target to build an object file
 opt/pico-sdk/src/rp2_common/hardware_vreg/vreg.c.obj:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/hardware_vreg/vreg.c.obj
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/hardware_vreg/vreg.c.obj
 .PHONY : opt/pico-sdk/src/rp2_common/hardware_vreg/vreg.c.obj
 
 opt/pico-sdk/src/rp2_common/hardware_vreg/vreg.i: opt/pico-sdk/src/rp2_common/hardware_vreg/vreg.c.i
@@ -1246,7 +1365,7 @@ opt/pico-sdk/src/rp2_common/hardware_vreg/vreg.i: opt/pico-sdk/src/rp2_common/ha
 
 # target to preprocess a source file
 opt/pico-sdk/src/rp2_common/hardware_vreg/vreg.c.i:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/hardware_vreg/vreg.c.i
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/hardware_vreg/vreg.c.i
 .PHONY : opt/pico-sdk/src/rp2_common/hardware_vreg/vreg.c.i
 
 opt/pico-sdk/src/rp2_common/hardware_vreg/vreg.s: opt/pico-sdk/src/rp2_common/hardware_vreg/vreg.c.s
@@ -1255,7 +1374,7 @@ opt/pico-sdk/src/rp2_common/hardware_vreg/vreg.s: opt/pico-sdk/src/rp2_common/ha
 
 # target to generate assembly for a file
 opt/pico-sdk/src/rp2_common/hardware_vreg/vreg.c.s:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/hardware_vreg/vreg.c.s
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/hardware_vreg/vreg.c.s
 .PHONY : opt/pico-sdk/src/rp2_common/hardware_vreg/vreg.c.s
 
 opt/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.obj: opt/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.obj
@@ -1264,7 +1383,7 @@ opt/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.obj: opt/pico-sdk/src/rp2
 
 # target to build an object file
 opt/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.obj:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.obj
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.obj
 .PHONY : opt/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.obj
 
 opt/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.i: opt/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.i
@@ -1273,7 +1392,7 @@ opt/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.i: opt/pico-sdk/src/rp2_c
 
 # target to preprocess a source file
 opt/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.i:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.i
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.i
 .PHONY : opt/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.i
 
 opt/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.s: opt/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.s
@@ -1282,7 +1401,7 @@ opt/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.s: opt/pico-sdk/src/rp2_c
 
 # target to generate assembly for a file
 opt/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.s:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.s
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.s
 .PHONY : opt/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.s
 
 opt/pico-sdk/src/rp2_common/hardware_xosc/xosc.obj: opt/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.obj
@@ -1291,7 +1410,7 @@ opt/pico-sdk/src/rp2_common/hardware_xosc/xosc.obj: opt/pico-sdk/src/rp2_common/
 
 # target to build an object file
 opt/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.obj:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.obj
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.obj
 .PHONY : opt/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.obj
 
 opt/pico-sdk/src/rp2_common/hardware_xosc/xosc.i: opt/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.i
@@ -1300,7 +1419,7 @@ opt/pico-sdk/src/rp2_common/hardware_xosc/xosc.i: opt/pico-sdk/src/rp2_common/ha
 
 # target to preprocess a source file
 opt/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.i:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.i
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.i
 .PHONY : opt/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.i
 
 opt/pico-sdk/src/rp2_common/hardware_xosc/xosc.s: opt/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.s
@@ -1309,7 +1428,7 @@ opt/pico-sdk/src/rp2_common/hardware_xosc/xosc.s: opt/pico-sdk/src/rp2_common/ha
 
 # target to generate assembly for a file
 opt/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.s:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.s
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.s
 .PHONY : opt/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.s
 
 opt/pico-sdk/src/rp2_common/pico_bit_ops/bit_ops_aeabi.obj: opt/pico-sdk/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S.obj
@@ -1318,7 +1437,7 @@ opt/pico-sdk/src/rp2_common/pico_bit_ops/bit_ops_aeabi.obj: opt/pico-sdk/src/rp2
 
 # target to build an object file
 opt/pico-sdk/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S.obj:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S.obj
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S.obj
 .PHONY : opt/pico-sdk/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S.obj
 
 opt/pico-sdk/src/rp2_common/pico_bootrom/bootrom.obj: opt/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.obj
@@ -1327,7 +1446,7 @@ opt/pico-sdk/src/rp2_common/pico_bootrom/bootrom.obj: opt/pico-sdk/src/rp2_commo
 
 # target to build an object file
 opt/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.obj:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.obj
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.obj
 .PHONY : opt/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.obj
 
 opt/pico-sdk/src/rp2_common/pico_bootrom/bootrom.i: opt/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.i
@@ -1336,7 +1455,7 @@ opt/pico-sdk/src/rp2_common/pico_bootrom/bootrom.i: opt/pico-sdk/src/rp2_common/
 
 # target to preprocess a source file
 opt/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.i:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.i
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.i
 .PHONY : opt/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.i
 
 opt/pico-sdk/src/rp2_common/pico_bootrom/bootrom.s: opt/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.s
@@ -1345,7 +1464,7 @@ opt/pico-sdk/src/rp2_common/pico_bootrom/bootrom.s: opt/pico-sdk/src/rp2_common/
 
 # target to generate assembly for a file
 opt/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.s:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.s
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.s
 .PHONY : opt/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.s
 
 opt/pico-sdk/src/rp2_common/pico_divider/divider.obj: opt/pico-sdk/src/rp2_common/pico_divider/divider.S.obj
@@ -1354,7 +1473,7 @@ opt/pico-sdk/src/rp2_common/pico_divider/divider.obj: opt/pico-sdk/src/rp2_commo
 
 # target to build an object file
 opt/pico-sdk/src/rp2_common/pico_divider/divider.S.obj:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/pico_divider/divider.S.obj
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/pico_divider/divider.S.obj
 .PHONY : opt/pico-sdk/src/rp2_common/pico_divider/divider.S.obj
 
 opt/pico-sdk/src/rp2_common/pico_double/double_aeabi.obj: opt/pico-sdk/src/rp2_common/pico_double/double_aeabi.S.obj
@@ -1363,7 +1482,7 @@ opt/pico-sdk/src/rp2_common/pico_double/double_aeabi.obj: opt/pico-sdk/src/rp2_c
 
 # target to build an object file
 opt/pico-sdk/src/rp2_common/pico_double/double_aeabi.S.obj:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/pico_double/double_aeabi.S.obj
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/pico_double/double_aeabi.S.obj
 .PHONY : opt/pico-sdk/src/rp2_common/pico_double/double_aeabi.S.obj
 
 opt/pico-sdk/src/rp2_common/pico_double/double_init_rom.obj: opt/pico-sdk/src/rp2_common/pico_double/double_init_rom.c.obj
@@ -1372,7 +1491,7 @@ opt/pico-sdk/src/rp2_common/pico_double/double_init_rom.obj: opt/pico-sdk/src/rp
 
 # target to build an object file
 opt/pico-sdk/src/rp2_common/pico_double/double_init_rom.c.obj:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/pico_double/double_init_rom.c.obj
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/pico_double/double_init_rom.c.obj
 .PHONY : opt/pico-sdk/src/rp2_common/pico_double/double_init_rom.c.obj
 
 opt/pico-sdk/src/rp2_common/pico_double/double_init_rom.i: opt/pico-sdk/src/rp2_common/pico_double/double_init_rom.c.i
@@ -1381,7 +1500,7 @@ opt/pico-sdk/src/rp2_common/pico_double/double_init_rom.i: opt/pico-sdk/src/rp2_
 
 # target to preprocess a source file
 opt/pico-sdk/src/rp2_common/pico_double/double_init_rom.c.i:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/pico_double/double_init_rom.c.i
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/pico_double/double_init_rom.c.i
 .PHONY : opt/pico-sdk/src/rp2_common/pico_double/double_init_rom.c.i
 
 opt/pico-sdk/src/rp2_common/pico_double/double_init_rom.s: opt/pico-sdk/src/rp2_common/pico_double/double_init_rom.c.s
@@ -1390,7 +1509,7 @@ opt/pico-sdk/src/rp2_common/pico_double/double_init_rom.s: opt/pico-sdk/src/rp2_
 
 # target to generate assembly for a file
 opt/pico-sdk/src/rp2_common/pico_double/double_init_rom.c.s:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/pico_double/double_init_rom.c.s
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/pico_double/double_init_rom.c.s
 .PHONY : opt/pico-sdk/src/rp2_common/pico_double/double_init_rom.c.s
 
 opt/pico-sdk/src/rp2_common/pico_double/double_math.obj: opt/pico-sdk/src/rp2_common/pico_double/double_math.c.obj
@@ -1399,7 +1518,7 @@ opt/pico-sdk/src/rp2_common/pico_double/double_math.obj: opt/pico-sdk/src/rp2_co
 
 # target to build an object file
 opt/pico-sdk/src/rp2_common/pico_double/double_math.c.obj:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/pico_double/double_math.c.obj
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/pico_double/double_math.c.obj
 .PHONY : opt/pico-sdk/src/rp2_common/pico_double/double_math.c.obj
 
 opt/pico-sdk/src/rp2_common/pico_double/double_math.i: opt/pico-sdk/src/rp2_common/pico_double/double_math.c.i
@@ -1408,7 +1527,7 @@ opt/pico-sdk/src/rp2_common/pico_double/double_math.i: opt/pico-sdk/src/rp2_comm
 
 # target to preprocess a source file
 opt/pico-sdk/src/rp2_common/pico_double/double_math.c.i:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/pico_double/double_math.c.i
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/pico_double/double_math.c.i
 .PHONY : opt/pico-sdk/src/rp2_common/pico_double/double_math.c.i
 
 opt/pico-sdk/src/rp2_common/pico_double/double_math.s: opt/pico-sdk/src/rp2_common/pico_double/double_math.c.s
@@ -1417,7 +1536,7 @@ opt/pico-sdk/src/rp2_common/pico_double/double_math.s: opt/pico-sdk/src/rp2_comm
 
 # target to generate assembly for a file
 opt/pico-sdk/src/rp2_common/pico_double/double_math.c.s:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/pico_double/double_math.c.s
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/pico_double/double_math.c.s
 .PHONY : opt/pico-sdk/src/rp2_common/pico_double/double_math.c.s
 
 opt/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim.obj: opt/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim.S.obj
@@ -1426,7 +1545,7 @@ opt/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim.obj: opt/pico-sdk/src
 
 # target to build an object file
 opt/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim.S.obj:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim.S.obj
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim.S.obj
 .PHONY : opt/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim.S.obj
 
 opt/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.obj: opt/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c.obj
@@ -1435,7 +1554,7 @@ opt/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_de
 
 # target to build an object file
 opt/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c.obj:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c.obj
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c.obj
 .PHONY : opt/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c.obj
 
 opt/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.i: opt/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c.i
@@ -1444,7 +1563,7 @@ opt/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_de
 
 # target to preprocess a source file
 opt/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c.i:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c.i
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c.i
 .PHONY : opt/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c.i
 
 opt/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.s: opt/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c.s
@@ -1453,7 +1572,7 @@ opt/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_de
 
 # target to generate assembly for a file
 opt/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c.s:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c.s
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c.s
 .PHONY : opt/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c.s
 
 opt/pico-sdk/src/rp2_common/pico_float/float_aeabi.obj: opt/pico-sdk/src/rp2_common/pico_float/float_aeabi.S.obj
@@ -1462,7 +1581,7 @@ opt/pico-sdk/src/rp2_common/pico_float/float_aeabi.obj: opt/pico-sdk/src/rp2_com
 
 # target to build an object file
 opt/pico-sdk/src/rp2_common/pico_float/float_aeabi.S.obj:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/pico_float/float_aeabi.S.obj
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/pico_float/float_aeabi.S.obj
 .PHONY : opt/pico-sdk/src/rp2_common/pico_float/float_aeabi.S.obj
 
 opt/pico-sdk/src/rp2_common/pico_float/float_init_rom.obj: opt/pico-sdk/src/rp2_common/pico_float/float_init_rom.c.obj
@@ -1471,7 +1590,7 @@ opt/pico-sdk/src/rp2_common/pico_float/float_init_rom.obj: opt/pico-sdk/src/rp2_
 
 # target to build an object file
 opt/pico-sdk/src/rp2_common/pico_float/float_init_rom.c.obj:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/pico_float/float_init_rom.c.obj
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/pico_float/float_init_rom.c.obj
 .PHONY : opt/pico-sdk/src/rp2_common/pico_float/float_init_rom.c.obj
 
 opt/pico-sdk/src/rp2_common/pico_float/float_init_rom.i: opt/pico-sdk/src/rp2_common/pico_float/float_init_rom.c.i
@@ -1480,7 +1599,7 @@ opt/pico-sdk/src/rp2_common/pico_float/float_init_rom.i: opt/pico-sdk/src/rp2_co
 
 # target to preprocess a source file
 opt/pico-sdk/src/rp2_common/pico_float/float_init_rom.c.i:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/pico_float/float_init_rom.c.i
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/pico_float/float_init_rom.c.i
 .PHONY : opt/pico-sdk/src/rp2_common/pico_float/float_init_rom.c.i
 
 opt/pico-sdk/src/rp2_common/pico_float/float_init_rom.s: opt/pico-sdk/src/rp2_common/pico_float/float_init_rom.c.s
@@ -1489,7 +1608,7 @@ opt/pico-sdk/src/rp2_common/pico_float/float_init_rom.s: opt/pico-sdk/src/rp2_co
 
 # target to generate assembly for a file
 opt/pico-sdk/src/rp2_common/pico_float/float_init_rom.c.s:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/pico_float/float_init_rom.c.s
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/pico_float/float_init_rom.c.s
 .PHONY : opt/pico-sdk/src/rp2_common/pico_float/float_init_rom.c.s
 
 opt/pico-sdk/src/rp2_common/pico_float/float_math.obj: opt/pico-sdk/src/rp2_common/pico_float/float_math.c.obj
@@ -1498,7 +1617,7 @@ opt/pico-sdk/src/rp2_common/pico_float/float_math.obj: opt/pico-sdk/src/rp2_comm
 
 # target to build an object file
 opt/pico-sdk/src/rp2_common/pico_float/float_math.c.obj:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/pico_float/float_math.c.obj
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/pico_float/float_math.c.obj
 .PHONY : opt/pico-sdk/src/rp2_common/pico_float/float_math.c.obj
 
 opt/pico-sdk/src/rp2_common/pico_float/float_math.i: opt/pico-sdk/src/rp2_common/pico_float/float_math.c.i
@@ -1507,7 +1626,7 @@ opt/pico-sdk/src/rp2_common/pico_float/float_math.i: opt/pico-sdk/src/rp2_common
 
 # target to preprocess a source file
 opt/pico-sdk/src/rp2_common/pico_float/float_math.c.i:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/pico_float/float_math.c.i
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/pico_float/float_math.c.i
 .PHONY : opt/pico-sdk/src/rp2_common/pico_float/float_math.c.i
 
 opt/pico-sdk/src/rp2_common/pico_float/float_math.s: opt/pico-sdk/src/rp2_common/pico_float/float_math.c.s
@@ -1516,7 +1635,7 @@ opt/pico-sdk/src/rp2_common/pico_float/float_math.s: opt/pico-sdk/src/rp2_common
 
 # target to generate assembly for a file
 opt/pico-sdk/src/rp2_common/pico_float/float_math.c.s:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/pico_float/float_math.c.s
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/pico_float/float_math.c.s
 .PHONY : opt/pico-sdk/src/rp2_common/pico_float/float_math.c.s
 
 opt/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim.obj: opt/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim.S.obj
@@ -1525,7 +1644,7 @@ opt/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim.obj: opt/pico-sdk/src/r
 
 # target to build an object file
 opt/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim.S.obj:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim.S.obj
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim.S.obj
 .PHONY : opt/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim.S.obj
 
 opt/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.obj: opt/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S.obj
@@ -1534,7 +1653,7 @@ opt/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.obj: opt/pico-sd
 
 # target to build an object file
 opt/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S.obj:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S.obj
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S.obj
 .PHONY : opt/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S.obj
 
 opt/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.obj: opt/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.c.obj
@@ -1543,7 +1662,7 @@ opt/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.obj: opt/pico-sdk/src/rp2_co
 
 # target to build an object file
 opt/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.c.obj:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.c.obj
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.c.obj
 .PHONY : opt/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.c.obj
 
 opt/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.i: opt/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.c.i
@@ -1552,7 +1671,7 @@ opt/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.i: opt/pico-sdk/src/rp2_comm
 
 # target to preprocess a source file
 opt/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.c.i:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.c.i
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.c.i
 .PHONY : opt/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.c.i
 
 opt/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.s: opt/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.c.s
@@ -1561,7 +1680,7 @@ opt/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.s: opt/pico-sdk/src/rp2_comm
 
 # target to generate assembly for a file
 opt/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.c.s:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.c.s
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.c.s
 .PHONY : opt/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.c.s
 
 opt/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.obj: opt/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.obj
@@ -1570,7 +1689,7 @@ opt/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.obj: opt/pico-sdk/src/rp2
 
 # target to build an object file
 opt/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.obj:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.obj
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.obj
 .PHONY : opt/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.obj
 
 opt/pico-sdk/src/rp2_common/pico_platform/platform.obj: opt/pico-sdk/src/rp2_common/pico_platform/platform.c.obj
@@ -1579,7 +1698,7 @@ opt/pico-sdk/src/rp2_common/pico_platform/platform.obj: opt/pico-sdk/src/rp2_com
 
 # target to build an object file
 opt/pico-sdk/src/rp2_common/pico_platform/platform.c.obj:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/pico_platform/platform.c.obj
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/pico_platform/platform.c.obj
 .PHONY : opt/pico-sdk/src/rp2_common/pico_platform/platform.c.obj
 
 opt/pico-sdk/src/rp2_common/pico_platform/platform.i: opt/pico-sdk/src/rp2_common/pico_platform/platform.c.i
@@ -1588,7 +1707,7 @@ opt/pico-sdk/src/rp2_common/pico_platform/platform.i: opt/pico-sdk/src/rp2_commo
 
 # target to preprocess a source file
 opt/pico-sdk/src/rp2_common/pico_platform/platform.c.i:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/pico_platform/platform.c.i
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/pico_platform/platform.c.i
 .PHONY : opt/pico-sdk/src/rp2_common/pico_platform/platform.c.i
 
 opt/pico-sdk/src/rp2_common/pico_platform/platform.s: opt/pico-sdk/src/rp2_common/pico_platform/platform.c.s
@@ -1597,7 +1716,7 @@ opt/pico-sdk/src/rp2_common/pico_platform/platform.s: opt/pico-sdk/src/rp2_commo
 
 # target to generate assembly for a file
 opt/pico-sdk/src/rp2_common/pico_platform/platform.c.s:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/pico_platform/platform.c.s
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/pico_platform/platform.c.s
 .PHONY : opt/pico-sdk/src/rp2_common/pico_platform/platform.c.s
 
 opt/pico-sdk/src/rp2_common/pico_printf/printf.obj: opt/pico-sdk/src/rp2_common/pico_printf/printf.c.obj
@@ -1606,7 +1725,7 @@ opt/pico-sdk/src/rp2_common/pico_printf/printf.obj: opt/pico-sdk/src/rp2_common/
 
 # target to build an object file
 opt/pico-sdk/src/rp2_common/pico_printf/printf.c.obj:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/pico_printf/printf.c.obj
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/pico_printf/printf.c.obj
 .PHONY : opt/pico-sdk/src/rp2_common/pico_printf/printf.c.obj
 
 opt/pico-sdk/src/rp2_common/pico_printf/printf.i: opt/pico-sdk/src/rp2_common/pico_printf/printf.c.i
@@ -1615,7 +1734,7 @@ opt/pico-sdk/src/rp2_common/pico_printf/printf.i: opt/pico-sdk/src/rp2_common/pi
 
 # target to preprocess a source file
 opt/pico-sdk/src/rp2_common/pico_printf/printf.c.i:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/pico_printf/printf.c.i
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/pico_printf/printf.c.i
 .PHONY : opt/pico-sdk/src/rp2_common/pico_printf/printf.c.i
 
 opt/pico-sdk/src/rp2_common/pico_printf/printf.s: opt/pico-sdk/src/rp2_common/pico_printf/printf.c.s
@@ -1624,7 +1743,7 @@ opt/pico-sdk/src/rp2_common/pico_printf/printf.s: opt/pico-sdk/src/rp2_common/pi
 
 # target to generate assembly for a file
 opt/pico-sdk/src/rp2_common/pico_printf/printf.c.s:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/pico_printf/printf.c.s
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/pico_printf/printf.c.s
 .PHONY : opt/pico-sdk/src/rp2_common/pico_printf/printf.c.s
 
 opt/pico-sdk/src/rp2_common/pico_runtime/runtime.obj: opt/pico-sdk/src/rp2_common/pico_runtime/runtime.c.obj
@@ -1633,7 +1752,7 @@ opt/pico-sdk/src/rp2_common/pico_runtime/runtime.obj: opt/pico-sdk/src/rp2_commo
 
 # target to build an object file
 opt/pico-sdk/src/rp2_common/pico_runtime/runtime.c.obj:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/pico_runtime/runtime.c.obj
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/pico_runtime/runtime.c.obj
 .PHONY : opt/pico-sdk/src/rp2_common/pico_runtime/runtime.c.obj
 
 opt/pico-sdk/src/rp2_common/pico_runtime/runtime.i: opt/pico-sdk/src/rp2_common/pico_runtime/runtime.c.i
@@ -1642,7 +1761,7 @@ opt/pico-sdk/src/rp2_common/pico_runtime/runtime.i: opt/pico-sdk/src/rp2_common/
 
 # target to preprocess a source file
 opt/pico-sdk/src/rp2_common/pico_runtime/runtime.c.i:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/pico_runtime/runtime.c.i
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/pico_runtime/runtime.c.i
 .PHONY : opt/pico-sdk/src/rp2_common/pico_runtime/runtime.c.i
 
 opt/pico-sdk/src/rp2_common/pico_runtime/runtime.s: opt/pico-sdk/src/rp2_common/pico_runtime/runtime.c.s
@@ -1651,7 +1770,7 @@ opt/pico-sdk/src/rp2_common/pico_runtime/runtime.s: opt/pico-sdk/src/rp2_common/
 
 # target to generate assembly for a file
 opt/pico-sdk/src/rp2_common/pico_runtime/runtime.c.s:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/pico_runtime/runtime.c.s
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/pico_runtime/runtime.c.s
 .PHONY : opt/pico-sdk/src/rp2_common/pico_runtime/runtime.c.s
 
 opt/pico-sdk/src/rp2_common/pico_standard_link/binary_info.obj: opt/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.obj
@@ -1660,7 +1779,7 @@ opt/pico-sdk/src/rp2_common/pico_standard_link/binary_info.obj: opt/pico-sdk/src
 
 # target to build an object file
 opt/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.obj:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.obj
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.obj
 .PHONY : opt/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.obj
 
 opt/pico-sdk/src/rp2_common/pico_standard_link/binary_info.i: opt/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.i
@@ -1669,7 +1788,7 @@ opt/pico-sdk/src/rp2_common/pico_standard_link/binary_info.i: opt/pico-sdk/src/r
 
 # target to preprocess a source file
 opt/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.i:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.i
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.i
 .PHONY : opt/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.i
 
 opt/pico-sdk/src/rp2_common/pico_standard_link/binary_info.s: opt/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.s
@@ -1678,7 +1797,7 @@ opt/pico-sdk/src/rp2_common/pico_standard_link/binary_info.s: opt/pico-sdk/src/r
 
 # target to generate assembly for a file
 opt/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.s:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.s
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.s
 .PHONY : opt/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.s
 
 opt/pico-sdk/src/rp2_common/pico_standard_link/crt0.obj: opt/pico-sdk/src/rp2_common/pico_standard_link/crt0.S.obj
@@ -1687,7 +1806,7 @@ opt/pico-sdk/src/rp2_common/pico_standard_link/crt0.obj: opt/pico-sdk/src/rp2_co
 
 # target to build an object file
 opt/pico-sdk/src/rp2_common/pico_standard_link/crt0.S.obj:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/pico_standard_link/crt0.S.obj
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/pico_standard_link/crt0.S.obj
 .PHONY : opt/pico-sdk/src/rp2_common/pico_standard_link/crt0.S.obj
 
 opt/pico-sdk/src/rp2_common/pico_standard_link/new_delete.obj: opt/pico-sdk/src/rp2_common/pico_standard_link/new_delete.cpp.obj
@@ -1696,7 +1815,7 @@ opt/pico-sdk/src/rp2_common/pico_standard_link/new_delete.obj: opt/pico-sdk/src/
 
 # target to build an object file
 opt/pico-sdk/src/rp2_common/pico_standard_link/new_delete.cpp.obj:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/pico_standard_link/new_delete.cpp.obj
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/pico_standard_link/new_delete.cpp.obj
 .PHONY : opt/pico-sdk/src/rp2_common/pico_standard_link/new_delete.cpp.obj
 
 opt/pico-sdk/src/rp2_common/pico_standard_link/new_delete.i: opt/pico-sdk/src/rp2_common/pico_standard_link/new_delete.cpp.i
@@ -1705,7 +1824,7 @@ opt/pico-sdk/src/rp2_common/pico_standard_link/new_delete.i: opt/pico-sdk/src/rp
 
 # target to preprocess a source file
 opt/pico-sdk/src/rp2_common/pico_standard_link/new_delete.cpp.i:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/pico_standard_link/new_delete.cpp.i
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/pico_standard_link/new_delete.cpp.i
 .PHONY : opt/pico-sdk/src/rp2_common/pico_standard_link/new_delete.cpp.i
 
 opt/pico-sdk/src/rp2_common/pico_standard_link/new_delete.s: opt/pico-sdk/src/rp2_common/pico_standard_link/new_delete.cpp.s
@@ -1714,7 +1833,7 @@ opt/pico-sdk/src/rp2_common/pico_standard_link/new_delete.s: opt/pico-sdk/src/rp
 
 # target to generate assembly for a file
 opt/pico-sdk/src/rp2_common/pico_standard_link/new_delete.cpp.s:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/pico_standard_link/new_delete.cpp.s
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/pico_standard_link/new_delete.cpp.s
 .PHONY : opt/pico-sdk/src/rp2_common/pico_standard_link/new_delete.cpp.s
 
 opt/pico-sdk/src/rp2_common/pico_stdio/stdio.obj: opt/pico-sdk/src/rp2_common/pico_stdio/stdio.c.obj
@@ -1723,7 +1842,7 @@ opt/pico-sdk/src/rp2_common/pico_stdio/stdio.obj: opt/pico-sdk/src/rp2_common/pi
 
 # target to build an object file
 opt/pico-sdk/src/rp2_common/pico_stdio/stdio.c.obj:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/pico_stdio/stdio.c.obj
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/pico_stdio/stdio.c.obj
 .PHONY : opt/pico-sdk/src/rp2_common/pico_stdio/stdio.c.obj
 
 opt/pico-sdk/src/rp2_common/pico_stdio/stdio.i: opt/pico-sdk/src/rp2_common/pico_stdio/stdio.c.i
@@ -1732,7 +1851,7 @@ opt/pico-sdk/src/rp2_common/pico_stdio/stdio.i: opt/pico-sdk/src/rp2_common/pico
 
 # target to preprocess a source file
 opt/pico-sdk/src/rp2_common/pico_stdio/stdio.c.i:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/pico_stdio/stdio.c.i
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/pico_stdio/stdio.c.i
 .PHONY : opt/pico-sdk/src/rp2_common/pico_stdio/stdio.c.i
 
 opt/pico-sdk/src/rp2_common/pico_stdio/stdio.s: opt/pico-sdk/src/rp2_common/pico_stdio/stdio.c.s
@@ -1741,7 +1860,7 @@ opt/pico-sdk/src/rp2_common/pico_stdio/stdio.s: opt/pico-sdk/src/rp2_common/pico
 
 # target to generate assembly for a file
 opt/pico-sdk/src/rp2_common/pico_stdio/stdio.c.s:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/pico_stdio/stdio.c.s
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/pico_stdio/stdio.c.s
 .PHONY : opt/pico-sdk/src/rp2_common/pico_stdio/stdio.c.s
 
 opt/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.obj: opt/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.obj
@@ -1750,7 +1869,7 @@ opt/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.obj: opt/pico-sdk/src
 
 # target to build an object file
 opt/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.obj:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.obj
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.obj
 .PHONY : opt/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.obj
 
 opt/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.i: opt/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.i
@@ -1759,7 +1878,7 @@ opt/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.i: opt/pico-sdk/src/r
 
 # target to preprocess a source file
 opt/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.i:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.i
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.i
 .PHONY : opt/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.i
 
 opt/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.s: opt/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.s
@@ -1768,7 +1887,7 @@ opt/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.s: opt/pico-sdk/src/r
 
 # target to generate assembly for a file
 opt/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.s:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.s
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.s
 .PHONY : opt/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.s
 
 opt/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.obj: opt/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.obj
@@ -1777,7 +1896,7 @@ opt/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.obj: opt/pico-sdk/src/rp2_c
 
 # target to build an object file
 opt/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.obj:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.obj
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.obj
 .PHONY : opt/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.obj
 
 opt/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.i: opt/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.i
@@ -1786,7 +1905,7 @@ opt/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.i: opt/pico-sdk/src/rp2_com
 
 # target to preprocess a source file
 opt/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.i:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.i
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.i
 .PHONY : opt/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.i
 
 opt/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.s: opt/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.s
@@ -1795,7 +1914,7 @@ opt/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.s: opt/pico-sdk/src/rp2_com
 
 # target to generate assembly for a file
 opt/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.s:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.s
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.s
 .PHONY : opt/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.s
 
 opt/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.obj: opt/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.obj
@@ -1804,7 +1923,7 @@ opt/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.obj: opt/pico-s
 
 # target to build an object file
 opt/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.obj:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.obj
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.obj
 .PHONY : opt/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.obj
 
 opt/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.i: opt/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.i
@@ -1813,7 +1932,7 @@ opt/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.i: opt/pico-sdk
 
 # target to preprocess a source file
 opt/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.i:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.i
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.i
 .PHONY : opt/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.i
 
 opt/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.s: opt/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.s
@@ -1822,7 +1941,7 @@ opt/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.s: opt/pico-sdk
 
 # target to generate assembly for a file
 opt/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.s:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.s
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.s
 .PHONY : opt/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.s
 
 opt/pico-sdk/src/rp2_common/pico_stdlib/stdlib.obj: opt/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.obj
@@ -1831,7 +1950,7 @@ opt/pico-sdk/src/rp2_common/pico_stdlib/stdlib.obj: opt/pico-sdk/src/rp2_common/
 
 # target to build an object file
 opt/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.obj:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.obj
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.obj
 .PHONY : opt/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.obj
 
 opt/pico-sdk/src/rp2_common/pico_stdlib/stdlib.i: opt/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.i
@@ -1840,7 +1959,7 @@ opt/pico-sdk/src/rp2_common/pico_stdlib/stdlib.i: opt/pico-sdk/src/rp2_common/pi
 
 # target to preprocess a source file
 opt/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.i:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.i
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.i
 .PHONY : opt/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.i
 
 opt/pico-sdk/src/rp2_common/pico_stdlib/stdlib.s: opt/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.s
@@ -1849,7 +1968,7 @@ opt/pico-sdk/src/rp2_common/pico_stdlib/stdlib.s: opt/pico-sdk/src/rp2_common/pi
 
 # target to generate assembly for a file
 opt/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.s:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.s
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.s
 .PHONY : opt/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.s
 
 opt/pico-sdk/src/rp2_common/pico_unique_id/unique_id.obj: opt/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.obj
@@ -1858,7 +1977,7 @@ opt/pico-sdk/src/rp2_common/pico_unique_id/unique_id.obj: opt/pico-sdk/src/rp2_c
 
 # target to build an object file
 opt/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.obj:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.obj
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.obj
 .PHONY : opt/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.obj
 
 opt/pico-sdk/src/rp2_common/pico_unique_id/unique_id.i: opt/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.i
@@ -1867,7 +1986,7 @@ opt/pico-sdk/src/rp2_common/pico_unique_id/unique_id.i: opt/pico-sdk/src/rp2_com
 
 # target to preprocess a source file
 opt/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.i:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.i
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.i
 .PHONY : opt/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.i
 
 opt/pico-sdk/src/rp2_common/pico_unique_id/unique_id.s: opt/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.s
@@ -1876,7 +1995,7 @@ opt/pico-sdk/src/rp2_common/pico_unique_id/unique_id.s: opt/pico-sdk/src/rp2_com
 
 # target to generate assembly for a file
 opt/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.s:
-	$(MAKE) -f CMakeFiles/blink.dir/build.make CMakeFiles/blink.dir/opt/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.s
+	$(MAKE) -f CMakeFiles/IoT_Sensor_Node.dir/build.make CMakeFiles/IoT_Sensor_Node.dir/opt/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.s
 .PHONY : opt/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.s
 
 # Help Target
@@ -1885,16 +2004,21 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... ELF2UF2Build"
-	@echo "... blink"
+	@echo "... rebuild_cache"
+	@echo "... IoT_Sensor_Node"
 	@echo "... bs2_default_padded_checksummed_asm"
 	@echo "... bs2_default_bin"
 	@echo "... bs2_default"
 	@echo "... PioasmBuild"
 	@echo "... cyw43_firmware_package"
 	@echo "... cyw43_driver_picow_cyw43_bus_pio_spi_pio_h"
+	@echo "... nec_transmit_library_nec_carrier_control_pio_h"
+	@echo "... nec_transmit_library_nec_carrier_burst_pio_h"
+	@echo "... nec_transmit_library"
+	@echo "... nec_receive_library_nec_receive_pio_h"
+	@echo "... nec_receive_library"
 	@echo "... main.obj"
 	@echo "... main.i"
 	@echo "... main.s"
@@ -1992,10 +2116,16 @@ help:
 	@echo "... opt/pico-sdk/src/rp2_common/hardware_gpio/gpio.obj"
 	@echo "... opt/pico-sdk/src/rp2_common/hardware_gpio/gpio.i"
 	@echo "... opt/pico-sdk/src/rp2_common/hardware_gpio/gpio.s"
+	@echo "... opt/pico-sdk/src/rp2_common/hardware_i2c/i2c.obj"
+	@echo "... opt/pico-sdk/src/rp2_common/hardware_i2c/i2c.i"
+	@echo "... opt/pico-sdk/src/rp2_common/hardware_i2c/i2c.s"
 	@echo "... opt/pico-sdk/src/rp2_common/hardware_irq/irq.obj"
 	@echo "... opt/pico-sdk/src/rp2_common/hardware_irq/irq.i"
 	@echo "... opt/pico-sdk/src/rp2_common/hardware_irq/irq.s"
 	@echo "... opt/pico-sdk/src/rp2_common/hardware_irq/irq_handler_chain.obj"
+	@echo "... opt/pico-sdk/src/rp2_common/hardware_pio/pio.obj"
+	@echo "... opt/pico-sdk/src/rp2_common/hardware_pio/pio.i"
+	@echo "... opt/pico-sdk/src/rp2_common/hardware_pio/pio.s"
 	@echo "... opt/pico-sdk/src/rp2_common/hardware_pll/pll.obj"
 	@echo "... opt/pico-sdk/src/rp2_common/hardware_pll/pll.i"
 	@echo "... opt/pico-sdk/src/rp2_common/hardware_pll/pll.s"
