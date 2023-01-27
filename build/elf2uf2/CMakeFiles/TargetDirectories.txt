@@ -1,5 +1,5 @@
-/home/luis/Projects/pico/IoT-sensor-nodes-senior23/build/elf2uf2/CMakeFiles/rebuild_cache.dir
-/home/luis/Projects/pico/IoT-sensor-nodes-senior23/build/elf2uf2/CMakeFiles/edit_cache.dir
-/home/luis/Projects/pico/IoT-sensor-nodes-senior23/build/elf2uf2/CMakeFiles/elf2uf2.dir
-/home/luis/Projects/pico/IoT-sensor-nodes-senior23/build/elf2uf2/boot_uf2_headers/CMakeFiles/rebuild_cache.dir
-/home/luis/Projects/pico/IoT-sensor-nodes-senior23/build/elf2uf2/boot_uf2_headers/CMakeFiles/edit_cache.dir
+C:/Users/ldr54/Documents/Projects/Pico/IoT-sensor-nodes-senior23/build/elf2uf2/CMakeFiles/elf2uf2.dir
+C:/Users/ldr54/Documents/Projects/Pico/IoT-sensor-nodes-senior23/build/elf2uf2/CMakeFiles/edit_cache.dir
+C:/Users/ldr54/Documents/Projects/Pico/IoT-sensor-nodes-senior23/build/elf2uf2/CMakeFiles/rebuild_cache.dir
+C:/Users/ldr54/Documents/Projects/Pico/IoT-sensor-nodes-senior23/build/elf2uf2/boot_uf2_headers/CMakeFiles/edit_cache.dir
+C:/Users/ldr54/Documents/Projects/Pico/IoT-sensor-nodes-senior23/build/elf2uf2/boot_uf2_headers/CMakeFiles/rebuild_cache.dir

@@ -10,6 +10,9 @@
 #include "nec_receive_library/nec_receive.h"
 #include "nec_transmit_library/nec_transmit.h"
 
+#define PIN_SDA 4
+#define PIN_SCL 5
+
 //IR LED connected to pin 14
 
 const int ADDRESS = 0x44;
@@ -26,9 +29,13 @@ bool reserved_addr(uint8_t addr) {
     return (addr & 0x78) == 0 || (addr & 0x78) == 0x78;
 }
 
+
+
 int main() {
 
     const uint led_pin = 25;
+
+    
 
     // Initialize LED pin
     gpio_init(led_pin);
@@ -36,21 +43,16 @@ int main() {
 
     // Initialize chosen serial port
     stdio_init_all();
+    sleep_ms(5000);
     printf("working USB out!");
 
-#if !defined(i2c_default) || !defined(PICO_DEFAULT_I2C_SDA_PIN) || !defined(PICO_DEFAULT_I2C_SCL_PIN)
-#warning i2c/bus_scan example requires a board with I2C pins
-    //puts("Default I2C pins were not defined");
-    printf("Default I2C pins were not defined");
-#else
     // This example will use I2C0 on the default SDA and SCL pins (GP4, GP5 on a Pico)
-    i2c_init(i2c_default, 100 * 1000);
-    gpio_set_function(PICO_DEFAULT_I2C_SDA_PIN, GPIO_FUNC_I2C);
-    gpio_set_function(PICO_DEFAULT_I2C_SCL_PIN, GPIO_FUNC_I2C);
-    gpio_pull_up(PICO_DEFAULT_I2C_SDA_PIN);
-    gpio_pull_up(PICO_DEFAULT_I2C_SCL_PIN);
-    // Make the I2C pins available to picotool
-    bi_decl(bi_2pins_with_func(PICO_DEFAULT_I2C_SDA_PIN, PICO_DEFAULT_I2C_SCL_PIN, GPIO_FUNC_I2C));
+    i2c_init(i2c0, 100 * 1000);
+    gpio_set_function(PIN_SDA, GPIO_FUNC_I2C);
+    gpio_set_function(PIN_SCL, GPIO_FUNC_I2C);
+    gpio_pull_up(PIN_SDA);
+    gpio_pull_up(PIN_SCL);
+    
 
     printf("\nI2C Bus Scan\n");
     printf("   0  1  2  3  4  5  6  7  8  9  A  B  C  D  E  F\n");
@@ -71,17 +73,57 @@ int main() {
         if (reserved_addr(addr))
             ret = PICO_ERROR_GENERIC;
         else
-            ret = i2c_read_blocking(i2c_default, addr, &rxdata, 1, false);
+            ret = i2c_read_blocking(i2c0, addr, &rxdata, 1, false);
 
         printf(ret < 0 ? "." : "@");
         printf(addr % 16 == 15 ? "\n" : "  ");
     }
     printf("Done.\n");
-    return 0;
-#endif
+
+    sleep_ms(1000);
+
+    printf("read from sht40\n");
+
+    uint8_t tx_bytes;
+    uint8_t rx_bytes[6];
+    uint16_t t_ticks;
+    uint8_t checksum_t;
+    uint16_t rh_ticks;
+    uint8_t checksum_rh;
+    float t_degC;
+    float rh_pRH;
+
 
     // Loop forever
     while (true) {
+
+        tx_bytes = 0xFD;
+        for (int i = 0; i <= 6; i++)
+            printf("byte %d = %x\n", i, rx_bytes[i]);
+        int bytes_written = i2c_write_blocking(i2c0, ADDRESS, &tx_bytes, 1, false);
+        printf("Bytes Written = %d\n", bytes_written);
+        sleep_ms(10);
+        int bytes_read = i2c_read_blocking(i2c0, ADDRESS, rx_bytes, 6, false);
+        printf("Bytes Read = %d\n", bytes_read);
+        printf("Buffer = %x\n", rx_bytes);
+        for (int i = 0; i <= 6; i++)
+            printf("byte %d = %x\n", i, rx_bytes[i]);  
+        t_ticks = (rx_bytes[0] * 256) + rx_bytes[1];
+        checksum_t = rx_bytes[2];
+        rh_ticks = (rx_bytes[3] * 256) + rx_bytes[4];
+        checksum_rh = rx_bytes[5];
+
+        printf("t_ticks = %d\nrh_ticks = %d\n", t_ticks, rh_ticks);
+
+        t_degC = -45 + (175 * ((float)t_ticks/65535));
+        rh_pRH = -6 + (125 * ((float)rh_ticks/65535));
+        if (rh_pRH > 100)
+            rh_pRH = 100;
+        if (rh_pRH < 0)
+            rh_pRH = 0;
+
+        printf("Temperature: %.2f deg C\nRelative Humidity: %.2f%%\n", t_degC, rh_pRH);
+
 
         // Blink LED and test USB out
         printf("Blinking!\r\n");
