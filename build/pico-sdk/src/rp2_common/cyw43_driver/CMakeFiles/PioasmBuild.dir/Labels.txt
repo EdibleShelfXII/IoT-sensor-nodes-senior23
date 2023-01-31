@@ -1,13 +1,13 @@
 # Target labels
  PioasmBuild
 # Source files and their labels
-C:/Users/ldr54/Documents/Projects/Pico/IoT-sensor-nodes-senior23/build/pico-sdk/src/rp2_common/cyw43_driver/CMakeFiles/PioasmBuild
-C:/Users/ldr54/Documents/Projects/Pico/IoT-sensor-nodes-senior23/build/pico-sdk/src/rp2_common/cyw43_driver/CMakeFiles/PioasmBuild.rule
-C:/Users/ldr54/Documents/Projects/Pico/IoT-sensor-nodes-senior23/build/pico-sdk/src/rp2_common/cyw43_driver/CMakeFiles/PioasmBuild-complete.rule
-C:/Users/ldr54/Documents/Projects/Pico/IoT-sensor-nodes-senior23/build/pico-sdk/src/rp2_common/cyw43_driver/pioasm/src/PioasmBuild-stamp/PioasmBuild-build.rule
-C:/Users/ldr54/Documents/Projects/Pico/IoT-sensor-nodes-senior23/build/pico-sdk/src/rp2_common/cyw43_driver/pioasm/src/PioasmBuild-stamp/PioasmBuild-configure.rule
-C:/Users/ldr54/Documents/Projects/Pico/IoT-sensor-nodes-senior23/build/pico-sdk/src/rp2_common/cyw43_driver/pioasm/src/PioasmBuild-stamp/PioasmBuild-download.rule
-C:/Users/ldr54/Documents/Projects/Pico/IoT-sensor-nodes-senior23/build/pico-sdk/src/rp2_common/cyw43_driver/pioasm/src/PioasmBuild-stamp/PioasmBuild-install.rule
-C:/Users/ldr54/Documents/Projects/Pico/IoT-sensor-nodes-senior23/build/pico-sdk/src/rp2_common/cyw43_driver/pioasm/src/PioasmBuild-stamp/PioasmBuild-mkdir.rule
-C:/Users/ldr54/Documents/Projects/Pico/IoT-sensor-nodes-senior23/build/pico-sdk/src/rp2_common/cyw43_driver/pioasm/src/PioasmBuild-stamp/PioasmBuild-patch.rule
-C:/Users/ldr54/Documents/Projects/Pico/IoT-sensor-nodes-senior23/build/pico-sdk/src/rp2_common/cyw43_driver/pioasm/src/PioasmBuild-stamp/PioasmBuild-update.rule
+/home/luis/Projects/pico/IoT-sensor-nodes-senior23/build/pico-sdk/src/rp2_common/cyw43_driver/CMakeFiles/PioasmBuild
+/home/luis/Projects/pico/IoT-sensor-nodes-senior23/build/pico-sdk/src/rp2_common/cyw43_driver/CMakeFiles/PioasmBuild.rule
+/home/luis/Projects/pico/IoT-sensor-nodes-senior23/build/pico-sdk/src/rp2_common/cyw43_driver/CMakeFiles/PioasmBuild-complete.rule
+/home/luis/Projects/pico/IoT-sensor-nodes-senior23/build/pico-sdk/src/rp2_common/cyw43_driver/pioasm/src/PioasmBuild-stamp/PioasmBuild-install.rule
+/home/luis/Projects/pico/IoT-sensor-nodes-senior23/build/pico-sdk/src/rp2_common/cyw43_driver/pioasm/src/PioasmBuild-stamp/PioasmBuild-mkdir.rule
+/home/luis/Projects/pico/IoT-sensor-nodes-senior23/build/pico-sdk/src/rp2_common/cyw43_driver/pioasm/src/PioasmBuild-stamp/PioasmBuild-download.rule
+/home/luis/Projects/pico/IoT-sensor-nodes-senior23/build/pico-sdk/src/rp2_common/cyw43_driver/pioasm/src/PioasmBuild-stamp/PioasmBuild-update.rule
+/home/luis/Projects/pico/IoT-sensor-nodes-senior23/build/pico-sdk/src/rp2_common/cyw43_driver/pioasm/src/PioasmBuild-stamp/PioasmBuild-patch.rule
+/home/luis/Projects/pico/IoT-sensor-nodes-senior23/build/pico-sdk/src/rp2_common/cyw43_driver/pioasm/src/PioasmBuild-stamp/PioasmBuild-configure.rule
+/home/luis/Projects/pico/IoT-sensor-nodes-senior23/build/pico-sdk/src/rp2_common/cyw43_driver/pioasm/src/PioasmBuild-stamp/PioasmBuild-build.rule

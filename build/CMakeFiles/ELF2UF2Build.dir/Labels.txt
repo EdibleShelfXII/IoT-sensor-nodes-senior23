@@ -1,13 +1,13 @@
 # Target labels
  ELF2UF2Build
 # Source files and their labels
-C:/Users/ldr54/Documents/Projects/Pico/IoT-sensor-nodes-senior23/build/CMakeFiles/ELF2UF2Build
-C:/Users/ldr54/Documents/Projects/Pico/IoT-sensor-nodes-senior23/build/CMakeFiles/ELF2UF2Build.rule
-C:/Users/ldr54/Documents/Projects/Pico/IoT-sensor-nodes-senior23/build/CMakeFiles/ELF2UF2Build-complete.rule
-C:/Users/ldr54/Documents/Projects/Pico/IoT-sensor-nodes-senior23/build/elf2uf2/src/ELF2UF2Build-stamp/ELF2UF2Build-build.rule
-C:/Users/ldr54/Documents/Projects/Pico/IoT-sensor-nodes-senior23/build/elf2uf2/src/ELF2UF2Build-stamp/ELF2UF2Build-configure.rule
-C:/Users/ldr54/Documents/Projects/Pico/IoT-sensor-nodes-senior23/build/elf2uf2/src/ELF2UF2Build-stamp/ELF2UF2Build-download.rule
-C:/Users/ldr54/Documents/Projects/Pico/IoT-sensor-nodes-senior23/build/elf2uf2/src/ELF2UF2Build-stamp/ELF2UF2Build-install.rule
-C:/Users/ldr54/Documents/Projects/Pico/IoT-sensor-nodes-senior23/build/elf2uf2/src/ELF2UF2Build-stamp/ELF2UF2Build-mkdir.rule
-C:/Users/ldr54/Documents/Projects/Pico/IoT-sensor-nodes-senior23/build/elf2uf2/src/ELF2UF2Build-stamp/ELF2UF2Build-patch.rule
-C:/Users/ldr54/Documents/Projects/Pico/IoT-sensor-nodes-senior23/build/elf2uf2/src/ELF2UF2Build-stamp/ELF2UF2Build-update.rule
+/home/luis/Projects/pico/IoT-sensor-nodes-senior23/build/CMakeFiles/ELF2UF2Build
+/home/luis/Projects/pico/IoT-sensor-nodes-senior23/build/CMakeFiles/ELF2UF2Build.rule
+/home/luis/Projects/pico/IoT-sensor-nodes-senior23/build/CMakeFiles/ELF2UF2Build-complete.rule
+/home/luis/Projects/pico/IoT-sensor-nodes-senior23/build/elf2uf2/src/ELF2UF2Build-stamp/ELF2UF2Build-install.rule
+/home/luis/Projects/pico/IoT-sensor-nodes-senior23/build/elf2uf2/src/ELF2UF2Build-stamp/ELF2UF2Build-mkdir.rule
+/home/luis/Projects/pico/IoT-sensor-nodes-senior23/build/elf2uf2/src/ELF2UF2Build-stamp/ELF2UF2Build-download.rule
+/home/luis/Projects/pico/IoT-sensor-nodes-senior23/build/elf2uf2/src/ELF2UF2Build-stamp/ELF2UF2Build-update.rule
+/home/luis/Projects/pico/IoT-sensor-nodes-senior23/build/elf2uf2/src/ELF2UF2Build-stamp/ELF2UF2Build-patch.rule
+/home/luis/Projects/pico/IoT-sensor-nodes-senior23/build/elf2uf2/src/ELF2UF2Build-stamp/ELF2UF2Build-configure.rule
+/home/luis/Projects/pico/IoT-sensor-nodes-senior23/build/elf2uf2/src/ELF2UF2Build-stamp/ELF2UF2Build-build.rule

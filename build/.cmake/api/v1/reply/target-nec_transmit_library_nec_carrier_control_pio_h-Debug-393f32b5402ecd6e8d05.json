@@ -1,0 +1,120 @@
+{
+	"backtrace" : 2,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_custom_target",
+			"pico_generate_pio_header",
+			"add_dependencies",
+			"find_package",
+			"_pico_init_pioasm"
+		],
+		"files" : 
+		[
+			"/opt/pico-sdk/tools/CMakeLists.txt",
+			"nec_transmit_library/CMakeLists.txt",
+			"/opt/pico-sdk/tools/FindPioasm.cmake"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 1
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 8,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 31,
+				"parent" : 1
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 7,
+				"parent" : 0
+			},
+			{
+				"command" : 4,
+				"file" : 0,
+				"line" : 9,
+				"parent" : 3
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 4,
+				"parent" : 4
+			},
+			{
+				"file" : 2,
+				"parent" : 5
+			},
+			{
+				"command" : 2,
+				"file" : 2,
+				"line" : 49,
+				"parent" : 6
+			}
+		]
+	},
+	"dependencies" : 
+	[
+		{
+			"backtrace" : 7,
+			"id" : "PioasmBuild::@29db30da11e86cddb3e0"
+		}
+	],
+	"id" : "nec_transmit_library_nec_carrier_control_pio_h::@e49b3fee7dd09265105d",
+	"name" : "nec_transmit_library_nec_carrier_control_pio_h",
+	"paths" : 
+	{
+		"build" : "nec_transmit_library",
+		"source" : "nec_transmit_library"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "",
+			"sourceIndexes" : 
+			[
+				0
+			]
+		},
+		{
+			"name" : "CMake Rules",
+			"sourceIndexes" : 
+			[
+				1,
+				2
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 2,
+			"isGenerated" : true,
+			"path" : "build/nec_transmit_library/CMakeFiles/nec_transmit_library_nec_carrier_control_pio_h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/nec_transmit_library/CMakeFiles/nec_transmit_library_nec_carrier_control_pio_h.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/nec_transmit_library/nec_carrier_control.pio.h.rule",
+			"sourceGroupIndex" : 1
+		}
+	],
+	"type" : "UTILITY"
+}

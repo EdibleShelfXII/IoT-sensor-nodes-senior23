@@ -1,8 +1,8 @@
-# Install script for directory: C:/Users/ldr54/Documents/Projects/Pico/IoT-sensor-nodes-senior23/nec_receive_library
+# Install script for directory: /home/luis/Projects/pico/IoT-sensor-nodes-senior23/nec_receive_library
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "C:/Program Files (x86)/IoT_Sensor_Node")
+  set(CMAKE_INSTALL_PREFIX "/usr/local")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -30,10 +30,5 @@ endif()
 # Is this installation the result of a crosscompile?
 if(NOT DEFINED CMAKE_CROSSCOMPILING)
   set(CMAKE_CROSSCOMPILING "TRUE")
-endif()
-
-# Set default install directory permissions.
-if(NOT DEFINED CMAKE_OBJDUMP)
-  set(CMAKE_OBJDUMP "C:/VSARM/armcc/10 2021.10/bin/arm-none-eabi-objdump.exe")
 endif()
 

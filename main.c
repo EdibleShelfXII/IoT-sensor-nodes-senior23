@@ -2,6 +2,8 @@
 #include "pico/stdlib.h"
 #include <math.h>
 #include <string.h>
+#include <time.h>
+#include <unistd.h>
 #include "pico/stdlib.h"
 #include "pico/binary_info.h"
 #include "hardware/gpio.h"
@@ -16,12 +18,6 @@
 //IR LED connected to pin 14
 
 const int ADDRESS = 0x44;
-/*
-typefef struct {
-    float humidity;
-    float temp_celsius;
-} sht_reading;
-*/
 
 // I2C reserves some addresses for special purposes. We exclude these from the scan.
 // These are any addresses of the form 000 0xxx or 111 1xxx
@@ -34,6 +30,9 @@ bool reserved_addr(uint8_t addr) {
 int main() {
 
     const uint led_pin = 25;
+    int time_to_transmit_ms = 10000;
+    int time_to_sleep_min = 5;
+    int time_to_sleep_ms = (time_to_sleep_min * 60) * 1000;
 
     // Initialize LED pin
     gpio_init(led_pin);
@@ -112,65 +111,83 @@ int main() {
     // Loop forever
     while (true) {
 
-        tx_bytes = 0xFD;
-        for (int i = 0; i <= 6; i++)
-            printf("byte %d = %x\n", i, rx_bytes[i]);
-        int bytes_written = i2c_write_blocking(i2c0, ADDRESS, &tx_bytes, 1, false);
-        printf("Bytes Written = %d\n", bytes_written);
-        sleep_ms(10);
-        int bytes_read = i2c_read_blocking(i2c0, ADDRESS, rx_bytes, 6, false);
-        printf("Bytes Read = %d\n", bytes_read);
-        printf("Buffer = %x\n", rx_bytes);
-        for (int i = 0; i <= 6; i++)
-            printf("byte %d = %x\n", i, rx_bytes[i]);  
-        t_ticks = (rx_bytes[0] * 256) + rx_bytes[1];
-        checksum_t = rx_bytes[2];
-        rh_ticks = (rx_bytes[3] * 256) + rx_bytes[4];
-        checksum_rh = rx_bytes[5];
+        absolute_time_t time = get_absolute_time();
+        uint32_t starttime = to_ms_since_boot(time);
+        uint32_t endtime = starttime + time_to_transmit_ms;
 
-        printf("t_ticks = %d\nrh_ticks = %d\n", t_ticks, rh_ticks);
-
-        t_degC = -45 + (175 * ((float)t_ticks/65535));
-        rh_pRH = -6 + (125 * ((float)rh_ticks/65535));
-        if (rh_pRH > 100)
-            rh_pRH = 100;
-        if (rh_pRH < 0)
-            rh_pRH = 0;
-
-        printf("Temperature: %.2f deg C\nRelative Humidity: %.2f%%\n", t_degC, rh_pRH);
- 
-        // create a 32-bit frame and add it to the transmit FIFO
-        tx_data = 0xFF; // start command
-        uint32_t tx_frame = nec_encode_frame(tx_address, tx_data);
-        pio_sm_put(pio, tx_sm, tx_frame);
-        printf("sent: %02x, %02x\n", tx_address, tx_data);
-
-        tx_data = rx_bytes[0]; // t part 1
-        tx_frame = nec_encode_frame(tx_address, tx_data);
-        pio_sm_put(pio, tx_sm, tx_frame);
-        printf("sent: %02x, %02x\n", tx_address, tx_data);
+        while (starttime < endtime) {   
+            time = get_absolute_time();
+            starttime = to_ms_since_boot(time);
 
 
-        tx_data = rx_bytes[1]; // t part 2
-        tx_frame = nec_encode_frame(tx_address, tx_data);
-        pio_sm_put(pio, tx_sm, tx_frame);
-        printf("sent: %02x, %02x\n", tx_address, tx_data);
+            tx_bytes = 0xFD;
+            for (int i = 0; i <= 6; i++)
+                printf("byte %d = %x\n", i, rx_bytes[i]);
+            int bytes_written = i2c_write_blocking(i2c0, ADDRESS, &tx_bytes, 1, false);
+            printf("Bytes Written = %d\n", bytes_written);
+            sleep_ms(10);
+            int bytes_read = i2c_read_blocking(i2c0, ADDRESS, rx_bytes, 6, false);
+            printf("Bytes Read = %d\n", bytes_read);
+            printf("Buffer = %x\n", rx_bytes);
+            for (int i = 0; i <= 6; i++)
+                printf("byte %d = %x\n", i, rx_bytes[i]);  
+            t_ticks = (rx_bytes[0] * 256) + rx_bytes[1];
+            checksum_t = rx_bytes[2];
+            rh_ticks = (rx_bytes[3] * 256) + rx_bytes[4];
+            checksum_rh = rx_bytes[5];
 
-        tx_data = rx_bytes[3]; // rh part 1
-        tx_frame = nec_encode_frame(tx_address, tx_data);
-        pio_sm_put(pio, tx_sm, tx_frame);
-        printf("sent: %02x, %02x\n", tx_address, tx_data);
+            printf("t_ticks = %d\nrh_ticks = %d\n", t_ticks, rh_ticks);
 
-        tx_data = rx_bytes[4]; // rh part 2
-        tx_frame = nec_encode_frame(tx_address, tx_data);
-        pio_sm_put(pio, tx_sm, tx_frame);
-        printf("sent: %02x, %02x\n", tx_address, tx_data);
+            t_degC = -45 + (175 * ((float)t_ticks/65535));
+            rh_pRH = -6 + (125 * ((float)rh_ticks/65535));
+            if (rh_pRH > 100)
+                rh_pRH = 100;
+            if (rh_pRH < 0)
+                rh_pRH = 0;
 
-        // Blink LED and test USB out
-        printf("Blinking!\r\n");
-        gpio_put(led_pin, true);
-        sleep_ms(1000);
-        gpio_put(led_pin, false);
-        sleep_ms(1000);
+            printf("Temperature: %.2f deg C\nRelative Humidity: %.2f%%\n", t_degC, rh_pRH);
+    
+            // create a 32-bit frame and add it to the transmit FIFO
+            tx_data = 0xFF; // start command
+            uint32_t tx_frame = nec_encode_frame(tx_address, tx_data);
+            pio_sm_put(pio, tx_sm, tx_frame);
+            printf("sent: %02x, %02x\n", tx_address, tx_data);
+
+            sleep_ms(30);
+
+            tx_data = rx_bytes[0]; // t part 1
+            tx_frame = nec_encode_frame(tx_address, tx_data);
+            pio_sm_put(pio, tx_sm, tx_frame);
+            printf("sent: %02x, %02x\n", tx_address, tx_data);
+
+            sleep_ms(30);
+
+            tx_data = rx_bytes[1]; // t part 2
+            tx_frame = nec_encode_frame(tx_address, tx_data);
+            pio_sm_put(pio, tx_sm, tx_frame);
+            printf("sent: %02x, %02x\n", tx_address, tx_data);
+
+            sleep_ms(530);
+
+            tx_data = rx_bytes[3]; // rh part 1
+            tx_frame = nec_encode_frame(tx_address, tx_data);
+            pio_sm_put(pio, tx_sm, tx_frame);
+            printf("sent: %02x, %02x\n", tx_address, tx_data);
+
+            sleep_ms(30);
+
+            tx_data = rx_bytes[4]; // rh part 2
+            tx_frame = nec_encode_frame(tx_address, tx_data);
+            pio_sm_put(pio, tx_sm, tx_frame);
+            printf("sent: %02x, %02x\n", tx_address, tx_data);
+
+            sleep_ms(30);
+            
+        }
+
+
+        
+
+        sleep_ms(time_to_sleep_ms); // sleep mode to charge super cap
     }
 }
