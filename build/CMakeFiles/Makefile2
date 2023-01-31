@@ -1419,8 +1419,8 @@ pico-sdk/tools/clean:
 # All Build rule for target.
 CMakeFiles/IoT_Sensor_Node.dir/all: CMakeFiles/ELF2UF2Build.dir/all
 CMakeFiles/IoT_Sensor_Node.dir/all: pico-sdk/src/rp2_common/boot_stage2/CMakeFiles/bs2_default_padded_checksummed_asm.dir/all
-CMakeFiles/IoT_Sensor_Node.dir/all: nec_transmit_library/CMakeFiles/nec_transmit_library.dir/all
 CMakeFiles/IoT_Sensor_Node.dir/all: nec_receive_library/CMakeFiles/nec_receive_library.dir/all
+CMakeFiles/IoT_Sensor_Node.dir/all: nec_transmit_library/CMakeFiles/nec_transmit_library.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\IoT_Sensor_Node.dir\build.make CMakeFiles/IoT_Sensor_Node.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\IoT_Sensor_Node.dir\build.make CMakeFiles/IoT_Sensor_Node.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\ldr54\Documents\Projects\Pico\IoT-sensor-nodes-senior23\build\CMakeFiles --progress-num=5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41 "Built target IoT_Sensor_Node"

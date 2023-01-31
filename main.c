@@ -35,14 +35,26 @@ int main() {
 
     const uint led_pin = 25;
 
-    
-
     // Initialize LED pin
     gpio_init(led_pin);
     gpio_set_dir(led_pin, GPIO_OUT);
 
     // Initialize chosen serial port
     stdio_init_all();
+
+    PIO pio = pio0;                                 // choose which PIO block to use (RP2040 has two: pio0 and pio1)
+    uint tx_gpio = 14;                              // choose which GPIO pin is connected to the IR LED
+    uint rx_gpio = 15;                              // choose which GPIO pin is connected to the IR detector
+
+    // configure and enable the state machines
+    int tx_sm = nec_tx_init(pio, tx_gpio);         // uses two state machines, 16 instructions and one IRQ
+    int rx_sm = nec_rx_init(pio, rx_gpio);         // uses one state machine and 9 instructions
+
+    if (tx_sm == -1 || rx_sm == -1) {
+        printf("could not configure PIO\n");
+        return -1;
+    }
+
     sleep_ms(5000);
     printf("working USB out!");
 
@@ -93,6 +105,9 @@ int main() {
     float t_degC;
     float rh_pRH;
 
+    // transmit and receive frames
+    uint8_t tx_address = 0x00, tx_data = 0x00, rx_address, rx_data;
+
 
     // Loop forever
     while (true) {
@@ -123,7 +138,33 @@ int main() {
             rh_pRH = 0;
 
         printf("Temperature: %.2f deg C\nRelative Humidity: %.2f%%\n", t_degC, rh_pRH);
+ 
+        // create a 32-bit frame and add it to the transmit FIFO
+        tx_data = 0xFF; // start command
+        uint32_t tx_frame = nec_encode_frame(tx_address, tx_data);
+        pio_sm_put(pio, tx_sm, tx_frame);
+        printf("sent: %02x, %02x\n", tx_address, tx_data);
 
+        tx_data = rx_bytes[0]; // t part 1
+        tx_frame = nec_encode_frame(tx_address, tx_data);
+        pio_sm_put(pio, tx_sm, tx_frame);
+        printf("sent: %02x, %02x\n", tx_address, tx_data);
+
+
+        tx_data = rx_bytes[1]; // t part 2
+        tx_frame = nec_encode_frame(tx_address, tx_data);
+        pio_sm_put(pio, tx_sm, tx_frame);
+        printf("sent: %02x, %02x\n", tx_address, tx_data);
+
+        tx_data = rx_bytes[3]; // rh part 1
+        tx_frame = nec_encode_frame(tx_address, tx_data);
+        pio_sm_put(pio, tx_sm, tx_frame);
+        printf("sent: %02x, %02x\n", tx_address, tx_data);
+
+        tx_data = rx_bytes[4]; // rh part 2
+        tx_frame = nec_encode_frame(tx_address, tx_data);
+        pio_sm_put(pio, tx_sm, tx_frame);
+        printf("sent: %02x, %02x\n", tx_address, tx_data);
 
         // Blink LED and test USB out
         printf("Blinking!\r\n");
