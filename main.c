@@ -30,7 +30,8 @@ bool reserved_addr(uint8_t addr) {
 int main() {
 
     const uint led_pin = 25;
-    int time_to_transmit_ms = 10000;
+
+    int time_to_transmit_ms = 5000;
     int time_to_sleep_min = 5;
     int time_to_sleep_ms = (time_to_sleep_min * 60) * 1000;
 
@@ -64,7 +65,7 @@ int main() {
     gpio_pull_up(PIN_SDA);
     gpio_pull_up(PIN_SCL);
     
-
+/*
     printf("\nI2C Bus Scan\n");
     printf("   0  1  2  3  4  5  6  7  8  9  A  B  C  D  E  F\n");
 
@@ -92,8 +93,9 @@ int main() {
     printf("Done.\n");
 
     sleep_ms(1000);
-
-    printf("read from sht40\n");
+*/
+    
+//    printf("read from sht40\n");
 
     uint8_t tx_bytes;
     uint8_t rx_bytes[6];
@@ -121,22 +123,26 @@ int main() {
 
 
             tx_bytes = 0xFD;
+/*
             for (int i = 0; i <= 6; i++)
                 printf("byte %d = %x\n", i, rx_bytes[i]);
+*/
             int bytes_written = i2c_write_blocking(i2c0, ADDRESS, &tx_bytes, 1, false);
-            printf("Bytes Written = %d\n", bytes_written);
+//            printf("Bytes Written = %d\n", bytes_written);
             sleep_ms(10);
             int bytes_read = i2c_read_blocking(i2c0, ADDRESS, rx_bytes, 6, false);
+/*
             printf("Bytes Read = %d\n", bytes_read);
             printf("Buffer = %x\n", rx_bytes);
             for (int i = 0; i <= 6; i++)
                 printf("byte %d = %x\n", i, rx_bytes[i]);  
+*/
             t_ticks = (rx_bytes[0] * 256) + rx_bytes[1];
             checksum_t = rx_bytes[2];
             rh_ticks = (rx_bytes[3] * 256) + rx_bytes[4];
             checksum_rh = rx_bytes[5];
 
-            printf("t_ticks = %d\nrh_ticks = %d\n", t_ticks, rh_ticks);
+//           printf("t_ticks = %d\nrh_ticks = %d\n", t_ticks, rh_ticks);
 
             t_degC = -45 + (175 * ((float)t_ticks/65535));
             rh_pRH = -6 + (125 * ((float)rh_ticks/65535));
@@ -167,7 +173,7 @@ int main() {
             pio_sm_put(pio, tx_sm, tx_frame);
             printf("sent: %02x, %02x\n", tx_address, tx_data);
 
-            sleep_ms(530);
+            sleep_ms(30);
 
             tx_data = rx_bytes[3]; // rh part 1
             tx_frame = nec_encode_frame(tx_address, tx_data);
