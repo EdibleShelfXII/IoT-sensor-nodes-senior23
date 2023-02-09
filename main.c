@@ -121,6 +121,7 @@ int main() {
             time = get_absolute_time();
             starttime = to_ms_since_boot(time);
 
+            gpio_put(led_pin, 1);
 
             tx_bytes = 0xFD;
 /*
@@ -188,6 +189,8 @@ int main() {
             printf("sent: %02x, %02x\n", tx_address, tx_data);
 
             sleep_ms(30);
+
+            //gpio_put(led_pin, 0);
             
         }
 
