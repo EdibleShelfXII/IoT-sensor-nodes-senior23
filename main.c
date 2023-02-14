@@ -107,13 +107,20 @@ int main() {
     float rh_pRH;
 
     // transmit and receive frames
+    // Address changes randomly each time a transmission is sent
     uint8_t tx_address = 0x00, tx_data = 0x00, rx_address, rx_data;
+
+    // init time
+    absolute_time_t time = get_absolute_time();
+
+    // init random number generator
+    srand(time);
 
 
     // Loop forever
     while (true) {
 
-        absolute_time_t time = get_absolute_time();
+        time = get_absolute_time();
         uint32_t starttime = to_ms_since_boot(time);
         uint32_t endtime = starttime + time_to_transmit_ms;
 
@@ -153,14 +160,20 @@ int main() {
                 rh_pRH = 0;
 
             printf("Temperature: %.2f deg C\nRelative Humidity: %.2f%%\n", t_degC, rh_pRH);
+
+            // randomize address
+            tx_address = rand() % 255;
+            printf("%x\n", tx_address);
     
             // create a 32-bit frame and add it to the transmit FIFO
-            tx_data = 0xFF; // start command
+            /*
+            tx_data = 0xFF; // start command DEPRECATED
             uint32_t tx_frame = nec_encode_frame(tx_address, tx_data);
             pio_sm_put(pio, tx_sm, tx_frame);
             printf("sent: %02x, %02x\n", tx_address, tx_data);
 
             sleep_ms(30);
+            */
 
             tx_data = rx_bytes[0]; // t part 1
             tx_frame = nec_encode_frame(tx_address, tx_data);

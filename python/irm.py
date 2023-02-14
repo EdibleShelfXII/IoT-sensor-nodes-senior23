@@ -8,6 +8,8 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setup(PIN, GPIO.IN, GPIO.PUD_UP)
 
 start = -1;
+
+adrDef = 0x00;
 t_1 = 0x00;
 t_2 = 0x00;
 rh_1 = 0x00;
@@ -18,6 +20,8 @@ rh_ticks = 0;
 
 t_degC = 0;
 rh_pRH = 0;
+
+adr = 0;
 
 def getKey():
     byte = [0, 0, 0, 0];
@@ -33,6 +37,7 @@ def getKey():
         # byte[2] is an 8-bit COMMAND
         # byte[3] is an 8-bit logical inverse of the COMMAND
         if byte[0] + byte[1] == 0xff and byte[2] + byte[3] == 0xff:
+            adr = byte[0];
             return byte[2];
         else:
             return ERROR;
@@ -72,32 +77,32 @@ def getByte():
         if timeSpan > 0.0016 and timeSpan < 0.0018:
             byte |= 1 << i;
     return byte;
-print('IRM Test Start ...')
+print('IRM Test Start ...');
 try:
     while True:
         key = getKey();
         if(key != ERROR):
-            print("Get the key: 0x%02x" %key)
+            print("Address: 0x%02x" %adr);
+            print("Key: 0x%02x" %key);
             print(start);
-            if(key == 0xff):
+            if(adr != adrDef):
+                t_1 = key;
                 start = 0;
-            elif((key != 0xff) & (start >= 0)):
+                adrDef = adr;
+            elif((start >= 0) & (adr == adrDef)):
                 if(start == 0):
-                    t_1 = key;
+                    t_2 = key;
                     start = 1;
                 elif(start == 1):
-                    t_2 = key;
+                    rh_1 = key;
                     start = 3;
                 elif(start == 3):
-                    rh_1 = key;
-                    start = 4;
-                elif(start == 4):
                     rh_2 = key;
                     start = -1;
                     t_ticks = (t_1 *256) + t_2;
                     rh_ticks = (rh_1 * 256) + rh_2;
                     t_degC = -45 + (175 * (t_ticks/65535));
                     rh_pRH = -6 + (125 * (rh_ticks/65535));
-                    print(f'Temperature: {t_degC:.2f} deg C\nRelative Humidity: {rh_pRH:.2f} %%\n')
+                    print(f'Temperature: {t_degC:.2f} deg C\nRelative Humidity: {rh_pRH:.2f} %%\n');
 except KeyboardInterrupt:
     GPIO.cleanup();
