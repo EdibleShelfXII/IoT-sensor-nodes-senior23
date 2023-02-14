@@ -1,3 +1,0 @@
-/home/luis/Projects/pico/IoT-sensor-nodes-senior23/build/pioasm/CMakeFiles/rebuild_cache.dir
-/home/luis/Projects/pico/IoT-sensor-nodes-senior23/build/pioasm/CMakeFiles/edit_cache.dir
-/home/luis/Projects/pico/IoT-sensor-nodes-senior23/build/pioasm/CMakeFiles/pioasm.dir
