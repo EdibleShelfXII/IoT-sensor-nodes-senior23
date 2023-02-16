@@ -43,8 +43,8 @@ int main() {
     stdio_init_all();
 
     PIO pio = pio0;                                 // choose which PIO block to use (RP2040 has two: pio0 and pio1)
-    uint tx_gpio = 14;                              // choose which GPIO pin is connected to the IR LED
-    uint rx_gpio = 15;                              // choose which GPIO pin is connected to the IR detector
+    uint tx_gpio = 15;                              // choose which GPIO pin is connected to the IR LED
+    uint rx_gpio = 14;                              // choose which GPIO pin is connected to the IR detector
 
     // configure and enable the state machines
     int tx_sm = nec_tx_init(pio, tx_gpio);         // uses two state machines, 16 instructions and one IRQ
@@ -105,6 +105,8 @@ int main() {
     uint8_t checksum_rh;
     float t_degC;
     float rh_pRH;
+
+    uint32_t tx_frame;
 
     // transmit and receive frames
     // Address changes randomly each time a transmission is sent
@@ -180,28 +182,28 @@ int main() {
             pio_sm_put(pio, tx_sm, tx_frame);
             printf("sent: %02x, %02x\n", tx_address, tx_data);
 
-            sleep_ms(30);
+            sleep_ms(90);
 
             tx_data = rx_bytes[1]; // t part 2
             tx_frame = nec_encode_frame(tx_address, tx_data);
             pio_sm_put(pio, tx_sm, tx_frame);
             printf("sent: %02x, %02x\n", tx_address, tx_data);
 
-            sleep_ms(30);
+            sleep_ms(90);
 
             tx_data = rx_bytes[3]; // rh part 1
             tx_frame = nec_encode_frame(tx_address, tx_data);
             pio_sm_put(pio, tx_sm, tx_frame);
             printf("sent: %02x, %02x\n", tx_address, tx_data);
 
-            sleep_ms(30);
+            sleep_ms(90);
 
             tx_data = rx_bytes[4]; // rh part 2
             tx_frame = nec_encode_frame(tx_address, tx_data);
             pio_sm_put(pio, tx_sm, tx_frame);
             printf("sent: %02x, %02x\n", tx_address, tx_data);
 
-            sleep_ms(30);
+            sleep_ms(90);
 
             //gpio_put(led_pin, 0);
             

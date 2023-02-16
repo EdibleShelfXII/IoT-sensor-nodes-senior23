@@ -23,19 +23,20 @@ rh_pRH = 0;
 
 adr = 0;
 
-def getKey():
+def getKey(): # need to rewrite to return whole array!!!
     byte = [0, 0, 0, 0];
     if IRStart() == False:
         time.sleep(0.11);        # One message frame lasts 108 ms.
         return ERROR;
     else:
         for i in range(0, 4):
-                byte[i] = getByte();
+            byte[i] = getByte();
         # Start signal is followed by 4 bytes:
         # byte[0] is an 8-bit ADDRESS for receiving
         # byte[1] is an 8-bit logical inverse of the ADDRESS
         # byte[2] is an 8-bit COMMAND
         # byte[3] is an 8-bit logical inverse of the COMMAND
+        print(byte);
         if byte[0] + byte[1] == 0xff and byte[2] + byte[3] == 0xff:
             adr = byte[0];
             return byte[2];
@@ -53,6 +54,8 @@ def IRStart():
     timeFallingEdge[1] = time.time();
     timeSpan[0] = timeRisingEdge - timeFallingEdge[0];
     timeSpan[1] = timeFallingEdge[1] - timeRisingEdge;
+    #print(timeSpan[0]);
+    #print(timeSpan[1]);
     # Start signal is composed with a 9 ms leading space and a 4.5 ms pulse.
     if timeSpan[0] > 0.0085 and \
        timeSpan[0] < 0.0095 and \
@@ -74,6 +77,7 @@ def getByte():
         GPIO.wait_for_edge(PIN, GPIO.FALLING);
         timeFallingEdge = time.time();
         timeSpan = timeFallingEdge - timeRisingEdge;
+        #print(f"bit {i}: {timeSpan}");
         if timeSpan > 0.0016 and timeSpan < 0.0018:
             byte |= 1 << i;
     return byte;
@@ -81,6 +85,7 @@ print('IRM Test Start ...');
 try:
     while True:
         key = getKey();
+        #print("got key");
         if(key != ERROR):
             print("Address: 0x%02x" %adr);
             print("Key: 0x%02x" %key);
