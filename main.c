@@ -12,8 +12,8 @@
 #include "nec_receive_library/nec_receive.h"
 #include "nec_transmit_library/nec_transmit.h"
 
-#define PIN_SDA 4
-#define PIN_SCL 5
+#define PIN_SDA 4 // I2C Data
+#define PIN_SCL 5 // I2C Clock
 
 //IR LED connected to pin 14
 
@@ -210,6 +210,6 @@ int main() {
 
         
 
-        sleep_ms(time_to_sleep_ms); // sleep mode to charge super cap
+        //sleep_ms(time_to_sleep_ms); // sleep mode to charge super cap
     }
 }
