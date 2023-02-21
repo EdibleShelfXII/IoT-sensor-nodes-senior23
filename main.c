@@ -18,7 +18,7 @@
 //IR LED connected to pin 14
 
 const int ADDRESS = 0x44;
-const uint8_t adr = 0b11100000;
+const uint8_t adr = 0b11100000; // hardware address. Each node per hub has a unique 3-bit address. Use the 3 highest significant bits
 
 // I2C reserves some addresses for special purposes. We exclude these from the scan.
 // These are any addresses of the form 000 0xxx or 111 1xxx

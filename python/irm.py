@@ -2,6 +2,8 @@
 # -*- coding:utf-8 -*-
 import RPi.GPIO as GPIO
 import time
+import numpy as np
+import pandas as pd
 ERROR = 0xFE
 PIN = 18
 GPIO.setmode(GPIO.BCM)
@@ -20,6 +22,16 @@ rh_ticks = 0;
 
 t_degC = 0;
 rh_pRH = 0;
+
+array = np.array([[0b000, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                  [0b001, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                  [0b010, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                  [0b011, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                  [0b100, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                  [0b101, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                  [0b110, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                  [0b111, 0, 0, 0, 0, 0, 0, 0, 0, 0]])
+df = pd.DataFrame(array, columns = ['adr', 'msg_id', 't_ms', 't_ls', 'rh_ms', 'rh_ls', 'key', 'last_rcvd', 'temperature', 'relative_humidity'])
 
 def getMessage():
     bytes = [0, 0, 0, 0];
@@ -40,6 +52,7 @@ def getMessage():
             return message;
         else:
             return ERROR;
+            
 def IRStart():
     timeFallingEdge = [0, 0];
     timeRisingEdge = 0;
@@ -62,6 +75,7 @@ def IRStart():
         return True;
     else:
         return False;
+
 def getByte():
     byte = 0;
     timeRisingEdge = 0;
@@ -79,6 +93,24 @@ def getByte():
         if timeSpan > 0.0016 and timeSpan < 0.0018:
             byte |= 1 << i;
     return byte;
+
+def storeData(adr, msg_id, data, key):
+    if(msg_id == 0):
+        df.loc[adr, ['t_ms']] = [data];
+        df.loc[adr, ['key']] = [key];
+    elif(msg_id == 1 & key == df.loc[adr, ['key']] & df.loc[adr, ['last_rcvd']] == 0):
+        df.loc[adr, ['t_ls']] = [data];
+    elif(msg_id == 2 & key == df.loc[adr, ['key']] & df.loc[adr, ['last_rcvd']] == 1):
+        df.loc[adr, ['rh_ms']] = [data];
+    elif(msg_id == 3 & key == df.loc[adr, ['key']] & df.loc[adr, ['last_rcvd']] == 2):
+        df.loc[adr, ['rh_ls']] = [data];
+        t_ticks = (t_ms *256) + t_ls;
+        rh_ticks = (rh_ms * 256) + rh_ls;
+        t_degC = -45 + (175 * (t_ticks/65535));
+        rh_pRH = -6 + (125 * (rh_ticks/65535));
+        df.loc[adr, ['temperature']] = [t_degC];
+        df.loc[adr, ['relative_humidity']] = [rh_pRH];
+
 print('IRM Test Start ...');
 try:
     while True:
@@ -91,20 +123,9 @@ try:
             msg_id = rx_address & 0b00000011;
             print("Address: 0x%02x" %rx_address);
             print("Data: 0x%02x" %rx_data);
-            if(msg_id == 0b00):
-                t_ms = rx_data;
-                last_key = key;
-            elif(key == last_key):
-                if(msg_id == 0b01):
-                    t_ls = rx_data;
-                elif(msg_id == 0b10):
-                    rh_ms = rx_data;
-                elif(msg_id == 0b11):
-                    rh_ls = rx_data;
-            t_ticks = (t_ms *256) + t_ls;
-            rh_ticks = (rh_ms * 256) + rh_ls;
-            t_degC = -45 + (175 * (t_ticks/65535));
-            rh_pRH = -6 + (125 * (rh_ticks/65535));
-            print(f'Temperature: {t_degC:.2f} deg C\nRelative Humidity: {rh_pRH:.2f} %%\n');
+            storeData(adr, msg_id, rx_data, key);
+            
+            
+            #print(f'Temperature: {t_degC:.2f} deg C\nRelative Humidity: {rh_pRH:.2f} %%\n');
 except KeyboardInterrupt:
     GPIO.cleanup();
