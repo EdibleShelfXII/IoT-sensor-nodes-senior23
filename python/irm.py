@@ -4,12 +4,16 @@ import RPi.GPIO as GPIO
 import time
 import numpy as np
 import pandas as pd
+from flask import Flask
+import threading
 ERROR = 0xFE
 PIN = 18
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(PIN, GPIO.IN, GPIO.PUD_UP)
 
-start = -1;
+host_name = "0.0.0.0"
+port = 23336
+app = Flask(__name__)
 
 last_key = 0x00;
 t_ms = 0x00;
@@ -52,7 +56,7 @@ def getMessage():
             return message;
         else:
             return ERROR;
-            
+
 def IRStart():
     timeFallingEdge = [0, 0];
     timeRisingEdge = 0;
@@ -110,6 +114,20 @@ def storeData(adr, msg_id, data, key):
         rh_pRH = -6 + (125 * (rh_ticks/65535));
         df.loc[adr, ['temperature']] = [t_degC];
         df.loc[adr, ['relative_humidity']] = [rh_pRH];
+
+
+@app.route("/")
+def helloWorld():
+    return "<p>Hello, World!</p>";
+
+testData = 1771;
+
+@app.route("/test")
+def testing():
+    return testData;
+
+if __name__ == "__main__":
+    threading.Thread(target=lambda: app.run(host=host_name, port=port, debug=True, use_reloader=False)).start();
 
 print('IRM Test Start ...');
 try:
