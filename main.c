@@ -18,6 +18,7 @@
 //IR LED connected to pin 14
 
 const int ADDRESS = 0x44;
+const uint8_t adr = 0b11100000;
 
 // I2C reserves some addresses for special purposes. We exclude these from the scan.
 // These are any addresses of the form 000 0xxx or 111 1xxx
@@ -109,8 +110,11 @@ int main() {
     uint32_t tx_frame;
 
     // transmit and receive frames
-    // Address changes randomly each time a transmission is sent
     uint8_t tx_address = 0x00, tx_data = 0x00, rx_address, rx_data;
+    uint8_t key = 0;
+    uint8_t msg_id = 0;
+
+    uint8_t random_key = 0;
 
     // init time
     absolute_time_t time = get_absolute_time();
@@ -164,19 +168,12 @@ int main() {
             printf("Temperature: %.2f deg C\nRelative Humidity: %.2f%%\n", t_degC, rh_pRH);
 
             // randomize address
-            tx_address = rand() % 255;
-            printf("%x\n", tx_address);
+            random_key = rand() % 7;
+            key = random_key << 2;
+            printf("%x\n", random_key);
     
-            // create a 32-bit frame and add it to the transmit FIFO
-            /*
-            tx_data = 0xFF; // start command DEPRECATED
-            uint32_t tx_frame = nec_encode_frame(tx_address, tx_data);
-            pio_sm_put(pio, tx_sm, tx_frame);
-            printf("sent: %02x, %02x\n", tx_address, tx_data);
-
-            sleep_ms(30);
-            */
-
+            msg_id = 0;
+            tx_address = adr + key + msg_id;
             tx_data = rx_bytes[0]; // t part 1
             tx_frame = nec_encode_frame(tx_address, tx_data);
             pio_sm_put(pio, tx_sm, tx_frame);
@@ -184,6 +181,8 @@ int main() {
 
             sleep_ms(90);
 
+            msg_id = 1;
+            tx_address = adr + key + msg_id;
             tx_data = rx_bytes[1]; // t part 2
             tx_frame = nec_encode_frame(tx_address, tx_data);
             pio_sm_put(pio, tx_sm, tx_frame);
@@ -191,6 +190,8 @@ int main() {
 
             sleep_ms(90);
 
+            msg_id = 2;
+            tx_address = adr + key + msg_id;
             tx_data = rx_bytes[3]; // rh part 1
             tx_frame = nec_encode_frame(tx_address, tx_data);
             pio_sm_put(pio, tx_sm, tx_frame);
@@ -198,6 +199,8 @@ int main() {
 
             sleep_ms(90);
 
+            msg_id = 3;
+            tx_address = adr + key + msg_id;
             tx_data = rx_bytes[4]; // rh part 2
             tx_frame = nec_encode_frame(tx_address, tx_data);
             pio_sm_put(pio, tx_sm, tx_frame);

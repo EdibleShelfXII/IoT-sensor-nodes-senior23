@@ -9,11 +9,11 @@ GPIO.setup(PIN, GPIO.IN, GPIO.PUD_UP)
 
 start = -1;
 
-adrDef = 0x00;
-t_1 = 0x00;
-t_2 = 0x00;
-rh_1 = 0x00;
-rh_2 = 0x00;
+last_key = 0x00;
+t_ms = 0x00;
+t_ls = 0x00;
+rh_ms = 0x00;
+rh_ls = 0x00;
 
 t_ticks = 0;
 rh_ticks = 0;
@@ -21,25 +21,23 @@ rh_ticks = 0;
 t_degC = 0;
 rh_pRH = 0;
 
-adr = 0;
-
-def getKey(): # need to rewrite to return whole array!!!
-    byte = [0, 0, 0, 0];
+def getMessage():
+    bytes = [0, 0, 0, 0];
     if IRStart() == False:
         time.sleep(0.11);        # One message frame lasts 108 ms.
         return ERROR;
     else:
         for i in range(0, 4):
-            byte[i] = getByte();
+            bytes[i] = getByte();
         # Start signal is followed by 4 bytes:
         # byte[0] is an 8-bit ADDRESS for receiving
         # byte[1] is an 8-bit logical inverse of the ADDRESS
         # byte[2] is an 8-bit COMMAND
         # byte[3] is an 8-bit logical inverse of the COMMAND
-        print(byte);
-        if byte[0] + byte[1] == 0xff and byte[2] + byte[3] == 0xff:
-            adr = byte[0];
-            return byte[2];
+        print(bytes);
+        if bytes[0] + bytes[1] == 0xff and bytes[2] + bytes[3] == 0xff:
+            message = (bytes[0] << 8) + bytes[2]; 
+            return message;
         else:
             return ERROR;
 def IRStart():
@@ -84,30 +82,29 @@ def getByte():
 print('IRM Test Start ...');
 try:
     while True:
-        key = getKey();
-        #print("got key");
-        if(key != ERROR):
-            print("Address: 0x%02x" %adr);
-            print("Key: 0x%02x" %key);
-            print(start);
-            if(adr != adrDef):
-                t_1 = key;
-                start = 0;
-                adrDef = adr;
-            elif((start >= 0) & (adr == adrDef)):
-                if(start == 0):
-                    t_2 = key;
-                    start = 1;
-                elif(start == 1):
-                    rh_1 = key;
-                    start = 3;
-                elif(start == 3):
-                    rh_2 = key;
-                    start = -1;
-                    t_ticks = (t_1 *256) + t_2;
-                    rh_ticks = (rh_1 * 256) + rh_2;
-                    t_degC = -45 + (175 * (t_ticks/65535));
-                    rh_pRH = -6 + (125 * (rh_ticks/65535));
-                    print(f'Temperature: {t_degC:.2f} deg C\nRelative Humidity: {rh_pRH:.2f} %%\n');
+        message = getMessage();
+        rx_address = (message & 0xFF00) >> 8;
+        rx_data = message & 0x00FF;
+        if(rx_data != ERROR):
+            adr = (rx_address & 0b11100000) >> 5;
+            key = (rx_address & 0b00011100) >> 2;
+            msg_id = rx_address & 0b00000011;
+            print("Address: 0x%02x" %rx_address);
+            print("Data: 0x%02x" %rx_data);
+            if(msg_id == 0b00):
+                t_ms = rx_data;
+                last_key = key;
+            elif(key == last_key):
+                if(msg_id == 0b01):
+                    t_ls = rx_data;
+                elif(msg_id == 0b10):
+                    rh_ms = rx_data;
+                elif(msg_id == 0b11):
+                    rh_ls = rx_data;
+            t_ticks = (t_ms *256) + t_ls;
+            rh_ticks = (rh_ms * 256) + rh_ls;
+            t_degC = -45 + (175 * (t_ticks/65535));
+            rh_pRH = -6 + (125 * (rh_ticks/65535));
+            print(f'Temperature: {t_degC:.2f} deg C\nRelative Humidity: {rh_pRH:.2f} %%\n');
 except KeyboardInterrupt:
     GPIO.cleanup();
