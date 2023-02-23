@@ -20,6 +20,9 @@
 const int ADDRESS = 0x44;
 const uint8_t adr = 0b11100000; // hardware address. Each node per hub has a unique 3-bit address. Use the 3 highest significant bits
 
+const int repeat_transmissions = 2; // Number of times the same reading is transmitted ina row. More transmissions increase reliability 
+                                    // but reduce the total number of readings that can be transmitted in a short time period
+
 // I2C reserves some addresses for special purposes. We exclude these from the scan.
 // These are any addresses of the form 000 0xxx or 111 1xxx
 bool reserved_addr(uint8_t addr) {
@@ -171,42 +174,46 @@ int main() {
             random_key = rand() % 7;
             key = random_key << 2;
             printf("%x\n", random_key);
+
+            for (int i = 0; i < repeat_transmissions; i++) {
     
-            msg_id = 0;
-            tx_address = adr + key + msg_id;
-            tx_data = rx_bytes[0]; // t part 1
-            tx_frame = nec_encode_frame(tx_address, tx_data);
-            pio_sm_put(pio, tx_sm, tx_frame);
-            printf("sent: %02x, %02x\n", tx_address, tx_data);
+                msg_id = 0;
+                tx_address = adr + key + msg_id;
+                tx_data = rx_bytes[0]; // t part 1
+                tx_frame = nec_encode_frame(tx_address, tx_data);
+                pio_sm_put(pio, tx_sm, tx_frame);
+                printf("sent: %02x, %02x\n", tx_address, tx_data);
 
-            sleep_ms(90);
+                sleep_ms(90);
 
-            msg_id = 1;
-            tx_address = adr + key + msg_id;
-            tx_data = rx_bytes[1]; // t part 2
-            tx_frame = nec_encode_frame(tx_address, tx_data);
-            pio_sm_put(pio, tx_sm, tx_frame);
-            printf("sent: %02x, %02x\n", tx_address, tx_data);
+                msg_id = 1;
+                tx_address = adr + key + msg_id;
+                tx_data = rx_bytes[1]; // t part 2
+                tx_frame = nec_encode_frame(tx_address, tx_data);
+                pio_sm_put(pio, tx_sm, tx_frame);
+                printf("sent: %02x, %02x\n", tx_address, tx_data);
 
-            sleep_ms(90);
+                sleep_ms(90);
 
-            msg_id = 2;
-            tx_address = adr + key + msg_id;
-            tx_data = rx_bytes[3]; // rh part 1
-            tx_frame = nec_encode_frame(tx_address, tx_data);
-            pio_sm_put(pio, tx_sm, tx_frame);
-            printf("sent: %02x, %02x\n", tx_address, tx_data);
+                msg_id = 2;
+                tx_address = adr + key + msg_id;
+                tx_data = rx_bytes[3]; // rh part 1
+                tx_frame = nec_encode_frame(tx_address, tx_data);
+                pio_sm_put(pio, tx_sm, tx_frame);
+                printf("sent: %02x, %02x\n", tx_address, tx_data);
 
-            sleep_ms(90);
+                sleep_ms(90);
 
-            msg_id = 3;
-            tx_address = adr + key + msg_id;
-            tx_data = rx_bytes[4]; // rh part 2
-            tx_frame = nec_encode_frame(tx_address, tx_data);
-            pio_sm_put(pio, tx_sm, tx_frame);
-            printf("sent: %02x, %02x\n", tx_address, tx_data);
+                msg_id = 3;
+                tx_address = adr + key + msg_id;
+                tx_data = rx_bytes[4]; // rh part 2
+                tx_frame = nec_encode_frame(tx_address, tx_data);
+                pio_sm_put(pio, tx_sm, tx_frame);
+                printf("sent: %02x, %02x\n", tx_address, tx_data);
 
-            sleep_ms(90);
+                sleep_ms(90);
+
+            }
 
             //gpio_put(led_pin, 0);
             
