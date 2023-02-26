@@ -7,13 +7,15 @@ import pandas as pd
 from flask import Flask
 import threading
 ERROR = 0xFE
-PIN = 18
+PIN = 18 #GPIO pin for tsop382
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(PIN, GPIO.IN, GPIO.PUD_UP)
 
 host_name = "0.0.0.0"
 port = 23336
 app = Flask(__name__)
+
+adr = 8;
 
 last_key = 0x00;
 t_ms = 0x00;
@@ -40,7 +42,7 @@ df = pd.DataFrame(array, columns = ['adr', 'msg_id', 't_ms', 'key_t_ms', 't_ls',
 def getMessage():
     bytes = [0, 0, 0, 0];
     if IRStart() == False:
-        time.sleep(0.11);        # One message frame lasts 108 ms.
+        #time.sleep(0.11);        # One message frame lasts 108 ms.
         return ERROR;
     else:
         for i in range(0, 4):
@@ -132,37 +134,92 @@ def updateAPI(adr):
 
 def readIR():
     print('IRM Test Start ...');
-    try:
-        while True:
-            message = getMessage();
-            rx_address = (message & 0xFF00) >> 8;
-            rx_data = message & 0x00FF;
-            if(rx_data != ERROR):
-                adr = (rx_address & 0b11100000) >> 5;
-                key = (rx_address & 0b00011100) >> 2;
-                msg_id = rx_address & 0b00000011;
-                print("Address: 0x%02x" %rx_address);
-                print("Data: 0x%02x" %rx_data);
-                storeData(adr, msg_id, rx_data, key);
+    global adr;
+    while True:
+        message = getMessage();
+        rx_address = (message & 0xFF00) >> 8;
+        rx_data = message & 0x00FF;
+        if(rx_data != ERROR):
+            adr = (rx_address & 0b11100000) >> 5;
+            key = (rx_address & 0b00011100) >> 2;
+            msg_id = rx_address & 0b00000011;
+            print("Address: 0x%02x" %rx_address);
+            print("Data: 0x%02x" %rx_data);
+            storeData(adr, msg_id, rx_data, key);
+        else:
+            if(adr < 8):
                 updateAPI(adr);
+            else:
+                for i in range (0, 8):
+                    updateAPI(i);
+try:
 
-    except KeyboardInterrupt:
-        GPIO.cleanup();
+    @app.route("/")
+    def helloWorld():
+        return "<p>Hello, World!</p>";
 
-@app.route("/")
-def helloWorld():
-    return "<p>Hello, World!</p>";
+    testData = 1771;
 
-testData = 1771;
+    @app.route("/test")                                                                                                                                                                
+    def testing():
+        return f"{testData}";
 
-@app.route("/test")
-def testing():
-    return testData;
+    @app.route("/data/all")
+    def dataAll():
+        string = "";
+        for i in range(0, 8):
+            string = string + f"adr:{i},temperature:{df.loc[i, ['temperature']].item()},relative_humidity:{df.loc[i, ['relative_humidity']].item()}\n";
+        return string;
 
-#if __name__ == "__main__":
-    threading.Thread(target=lambda: app.run(host=host_name, port=port, debug=True, use_reloader=False)).start();
+    @app.route("/data/0")
+    def data0():
+        return f"adr:{0},temperature:{df.loc[0, ['temperature']].item()},relative_humidity:{df.loc[0, ['relative_humidity']].item()}\n";
+        
+    @app.route("/data/1")
+    def data1():
+        return f"adr:{1},temperature:{df.loc[1, ['temperature']].item()},relative_humidity:{df.loc[1, ['relative_humidity']].item()}\n";
+        
+    @app.route("/data/2")
+    def data2():
+        return f"adr:{2},temperature:{df.loc[2, ['temperature']].item()},relative_humidity:{df.loc[2, ['relative_humidity']].item()}\n";
+        
+    @app.route("/data/3")
+    def data3():
+        return f"adr:{3},temperature:{df.loc[3, ['temperature']].item()},relative_humidity:{df.loc[3, ['relative_humidity']].item()}\n";
+        
+    @app.route("/data/4")
+    def data4():
+        return f"adr:{4},temperature:{df.loc[4, ['temperature']].item()},relative_humidity:{df.loc[4, ['relative_humidity']].item()}\n";
+        
+    @app.route("/data/5")
+    def data5():
+        return f"adr:{5},temperature:{df.loc[5, ['temperature']].item()},relative_humidity:{df.loc[5, ['relative_humidity']].item()}\n";
+        
+    @app.route("/data/6")
+    def data6():
+        return f"adr:{6},temperature:{df.loc[6, ['temperature']].item()},relative_humidity:{df.loc[6, ['relative_humidity']].item()}\n";
+        
+    @app.route("/data/7")
+    def data7():
+        return f"adr:{7},temperature:{df.loc[7, ['temperature']].item()},relative_humidity:{df.loc[7, ['relative_humidity']].item()}\n";
+        
 
-threading.Thread(target=readIR).start();
+
+    if __name__ == "__main__":
+        threading.Thread(target=lambda: app.run(host=host_name, port=port, debug=True, use_reloader=False)).start();
+    
+    for i in range (0, 8):
+        updateAPI(i);
+
+    readIR();
+
+
+except KeyboardInterrupt:
+    GPIO.cleanup();
+
+
+
+
 
 
 
