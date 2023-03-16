@@ -4,7 +4,7 @@ from django.http import Http404
 from django.http import HttpResponse
 from django.template import loader
 
-from .models import Question
+from .models import Question, Hub, Node, Data
 
 
 def index(request):
@@ -25,5 +25,61 @@ def results(request, question_id):
 
 def vote(request, question_id):
     return HttpResponse("You're voting on question %s." % question_id)
+
+def hubs(request):
+    latest_hub_list = Hub.objects.all()
+    template = loader.get_template('polls/hubs.html')
+    context = {'mymembers' : latest_hub_list,}
+    return HttpResponse(template.render(context, request))
+
+def nodes(request, hub_id):
+    latest_node_list = Node.objects.filter(hub=hub_id)
+    template = loader.get_template('polls/nodes.html')
+    context = { 'mymembers' : latest_node_list,
+                'hub_id' : hub_id,
+                }
+    return HttpResponse(template.render(context, request))
+
+def data(request, hub_id, node_id):
+    latest_data_list = Data.objects.filter(node=node_id)
+    which_node = Node.objects.filter(id=node_id)
+
+    template = loader.get_template('polls/data.html')
+    context = { 'mymembers' : latest_data_list,
+                'node' : which_node,
+                }
+    return HttpResponse(template.render(context, request))
+
+def graphs(request, hub_id):
+    latest_node_list = Node.objects.filter(hub=hub_id).order_by('address')
+    node_0_data_list = latest_node_list.filter(address=0)
+    node_1_data_list = latest_node_list.filter(address=1)
+    node_2_data_list = latest_node_list.filter(address=2)
+    node_3_data_list = latest_node_list.filter(address=3)
+    node_4_data_list = latest_node_list.filter(address=4)
+    node_5_data_list = latest_node_list.filter(address=5)
+    node_6_data_list = latest_node_list.filter(address=6)
+    node_7_data_list = latest_node_list.filter(address=7)
+    template = loader.get_template('polls/graphs.html')
+    context = { 'list0' : node_0_data_list,
+                'list1' : node_1_data_list,
+                'list2' : node_2_data_list,
+                'list3' : node_3_data_list,
+                'list4' : node_4_data_list,
+                'list5' : node_5_data_list,
+                'list6' : node_6_data_list,
+                'list7' : node_7_data_list,
+                }
+    return HttpResponse(template.render(context, request))
+
+
+
+def testing(request):
+  mydata = Hub.objects.all()
+  template = loader.get_template('polls/hubs.html')
+  context = {
+    'mymembers': mydata,
+  }
+  return HttpResponse(template.render(context, request))
 
 

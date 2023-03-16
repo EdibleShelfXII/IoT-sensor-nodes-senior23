@@ -1,0 +1,16 @@
+{% if node %}
+    <ul>
+    {% for x in node %}
+        <p>data from node at address {{ x.address }}</p>
+    {% endfor %}
+    </ul>
+{% endif %}
+{% if mymembers %}
+    <ul>
+    {% for x in mymembers %}
+        <li>Temperature: {{ x.temperature }} degC, Humidity: {{ x.humidity }} %, Published: {{ x.pub_date }}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No data from this node yet.</p>
+{% endif %}

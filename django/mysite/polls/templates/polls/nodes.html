@@ -1,0 +1,9 @@
+{% if mymembers %}
+    <ul>
+    {% for x in mymembers %}
+        <li><a href="/polls/hubs/{{ hub_id }}/nodes/{{ x.id }}/">{{ x.address }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No nodes exist for this hub yet.</p>
+{% endif %}
