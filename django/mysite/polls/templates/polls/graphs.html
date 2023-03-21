@@ -8,13 +8,25 @@
         <title>My First Web Page</title>
         <link rel="icon" href= "{% static 'html5.png' %}" type ="image/x - icon">
         <link rel="stylesheet" href= "{% static 'main.css' %}" type="text/css">
+        {% if list0 %}
+            <ul>
+            {{ list0|json_script:'list0' }}
+            </ul>
+        {% endif %}
         <script>
+
             window.onload = function() {
             console.log("LOADED");
+
+
 
             //Configuration variables
             var updateInterval = 1000 //in ms
             var numberElements = 200;
+
+            //Data Variables
+            
+            const node0_data = JSON.parse(document.getElementById('list0').textContent);
 
             //Globals
             var updateCount = 0;
@@ -63,7 +75,8 @@
                 options: Object.assign({}, commonOptions, {
                 title:{
                     display: true,
-                    text: "Node 1 - Temperature",
+                    //text: "Node 1 - Temperature",
+                    text: node0_data.length,
                     fontSize: 18
                 }
                 })
@@ -167,7 +180,7 @@
             console.log("Update Data");
             addData({"adr": 1,"temp" : 50,"humd" : 24});
             addData({"adr": 2,"temp" : 75,"humd" : 60});
-            $.getJSON("TempHumGenerator.py", addData);
+            //$.getJSON("TempHumGenerator.py", addData);
             setTimeout(updateData,updateInterval);
             }
 

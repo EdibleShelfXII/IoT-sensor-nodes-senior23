@@ -1,0 +1,7 @@
+services:
+  web: 
+    build:
+      context: mysite
+      target: builder
+    ports: 
+      - '8000:8000'
