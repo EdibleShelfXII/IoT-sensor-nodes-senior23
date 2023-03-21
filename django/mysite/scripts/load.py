@@ -2,19 +2,33 @@ import requests
 import numpy as np
 import pandas as pd
 import json
+from django.utils import dateparse
 
 from polls.models import Hub, Node, Data
 
-hub_name = "test"
+hubs = Hub.objects.all()
 
-api_url = "http://localhost:23336/data/all"
+for hub_object in hubs:
+    #hub_name = i.name
+    #hub_object = Hub.objects.get(name=hub_name)
 
-response = requests.get(api_url)
 
-data = json.loads(response.text)
+    api_url = f"http://{hub_object.address}:{hub_object.port}/data/all"
 
-df = pd.DataFrame.from_dict(data)
+    try:
+        response = requests.get(api_url)
 
-print(df)
+        data = json.loads(response.text)
 
-Data.objects.create(node="test0", temperature = df.loc[0, ['temperature']].item(), humidity = df.loc[0, ['relative_humidity']].item())
+        df = pd.DataFrame.from_dict(data)
+
+        print(df)
+
+        nodes = Node.objects.filter(hub=hub_object)
+
+        for node_object in nodes:
+            adr = node_object.address
+            Data.objects.create(node=node_object, temperature=df.loc[adr, ['temperature']].item(), humidity=df.loc[adr, ['relative_humidity']].item(), pub_date=dateparse.parse_datetime(df.loc[adr, ['date_time']].item()))
+
+    except requests.exceptions.RequestException as e:
+        print(f'Connection Error at url: {api_url}, associated with Hub: {hub_object.name}')

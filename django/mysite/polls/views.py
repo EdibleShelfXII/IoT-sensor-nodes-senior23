@@ -3,6 +3,7 @@ from django.http import Http404
 
 from django.http import HttpResponse
 from django.template import loader
+from django.views.generic import TemplateView
 
 from .models import Question, Hub, Node, Data
 
@@ -41,7 +42,7 @@ def nodes(request, hub_id):
     return HttpResponse(template.render(context, request))
 
 def data(request, hub_id, node_id):
-    latest_data_list = Data.objects.filter(node=node_id)
+    latest_data_list = Data.objects.filter(node=node_id).order_by('-pub_date')[:10]
     which_node = Node.objects.filter(id=node_id)
 
     template = loader.get_template('polls/data.html')
@@ -51,6 +52,10 @@ def data(request, hub_id, node_id):
     return HttpResponse(template.render(context, request))
 
 def graphs(request, hub_id):
+    labels = []
+    data = []
+
+
     latest_node_list = Node.objects.filter(hub=hub_id).order_by('address')
     node_0_data_list = latest_node_list.filter(address=0)
     node_1_data_list = latest_node_list.filter(address=1)
@@ -72,14 +77,24 @@ def graphs(request, hub_id):
                 }
     return HttpResponse(template.render(context, request))
 
+def chart(request, hub_id, node_id):
+    labels = []
+    data = []
+    latest_data_list = Data.objects.filter(node=node_id).order_by('-pub_date')[:10]
+    which_node = Node.objects.filter(id=node_id)
+
+    for dataPoint in latest_data_list:
+        labels.append(dataPoint.pub_date.strftime("%m/%d/%Y, %H:%M:%S"))
+        data.append(dataPoint.temperature)
 
 
-def testing(request):
-  mydata = Hub.objects.all()
-  template = loader.get_template('polls/hubs.html')
-  context = {
-    'mymembers': mydata,
-  }
-  return HttpResponse(template.render(context, request))
+    template = loader.get_template('polls/chart.html')
+    context = { 'labels' : labels,
+                'data' : data,
+                }
+    return HttpResponse(template.render(context, request))
+
+        
+    
 
 

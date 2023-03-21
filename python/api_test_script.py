@@ -5,6 +5,7 @@ import numpy as np
 import pandas as pd
 import json
 from flask import Flask
+import datetime
 import threading
 
 host_name = "0.0.0.0"
@@ -25,16 +26,18 @@ rh_ticks = 0;
 t_degC = 0;
 rh_pRH = 0;
 
+read_time =datetime.datetime.now().isoformat()
+
 # All test data
-array = np.array([[0b000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0],
-                  [0b001, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 0],
-                  [0b010, 0, 0, 0, 0, 0, 0, 0, 0, 0, 30, 0],
-                  [0b011, 0, 0, 0, 0, 0, 0, 0, 0, 0, 40, 0],
-                  [0b100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 50, 0],
-                  [0b101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 60, 0],
-                  [0b110, 0, 0, 0, 0, 0, 0, 0, 0, 0, 70, 0],
-                  [0b111, 0, 0, 0, 0, 0, 0, 0, 0, 0, 80, 0]])
-df = pd.DataFrame(array, columns = ['adr', 'msg_id', 't_ms', 'key_t_ms', 't_ls', 'key_t_ls', 'rh_ms', 'key_rh_ms', 'rh_ls', 'key_rh_ls', 'temperature', 'relative_humidity'])
+array = np.array([[0b000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, read_time],
+                  [0b001, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 0, read_time],
+                  [0b010, 0, 0, 0, 0, 0, 0, 0, 0, 0, 30, 0, read_time],
+                  [0b011, 0, 0, 0, 0, 0, 0, 0, 0, 0, 40, 0, read_time],
+                  [0b100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 50, 0, read_time],
+                  [0b101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 60, 0, read_time],
+                  [0b110, 0, 0, 0, 0, 0, 0, 0, 0, 0, 70, 0, read_time],
+                  [0b111, 0, 0, 0, 0, 0, 0, 0, 0, 0, 80, 0, read_time]])
+df = pd.DataFrame(array, columns = ['adr', 'msg_id', 't_ms', 'key_t_ms', 't_ls', 'key_t_ls', 'rh_ms', 'key_rh_ms', 'rh_ls', 'key_rh_ls', 'temperature', 'relative_humidity', 'date_time'])
 
 
 
@@ -70,6 +73,7 @@ def updateAPI(adr):
             #print(t_degC, rh_pRH);
             df.loc[adr, ['temperature']] = [t_degC];
             df.loc[adr, ['relative_humidity']] = [rh_pRH];
+            df.loc[adr, ['date_time']] = datetime.datetime.now().isoformat();
         print(df);
         #time.sleep(0.1);
 

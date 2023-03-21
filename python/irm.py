@@ -6,6 +6,7 @@ import numpy as np
 import pandas as pd
 import json
 from flask import Flask
+import datetime
 import threading
 ERROR = 0xFE
 PIN = 18 #GPIO pin for tsop382
@@ -30,15 +31,17 @@ rh_ticks = 0;
 t_degC = 0;
 rh_pRH = 0;
 
-array = np.array([[0b000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                  [0b001, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                  [0b010, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                  [0b011, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                  [0b100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                  [0b101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                  [0b110, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                  [0b111, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]])
-df = pd.DataFrame(array, columns = ['adr', 'msg_id', 't_ms', 'key_t_ms', 't_ls', 'key_t_ls', 'rh_ms', 'key_rh_ms', 'rh_ls', 'key_rh_ls', 'temperature', 'relative_humidity'])
+default_time = datetime.datetime.now().isoformat()
+
+array = np.array([[0b000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, default_time],
+                  [0b001, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 0, default_time],
+                  [0b010, 0, 0, 0, 0, 0, 0, 0, 0, 0, 30, 0, default_time],
+                  [0b011, 0, 0, 0, 0, 0, 0, 0, 0, 0, 40, 0, default_time],
+                  [0b100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 50, 0, default_time],
+                  [0b101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 60, 0, default_time],
+                  [0b110, 0, 0, 0, 0, 0, 0, 0, 0, 0, 70, 0, default_time],
+                  [0b111, 0, 0, 0, 0, 0, 0, 0, 0, 0, 80, 0, default_time]])
+df = pd.DataFrame(array, columns = ['adr', 'msg_id', 't_ms', 'key_t_ms', 't_ls', 'key_t_ls', 'rh_ms', 'key_rh_ms', 'rh_ls', 'key_rh_ls', 'temperature', 'relative_humidity', 'date_time'])
 
 def getMessage():
     bytes = [0, 0, 0, 0];
@@ -130,6 +133,7 @@ def updateAPI(adr):
             #print(t_degC, rh_pRH);
             df.loc[adr, ['temperature']] = [t_degC];
             df.loc[adr, ['relative_humidity']] = [rh_pRH];
+            df.loc[adr, ['date_time']] = datetime.datetime.now().isoformat();
         print(df);
         #time.sleep(0.1);
 
@@ -167,44 +171,39 @@ try:
 
     @app.route("/data/all")
     def dataAll():
-        string = "";
-        for i in range(0, 8):
-            string = string + f"adr:{i},temperature:{df.loc[i, ['temperature']].item()},relative_humidity:{df.loc[i, ['relative_humidity']].item()}\n";
-        return string;
+        return df.to_json(orient = 'records');
 
     @app.route("/data/0")
     def data0():
-        return f"adr:{0},temperature:{df.loc[0, ['temperature']].item()},relative_humidity:{df.loc[0, ['relative_humidity']].item()}\n";
-        
+        return df[df["adr"]==0b000].to_json(orient = 'records');
+
     @app.route("/data/1")
     def data1():
-        return f"adr:{1},temperature:{df.loc[1, ['temperature']].item()},relative_humidity:{df.loc[1, ['relative_humidity']].item()}\n";
-        
+        return df[df["adr"]==0b001].to_json(orient = 'records');
+
     @app.route("/data/2")
     def data2():
-        return f"adr:{2},temperature:{df.loc[2, ['temperature']].item()},relative_humidity:{df.loc[2, ['relative_humidity']].item()}\n";
+        return df[df["adr"]==0b010].to_json(orient = 'records');
         
     @app.route("/data/3")
     def data3():
-        return f"adr:{3},temperature:{df.loc[3, ['temperature']].item()},relative_humidity:{df.loc[3, ['relative_humidity']].item()}\n";
+        return df[df["adr"]==0b011].to_json(orient = 'records');
         
     @app.route("/data/4")
     def data4():
-        return f"adr:{4},temperature:{df.loc[4, ['temperature']].item()},relative_humidity:{df.loc[4, ['relative_humidity']].item()}\n";
-        
+        return df[df["adr"]==0b100].to_json(orient = 'records');
+
     @app.route("/data/5")
     def data5():
-        return f"adr:{5},temperature:{df.loc[5, ['temperature']].item()},relative_humidity:{df.loc[5, ['relative_humidity']].item()}\n";
+        return df[df["adr"]==0b101].to_json(orient = 'records');
         
     @app.route("/data/6")
     def data6():
-        return f"adr:{6},temperature:{df.loc[6, ['temperature']].item()},relative_humidity:{df.loc[6, ['relative_humidity']].item()}\n";
+        return df[df["adr"]==0b110].to_json(orient = 'records');
         
     @app.route("/data/7")
     def data7():
-        return f"adr:{7},temperature:{df.loc[7, ['temperature']].item()},relative_humidity:{df.loc[7, ['relative_humidity']].item()}\n";
-        
-
+        return df[df["adr"]==0b111].to_json(orient = 'records');
 
     if __name__ == "__main__":
         threading.Thread(target=lambda: app.run(host=host_name, port=port, debug=True, use_reloader=False)).start();

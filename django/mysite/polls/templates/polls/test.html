@@ -1,94 +1,35 @@
-{% load static %}
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset ="UTF-8">
-        <meta name ="author" content ="Anthony Lopez">
-        <meta name="description" content ="This is my test HTML file for learning purposes.">
-        <title>My First Web Page</title>
-        <link rel="icon" href= "{% static 'html5.png' %}" type ="image/x - icon">
-        <link rel="stylesheet" href= "{% static 'main.css' %}" type="text/css">
-        <script type = "text/javascript" src = "{% static 'ReadData2.js' %}" ></script>
-		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.js"></script>
-    	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+<html>
+<head>
+<title>Bite exercise stats</title>
+</head>
+<body>
 
-		<style>
-			.container{
-			  display:flex;
-		  
-			}
-		  
-			.label{
-			  flex:1;
-			  vertical-align: middle;
-			  text-align: center;
-			}
-		  
-			.t{
-			  flex:3;
-			  text-align: center;
-			  background-color: rgba(235, 113, 101, 0.73);
-			  margin: 10px;
-			}
-		  
-			.h{
-			  flex:3;
-			  text-align: center;
-			  background-color: rgba(70, 163, 71, 0.64);
-			  margin-top: 10px;
-			  margin-bottom:10px;
-		  }
-		  
-			h1{
-			  text-align: center;
-			}
-		  
-			</style>
+  <canvas id="myChart" width="800" height="400"></canvas>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+  const ctx = document.getElementById('myChart').getContext('2d');
+  const myChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels : [{% for item in labels %}"{{ item }}",{% endfor %}],
+          datasets: [{
+            label: "Bite exercises complete per month",
+            data : [{% for item in values %}{{ item }},{% endfor %}],
+            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            borderColor: 'rgba(75, 192, 192, 1)',
+            borderWidth: 1
+          }]
+      },
+      options: {
+          scales: {
+              y: {
+                  beginAtZero: true
+              }
+          }
+      }
+  });
+  </script>
 
-    </head>
-		
-
-    <body>
-        <h1>Hello World!</h1>
-		<h2 style="text-align: center;">IoT Sensor Nodes</h2>
-		<h2 style="text-align: center;">Spring 23</h2>
-        <p style="text-align: center;">These are charts displaying sensor data.</p>
-        
-        
-		<div id="labelNode1" class="label">
-			<h2> Node 1 </h2>
-		  </div>
-
-		<div id="node1Container" class="container">
-
-		<div id="node1Temp" class="t">
-	
-			<canvas id="node1Temperature"></canvas>
-		</div>
-		<div id="node1Humd" class="h">
-	
-			<canvas id="node1Humidity"></canvas>
-		</div>
-		
-		</div>  
-
-
-		<div id="labelNode2" class="label">
-			<h2> Node 2 </h2>
-		  </div>
-		<div id="node2Container" class="container">
-
-			<div id="node2Temp" class="t">
-		
-				<canvas id="node2Temperature"></canvas>
-			</div>
-			<div id="node2Humd" class="h">
-		
-				<canvas id="node2Humidity"></canvas>
-			</div>
-			
-			</div> 
-        
-    </body>
-
+</body>
 </html>
