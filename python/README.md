@@ -1,3 +1,6 @@
+# TOTALLY OUTDATED!!
+### WILL UPDATE SOON
+
 ## API:
 
 ### /data/all
