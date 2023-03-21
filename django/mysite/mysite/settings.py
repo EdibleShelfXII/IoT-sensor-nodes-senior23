@@ -39,6 +39,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'chartjs',
+    'django_extensions',
+    'requests',
+    'jsonfield',
+    'numpy',
+    'json',
+    'pandas',
 ]
 
 MIDDLEWARE = [

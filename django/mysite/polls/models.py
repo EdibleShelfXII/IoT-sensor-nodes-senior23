@@ -31,6 +31,9 @@ class Node(models.Model):
     hub = models.ForeignKey(Hub, on_delete=models.CASCADE)
     address = models.IntegerField(default=8)
     location = models.CharField(max_length=200)
+    name = models.CharField(max_length=200, default='')
+    def __str__(self):
+        return f'{self.hub}{self.address}'
 
 class Data(models.Model):
     node = models.ForeignKey(Node, on_delete=models.CASCADE)

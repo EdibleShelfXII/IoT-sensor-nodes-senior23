@@ -4,6 +4,7 @@ import RPi.GPIO as GPIO
 import time
 import numpy as np
 import pandas as pd
+import json
 from flask import Flask
 import threading
 ERROR = 0xFE

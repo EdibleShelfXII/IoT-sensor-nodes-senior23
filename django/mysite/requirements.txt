@@ -1,3 +1,9 @@
 Django==4.1.7
 environs==7.3.1
 django-chartjs
+django-extensions
+requests
+jsonfield
+numpy
+pandas
+json
