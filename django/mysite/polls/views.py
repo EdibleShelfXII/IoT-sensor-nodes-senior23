@@ -44,10 +44,12 @@ def nodes(request, hub_id):
 def data(request, hub_id, node_id):
     latest_data_list = Data.objects.filter(node=node_id).order_by('-pub_date')[:10]
     which_node = Node.objects.filter(id=node_id)
+    which_hub = Node.objects.filter(id=hub_id)
 
     template = loader.get_template('polls/data.html')
     context = { 'mymembers' : latest_data_list,
                 'node' : which_node,
+                'hub' : which_hub,
                 }
     return HttpResponse(template.render(context, request))
 
