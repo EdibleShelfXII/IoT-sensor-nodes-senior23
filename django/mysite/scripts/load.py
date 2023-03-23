@@ -16,7 +16,7 @@ for hub_object in hubs:
     api_url = f"http://{hub_object.address}:{hub_object.port}/data/all"
 
     try:
-        response = requests.get(api_url)
+        response = requests.get(api_url, timeout=10)
 
         data = json.loads(response.text)
 

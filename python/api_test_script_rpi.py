@@ -8,6 +8,7 @@ import json
 from flask import Flask
 import datetime
 import threading
+import random
 ERROR = 0xFE
 PIN = 18 #GPIO pin for tsop382
 GPIO.setmode(GPIO.BCM)
@@ -31,7 +32,9 @@ rh_ticks = 0;
 t_degC = 0;
 rh_pRH = 0;
 
-default_time = datetime.datetime.now().isoformat()
+random.seed(datetime.datetime.now().timestamp());
+
+default_time = datetime.datetime.now().isoformat();
 
 array = np.array([[0b000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 21.55, 40.36, default_time],
                   [0b001, 0, 0, 0, 0, 0, 0, 0, 0, 0, 24.38, 34.68, default_time],
@@ -52,16 +55,18 @@ def updateAPI(adr):
             t_ticks = (df.loc[adr, ['t_ms']].item() *256) + df.loc[adr, ['t_ls']].item();
             rh_ticks = (df.loc[adr, ['rh_ms']].item() * 256) + df.loc[adr, ['rh_ls']].item();
             #print(t_ticks, rh_ticks);
-            t_degC = -45 + (175 * (t_ticks/65535));
-            rh_pRH = -6 + (125 * (rh_ticks/65535));
+            #t_degC = -45 + (175 * (t_ticks/65535));
+            #rh_pRH = -6 + (125 * (rh_ticks/65535));
             #print(t_degC, rh_pRH);
-            df.loc[adr, ['temperature']] = 21.55;
-            df.loc[adr, ['relative_humidity']] = 40.36;
+            df.loc[adr, ['temperature']] = (random.randrange(0, 3000, 1)/100);
+            df.loc[adr, ['relative_humidity']] = (random.randrange(0, 10000, 1)/100);
             df.loc[adr, ['date_time']] = datetime.datetime.now().isoformat();
         print(df);
         #time.sleep(0.1);
 
 try:
+
+    print(df);
 
     @app.route("/")
     def helloWorld():
@@ -112,8 +117,16 @@ try:
     if __name__ == "__main__":
         threading.Thread(target=lambda: app.run(host=host_name, port=port, debug=True, use_reloader=False)).start();
     
-    for i in range (0, 8):
-        updateAPI(i);
+    while(1):
+        try:
+            for i in range (0, 8):
+                updateAPI(i);
+            time.sleep(30);
+        
+        except KeyboardInterrupt:
+            break;
+
+    
 
 
 except KeyboardInterrupt:
