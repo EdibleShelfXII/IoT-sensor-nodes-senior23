@@ -2,7 +2,8 @@ Django==4.1.7
 environs==7.3.1
 django-chartjs
 django-extensions
-django_cron
+django-cron
+django-crontab
 requests
 jsonfield
 numpy

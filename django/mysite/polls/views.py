@@ -7,6 +7,8 @@ from django.views.generic import TemplateView
 
 from .models import Question, Hub, Node, Data
 
+from polls import cron
+
 
 def index(request):
     latest_question_list = Question.objects.order_by('-pub_date')[:5]
@@ -106,9 +108,6 @@ def chart(request, hub_id, node_id):
         labels.append(dataPoint.pub_date.strftime("%m/%d/%Y, %H:%M:%S"))
         data.append(dataPoint.temperature)
         humd.append(dataPoint.humidity)
-
-    
-
 
     template = loader.get_template('polls/graphs.html')
     context = { 'labels' : labels,
