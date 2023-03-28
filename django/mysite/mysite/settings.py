@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_cron',
+    'django_crontab',
     'chartjs',
     'django_extensions',
     'requests',
@@ -132,3 +133,7 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CRONJOBS = [
+    ('*/15 * * * *', 'polls.cron.update_db_from_api')
+]

@@ -84,20 +84,38 @@ def chart(request, hub_id, node_id):
     data = []
     humd = []
     latest_data_list = Data.objects.filter(node=node_id).order_by('-pub_date')[:10]
-    which_node = Node.objects.filter(id=node_id)
+    which_node = Node.objects.get(id=node_id)
+    which_hub = Hub.objects.get(id=hub_id)
+    hub_name = which_hub.get_name
+    hub_location = which_hub.get_location
+    node_name = which_node.get_name
+    node_address = which_node.get_address
+
+
+    hub_dict = {'hub_id' : hub_id,
+                'hub_name' : hub_name,
+                'hub_location' : hub_location,
+                }
+    
+    node_dict = {'node_id' : node_id,
+                 'node_name' : node_name,
+                 'node_address' : node_address,
+                 }
 
     for dataPoint in latest_data_list:
         labels.append(dataPoint.pub_date.strftime("%m/%d/%Y, %H:%M:%S"))
         data.append(dataPoint.temperature)
         humd.append(dataPoint.humidity)
 
+    
+
 
     template = loader.get_template('polls/graphs.html')
     context = { 'labels' : labels,
                 'data' : data,
                 'humidity' : humd,
-                'node' : str(node_id),
-                'hub' :  str(hub_id)
+                'node' : which_node.address,
+                'hub' :  f'"{which_hub.name}"',
                 }
     return HttpResponse(template.render(context, request))
 
