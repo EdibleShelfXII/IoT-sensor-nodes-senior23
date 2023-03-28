@@ -82,17 +82,22 @@ def graphs(request, hub_id):
 def chart(request, hub_id, node_id):
     labels = []
     data = []
+    humd = []
     latest_data_list = Data.objects.filter(node=node_id).order_by('-pub_date')[:10]
     which_node = Node.objects.filter(id=node_id)
 
     for dataPoint in latest_data_list:
         labels.append(dataPoint.pub_date.strftime("%m/%d/%Y, %H:%M:%S"))
         data.append(dataPoint.temperature)
+        humd.append(dataPoint.humidity)
 
 
-    template = loader.get_template('polls/chart.html')
+    template = loader.get_template('polls/graphs.html')
     context = { 'labels' : labels,
                 'data' : data,
+                'humidity' : humd,
+                'node' : str(node_id),
+                'hub' :  str(hub_id)
                 }
     return HttpResponse(template.render(context, request))
 
