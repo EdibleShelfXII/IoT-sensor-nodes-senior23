@@ -22,7 +22,7 @@ window.onload = function() {
     console.log("LOADED");
 
     //Configuration variables
-    var updateInterval = 10000 //in ms
+    var updateInterval = 300000 //in ms
     var numberElements = 15 
     
 
@@ -173,29 +173,8 @@ window.onload = function() {
         window.location = window.location.href;
     }
 
-    function getLiveData(){
-        //window.location = window.location.href;
-        let new_tempData = {{data}};
-        let new_labels = {{labels|safe}};
-        let new_humData = {{humidity}};
-
-        console.log(new_labels,timeLabels);
-        if(equalsCheck(new_labels,timeLabels)){
-            console.log("Polling...")
-           
-            
-        }
-        else{
-            //updateData(node,new_tempData[0],new_humData[0],new_labels[0]);
-            console.log("New data added!")
-            
-        }
-        setTimeout(getLiveData,updateInterval);
-        
-    }
-
     
-    getLiveData();
+    setTimeout(autoRefresh, updateInterval);
 
   }
         </script>
