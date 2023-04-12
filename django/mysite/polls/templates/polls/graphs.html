@@ -36,11 +36,24 @@ window.onload = function() {
     
     var tempData = {{data|safe}};
     var timeLabels = {{labels|safe}};
-    var humData = {{humidity|safe}}; 
+    var humdData = {{humidity|safe}}; 
     var node = {{node|safe}};
     var hub = {{hub|safe}};
     
     var top = tempData.length-1;
+
+    var data_temp = [];
+    for (let i =0; i < timeLabels.length; i++) {
+      data_temp.push({x : new Date(timeLabels[i]), y : tempData[i]});
+    }
+    console.log(data_temp);
+
+    var data_humd = [];
+    for (let i =0; i < timeLabels.length; i++) {
+      data_humd.push({x : new Date(timeLabels[i]), y : humdData[i]});
+    }
+    console.log(data_humd);
+
 
     document.getElementById('hubNode').innerHTML = "Hub ".concat(hub,": Node ",node);
 
@@ -49,14 +62,15 @@ window.onload = function() {
     var commonOptions = {
         scales: {
           xAxes: [{
+            type: 'time',
             ticks: {
-                    reverse: true,
                     fontColor : 'white'
                 },
             gridLines:{ 
                 color: "#131c2b",
                 borderWidth : 3
-        }
+                },
+            min: new Date(timeLabels[6])
             
           }],
             yAxes: [{
@@ -85,10 +99,11 @@ window.onload = function() {
         data: {
           datasets: [{
               label: "Node 1 Temperature",
-              data: 0,
+              data: data_temp,
               fill: false,
               borderColor: 'white',
-              borderWidth: 2
+              borderWidth: 2,
+              tension: 0.2
           }]
         },
         options: Object.assign({}, commonOptions, {
@@ -97,7 +112,11 @@ window.onload = function() {
             text: "Node ".concat(node, " - Temperature"),
             fontSize: 18,
             fontColor : 'rgba(255,255,255)'
+          },
+          animation: {
+            duration : 0
           }
+          
         })
     });
     var nodeChartInstance_humd = new Chart(nodeHumidity, {
@@ -105,10 +124,11 @@ window.onload = function() {
         data: {
           datasets: [{
               label: "Node 1 Humidity",
-              data: 0,
+              data: data_humd,
               fill: false,
               borderColor: 'rgba(204,255,229,0.5)',
-              borderWidth: 2
+              borderWidth: 2,
+              tension: 0.2
           }]
         },
         options: Object.assign({}, commonOptions, {
@@ -117,63 +137,18 @@ window.onload = function() {
             text: "Node ".concat(node, " - Humidity"),
             fontSize: 18,
             fontColor : 'rgba(255,255,255)'
+          },
+          animation: {
+            duration: 0
           }
+          
         })
     });
-
-    function addData(data) {
-      if(data){
-       
-        nodeChartInstance_temp.data.labels.push(data['label']); // Push date from list0
-        nodeChartInstance_temp.data.datasets.forEach((dataset) => {dataset.data.push(data['temp'])});
-        nodeChartInstance_humd.data.labels.push(data['label']);
-        nodeChartInstance_humd.data.datasets.forEach((dataset) => {dataset.data.push(data['humd'])});
-        
-
-        if(count > numberElements){
-            nodeChartInstance_temp.data.labels.shift();
-            nodeChartInstance_temp.data.datasets[0].data.shift();
-            nodeChartInstance_humd.data.labels.shift();
-            nodeChartInstance_humd.data.datasets[0].data.shift();  
-            console.log(count);
-              
-        }
-        else count++;
-        nodeChartInstance_temp.update();
-        nodeChartInstance_humd.update();
-
-      }
-    };
-
-    
-    function updateData(nodeNum, temp, humd, label) {
-       
-      console.log("Update Data");
-      addData({"adr": nodeNum,"temp" : temp,"humd" : humd,"label" : label})
-      //setTimeout(updateData,updateInterval);
-      //top--;  
-    }
-
-    //updateData();
-
-    function intialData(){
-        // intial update : recieving first 10 data points
-        for(let i = 0; i <tempData.length; i++){
-            updateData(node,tempData[i],humData[i],timeLabels[i]);
-        }
-    }
-
-    intialData();
-
-    const equalsCheck = (a,b) => {
-        return JSON.stringify(a) === JSON.stringify(b);
-    }
 
     function autoRefresh(){
         window.location = window.location.href;
     }
 
-    
     setTimeout(autoRefresh, updateInterval);
 
   }

@@ -105,7 +105,7 @@ def chart(request, hub_id, node_id):
                  }
 
     for dataPoint in latest_data_list:
-        labels.append(dataPoint.pub_date.strftime("%m/%d/%Y, %H:%M:%S"))
+        labels.append(dataPoint.pub_date.strftime("%Y-%m-%dT%H:%M:%SZ")) #(YYYY-MM-DDTHH:MM:SSZ)
         data.append(dataPoint.temperature)
         humd.append(dataPoint.humidity)
 
