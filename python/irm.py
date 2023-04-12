@@ -31,7 +31,7 @@ rh_ticks = 0;
 t_degC = 0;
 rh_pRH = 0;
 
-default_time = datetime.datetime.now().isoformat()
+default_time = datetime.datetime(2000, 1, 1, 0, 0, 0).isoformat()
 
 array = np.array([[0b000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, default_time],
                   [0b001, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 0, default_time],
@@ -128,8 +128,8 @@ def updateAPI(adr):
             t_ticks = (df.loc[adr, ['t_ms']].item() *256) + df.loc[adr, ['t_ls']].item();
             rh_ticks = (df.loc[adr, ['rh_ms']].item() * 256) + df.loc[adr, ['rh_ls']].item();
             #print(t_ticks, rh_ticks);
-            t_degC = -45 + (175 * (t_ticks/65535));
-            rh_pRH = -6 + (125 * (rh_ticks/65535));
+            t_degC = float(-45 + (175 * (float(t_ticks)/65535)));
+            rh_pRH = float(-6 + (125 * (float(rh_ticks)/65535)));
             #print(t_degC, rh_pRH);
             df.loc[adr, ['temperature']] = [t_degC];
             df.loc[adr, ['relative_humidity']] = [rh_pRH];
@@ -208,8 +208,10 @@ try:
     if __name__ == "__main__":
         threading.Thread(target=lambda: app.run(host=host_name, port=port, debug=True, use_reloader=False)).start();
     
-    for i in range (0, 8):
-        updateAPI(i);
+    #for i in range (0, 8):
+        #updateAPI(i);
+    
+
 
     readIR();
 

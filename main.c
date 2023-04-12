@@ -47,8 +47,8 @@ int main() {
     stdio_init_all();
 
     PIO pio = pio0;                                 // choose which PIO block to use (RP2040 has two: pio0 and pio1)
-    uint tx_gpio = 15;                              // choose which GPIO pin is connected to the IR LED
-    uint rx_gpio = 14;                              // choose which GPIO pin is connected to the IR detector
+    uint tx_gpio = 14;                              // choose which GPIO pin is connected to the IR LED
+    uint rx_gpio = 15;                              // choose which GPIO pin is connected to the IR detector
 
     // configure and enable the state machines
     int tx_sm = nec_tx_init(pio, tx_gpio);         // uses two state machines, 16 instructions and one IRQ
