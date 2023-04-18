@@ -8,6 +8,7 @@ import json
 from flask import Flask
 import datetime
 import threading
+
 ERROR = 0xFE
 PIN = 18 #GPIO pin for tsop382
 GPIO.setmode(GPIO.BCM)
