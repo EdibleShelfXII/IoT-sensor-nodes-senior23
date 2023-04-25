@@ -33,6 +33,8 @@ rh_pRH = 0;
 
 default_time = datetime.datetime(2000, 1, 1, 0, 0, 0).isoformat()
 
+
+
 array = np.array([[0b000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, default_time],
                   [0b001, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 0, default_time],
                   [0b010, 0, 0, 0, 0, 0, 0, 0, 0, 0, 30, 0, default_time],
@@ -100,7 +102,7 @@ def getByte():
         GPIO.wait_for_edge(PIN, GPIO.FALLING);
         timeFallingEdge = time.time();
         timeSpan = timeFallingEdge - timeRisingEdge;
-        print(f"bit {i}: {timeSpan}");
+        #print(f"bit {i}: {timeSpan}");
         if timeSpan > 0.0016 and timeSpan < 0.0018:
             byte |= 1 << i;
     return byte;
@@ -154,9 +156,6 @@ def readIR():
         else:
             if(adr < 8):
                 updateAPI(adr);
-            else:
-                for i in range (0, 8):
-                    updateAPI(i);
 try:
 
     @app.route("/")

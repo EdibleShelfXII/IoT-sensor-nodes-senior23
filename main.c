@@ -20,7 +20,7 @@
 const int ADDRESS = 0x44;
 const uint8_t adr = 0b11100000; // hardware address. Each node per hub has a unique 3-bit address. Use the 3 highest significant bits
 
-const int repeat_transmissions = 2; // Number of times the same reading is transmitted ina row. More transmissions increase reliability 
+const int repeat_transmissions = 64; // Number of times the same reading is transmitted in a row. More transmissions increase reliability 
                                     // but reduce the total number of readings that can be transmitted in a short time period
 
 // I2C reserves some addresses for special purposes. We exclude these from the scan.
