@@ -1,9 +1,0 @@
-{% if mymembers %}
-    <ul>
-    {% for x in mymembers %}
-        <li><a href="/polls/hubs/{{ x.id }}/">{{ x.name }}</a></li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No hubs exist yet.</p>
-{% endif %}

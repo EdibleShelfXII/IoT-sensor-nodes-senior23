@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'polls.apps.PollsConfig',
+    'iot_sensor_nodes.apps.Iot_sensor_nodesConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -135,5 +135,5 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CRONJOBS = [
-    ('*/5 * * * *', 'polls.cron.update_db_from_api', '>> /home/luis/Projects/pico/IoT-sensor-nodes-senior23/django/mysite/polls/logs/debug.log')
+    ('*/5 * * * *', 'polls.cron.update_db_from_api', '>> /home/luis/Projects/pico/IoT-sensor-nodes-senior23/django/mysite/iot_sensor_nodes/logs/debug.log')
 ]

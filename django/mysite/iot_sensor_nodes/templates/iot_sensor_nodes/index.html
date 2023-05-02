@@ -1,0 +1,9 @@
+{% if latest_hub_list %}
+    <ul>
+    {% for question in latest_hub_list %}
+        <li><a href="/iot_sensor_nodes/{{ hub.id }}/">{{ hub.name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No hubs are available.</p>
+{% endif %}
