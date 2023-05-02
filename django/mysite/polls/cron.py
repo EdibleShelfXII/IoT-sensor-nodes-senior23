@@ -28,7 +28,12 @@ def update_db_from_api():
 
             for node_object in nodes:
                 adr = node_object.address
-                Data.objects.create(node=node_object, temperature=df.loc[adr, ['temperature']].item(), humidity=df.loc[adr, ['relative_humidity']].item(), pub_date=dateparse.parse_datetime(df.loc[adr, ['date_time']].item()))
+                try:
+                    Data.objects.create(node=node_object, temperature=df.loc[adr, ['temperature']].item(), humidity=df.loc[adr, ['relative_humidity']].item(), pub_date=dateparse.parse_datetime(df.loc[adr, ['date_time']].item()))
+
+                except Exception as e:
+                    print('error inserting')
+
 
         except requests.exceptions.RequestException as e:
             print(f'Connection Error at url: {api_url}, associated with Hub: {hub_object.name}')

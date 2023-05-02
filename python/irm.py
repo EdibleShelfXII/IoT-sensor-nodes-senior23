@@ -120,6 +120,7 @@ def storeData(adr, msg_id, data, key):
     elif (msg_id == 3):
         df.loc[adr, ['rh_ls']] = [data];
         df.loc[adr, ['key_rh_ls']] = [key];
+        updateAPI(adr);
 
 def updateAPI(adr):
         key_t_ms = df.loc[adr, ['key_t_ms']].item();
@@ -152,10 +153,9 @@ def readIR():
             msg_id = rx_address & 0b00000011;
             print("Address: 0x%02x" %rx_address);
             print("Data: 0x%02x" %rx_data);
+            print(key);
             storeData(adr, msg_id, rx_data, key);
-        else:
-            if(adr < 8):
-                updateAPI(adr);
+
 try:
 
     @app.route("/")

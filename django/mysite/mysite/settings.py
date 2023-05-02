@@ -135,5 +135,5 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CRONJOBS = [
-    ('*/15 * * * *', 'polls.cron.update_db_from_api')
+    ('*/5 * * * *', 'polls.cron.update_db_from_api', '>> /home/luis/Projects/pico/IoT-sensor-nodes-senior23/django/mysite/polls/logs/debug.log')
 ]
